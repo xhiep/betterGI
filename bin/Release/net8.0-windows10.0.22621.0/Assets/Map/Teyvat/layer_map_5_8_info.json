@@ -1,0 +1,56 @@
+[
+    {
+        "LayerGroupId": "35201",
+        "Floor": -1,
+        "Name": "特诺奇兹托克·东部洞穴",
+        "LayerId": "LayeredMap_3520101",
+        "Scale": 2,
+        "Left": 13818.5,
+        "Top": 350.5
+    },
+    {
+        "LayerGroupId": "35202",
+        "Floor": -1,
+        "Name": "特诺奇兹托克·西部洞穴",
+        "LayerId": "LayeredMap_3520201",
+        "Scale": 2,
+        "Left": 14898.5,
+        "Top": 830.0
+    },
+    {
+        "LayerGroupId": "35203",
+        "Floor": -1,
+        "Name": "刺梨岩内部洞穴",
+        "LayerId": "LayeredMap_3520301",
+        "Scale": 2,
+        "Left": 14132.5,
+        "Top": 1465.5
+    },
+    {
+        "LayerGroupId": "35203",
+        "Floor": -2,
+        "Name": "刺梨岩内部洞穴·北区",
+        "LayerId": "LayeredMap_3520302",
+        "Scale": 2,
+        "Left": 14315.0,
+        "Top": 1710.5
+    },
+    {
+        "LayerGroupId": "35203",
+        "Floor": -3,
+        "Name": "刺梨岩内部洞穴·西区",
+        "LayerId": "LayeredMap_3520304",
+        "Scale": 2,
+        "Left": 14458.5,
+        "Top": 1644.5
+    },
+    {
+        "LayerGroupId": "35204",
+        "Floor": -1,
+        "Name": "特诺奇兹托克·北部洞穴",
+        "LayerId": "LayeredMap_3520401",
+        "Scale": 2,
+        "Left": 15344.5,
+        "Top": 1711.0
+    }
+]

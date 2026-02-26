@@ -1,0 +1,30 @@
+﻿[
+  {
+    "Key": "BetterGI · 更好的原神 · 0.57.1-alpha.3",
+    "Value": "",
+    "Source": "1",
+    "SourceInfo": {
+      "ViewType": "BetterGenshinImpact.View.MainWindow",
+      "ElementType": "System.Windows.Documents.Run",
+      "PropertyName": "Text"
+    }
+  },
+  {
+    "Key": "[TemplateMatch]提瓦特大陆地图模板加载中，可能耗时较久，请耐心等待...",
+    "Value": "",
+    "Source": "0",
+    "SourceInfo": {}
+  },
+  {
+    "Key": "地图特征点加载完成！",
+    "Value": "",
+    "Source": "0",
+    "SourceInfo": {}
+  },
+  {
+    "Key": "已禁用自动更新订阅脚本",
+    "Value": "",
+    "Source": "0",
+    "SourceInfo": {}
+  }
+]

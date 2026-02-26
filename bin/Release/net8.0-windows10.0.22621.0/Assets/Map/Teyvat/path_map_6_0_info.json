@@ -1,0 +1,58 @@
+[
+    {
+        "LayerId": "Patch_NodKrai_70_01",
+        "Floor": 0,
+        "Left": 10251.0,
+        "Top": 3427.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_NodKrai_71_01",
+        "Floor": 0,
+        "Left": 9459.0,
+        "Top": 3143.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_NodKrai_71_02",
+        "Floor": 0,
+        "Left": 9459.0,
+        "Top": 3143.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_NodKrai_71_03",
+        "Floor": 0,
+        "Left": 9459.0,
+        "Top": 3143.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_NodKrai_72_01",
+        "Floor": 0,
+        "Left": 11168.0,
+        "Top": 2424.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_Natlan_52_01",
+        "Floor": 0,
+        "Left": 14172.0,
+        "Top": 1084.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_Natlan_52_02",
+        "Floor": 0,
+        "Left": 14172.0,
+        "Top": 1085.0,
+        "Scale": 1
+    },
+    {
+        "LayerId": "Patch_Natlan_52_03",
+        "Floor": 0,
+        "Left": 14129.0,
+        "Top": 984.0,
+        "Scale": 1
+    }
+]

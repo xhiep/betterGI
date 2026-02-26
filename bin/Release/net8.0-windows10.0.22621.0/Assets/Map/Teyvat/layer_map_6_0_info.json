@@ -1,0 +1,191 @@
+[
+    {
+        "LayerGroupId": "37001",
+        "Floor": 5,
+        "Name": "月矩力试验设计局·顶层",
+        "LayerId": "LayeredMap_3700101",
+        "Scale": 3,
+        "Left": 10096.5,
+        "Top": 3464.0
+    },
+    {
+        "LayerGroupId": "37001",
+        "Floor": 4,
+        "Name": "月矩力试验设计局·销毁车间",
+        "LayerId": "LayeredMap_3700102",
+        "Scale": 3,
+        "Left": 10026.0,
+        "Top": 3486.0
+    },
+    {
+        "LayerGroupId": "37001",
+        "Floor": 1,
+        "Name": "月矩力试验设计局·下层",
+        "LayerId": "LayeredMap_3700103",
+        "Scale": 3,
+        "Left": 10072.5,
+        "Top": 3435.5
+    },
+    {
+        "LayerGroupId": "37001",
+        "Floor": -1,
+        "Name": "月矩力试验设计局·底层",
+        "LayerId": "LayeredMap_3700104",
+        "Scale": 3,
+        "Left": 10083.0,
+        "Top": 3445.5
+    },
+    {
+        "LayerGroupId": "37001",
+        "Floor": 3,
+        "Name": "月矩力试验设计局·南区",
+        "LayerId": "LayeredMap_3700105",
+        "Scale": 3,
+        "Left": 9966.5,
+        "Top": 3289.5
+    },
+    {
+        "LayerGroupId": "37001",
+        "Floor": 2,
+        "Name": "月矩力试验设计局·中层",
+        "LayerId": "LayeredMap_3700106",
+        "Scale": 3,
+        "Left": 9979.0,
+        "Top": 3364.5
+    },
+    {
+        "LayerGroupId": "37002",
+        "Floor": -1,
+        "Name": "「蟹之主的宫殿·上层」",
+        "LayerId": "LayeredMap_3700201",
+        "Scale": 2,
+        "Left": 10666.5,
+        "Top": 1988.5
+    },
+    {
+        "LayerGroupId": "37002",
+        "Floor": -2,
+        "Name": "「蟹之主的宫殿·下层」",
+        "LayerId": "LayeredMap_3700202",
+        "Scale": 2,
+        "Left": 10673.5,
+        "Top": 2048.5
+    },
+    {
+        "LayerGroupId": "37003",
+        "Floor": 1,
+        "Name": "近月的隙间",
+        "LayerId": "LayeredMap_3700301",
+        "Scale": 2,
+        "Left": 11062.0,
+        "Top": 2271.5
+    },
+    {
+        "LayerGroupId": "37004",
+        "Floor": -1,
+        "Name": "雷图礁·隧路",
+        "LayerId": "LayeredMap_3700401",
+        "Scale": 2,
+        "Left": 11230.5,
+        "Top": 1751.5
+    },
+    {
+        "LayerGroupId": "37005",
+        "Floor": -1,
+        "Name": "苔原之隙",
+        "LayerId": "LayeredMap_3700501",
+        "Scale": 2,
+        "Left": 9858.5,
+        "Top": 1906.5
+    },
+    {
+        "LayerGroupId": "37006",
+        "Floor": -1,
+        "Name": "苔原之隙",
+        "LayerId": "LayeredMap_3700601",
+        "Scale": 2,
+        "Left": 9981.5,
+        "Top": 1922.5
+    },
+    {
+        "LayerGroupId": "37007",
+        "Floor": -1,
+        "Name": "隐蔽的实验室",
+        "LayerId": "LayeredMap_3700701",
+        "Scale": 2,
+        "Left": 9478.5,
+        "Top": 2122.5
+    },
+    {
+        "LayerGroupId": "37008",
+        "Floor": -1,
+        "Name": "绝海之下",
+        "LayerId": "LayeredMap_3700801",
+        "Scale": 2,
+        "Left": 9131.5,
+        "Top": 2361.5
+    },
+    {
+        "LayerGroupId": "37009",
+        "Floor": -1,
+        "Name": "盐蚀洞窟",
+        "LayerId": "LayeredMap_3700901",
+        "Scale": 2,
+        "Left": 9700.5,
+        "Top": 3589.5
+    },
+    {
+        "LayerGroupId": "37010",
+        "Floor": -1,
+        "Name": "遗誓者的圣所",
+        "LayerId": "LayeredMap_3701001",
+        "Scale": 2,
+        "Left": 10881.5,
+        "Top": 2252.5
+    },
+    {
+        "LayerGroupId": "37011",
+        "Floor": -1,
+        "Name": "风蚀小径",
+        "LayerId": "LayeredMap_3701101",
+        "Scale": 2,
+        "Left": 9491.5,
+        "Top": 2299.5
+    },
+    {
+        "LayerGroupId": "37012",
+        "Floor": -1,
+        "Name": "废弃的工坊",
+        "LayerId": "LayeredMap_3701201",
+        "Scale": 2,
+        "Left": 9305.5,
+        "Top": 2377.5
+    },
+    {
+        "LayerGroupId": "37014",
+        "Floor": -1,
+        "Name": "徒水岩窟",
+        "LayerId": "LayeredMap_3701401",
+        "Scale": 2,
+        "Left": 9510.5,
+        "Top": 2701.0
+    },
+    {
+        "LayerGroupId": "37015",
+        "Floor": -1,
+        "Name": "地下研究所",
+        "LayerId": "LayeredMap_3701501",
+        "Scale": 2,
+        "Left": 10348.0,
+        "Top": 3429.5
+    },
+    {
+        "LayerGroupId": "37016",
+        "Floor": -1,
+        "Name": "银月之庭",
+        "LayerId": "LayeredMap_3701601",
+        "Scale": 2,
+        "Left": 11390.5,
+        "Top": 2302.5
+    }
+]
