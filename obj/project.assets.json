@@ -15687,14 +15687,14 @@
         "net8.0-windows10.0.22621": {
           "targetAlias": "net8.0-windows10.0.22621.0",
           "projectReferences": {
-            "C:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.GameCapture\\Fischless.GameCapture.csproj": {
-              "projectPath": "C:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.GameCapture\\Fischless.GameCapture.csproj"
+            "c:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.GameCapture\\Fischless.GameCapture.csproj": {
+              "projectPath": "c:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.GameCapture\\Fischless.GameCapture.csproj"
             },
-            "C:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.HotkeyCapture\\Fischless.HotkeyCapture.csproj": {
-              "projectPath": "C:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.HotkeyCapture\\Fischless.HotkeyCapture.csproj"
+            "c:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.HotkeyCapture\\Fischless.HotkeyCapture.csproj": {
+              "projectPath": "c:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.HotkeyCapture\\Fischless.HotkeyCapture.csproj"
             },
-            "C:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.WindowsInput\\Fischless.WindowsInput.csproj": {
-              "projectPath": "C:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.WindowsInput\\Fischless.WindowsInput.csproj"
+            "c:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.WindowsInput\\Fischless.WindowsInput.csproj": {
+              "projectPath": "c:\\Users\\xhiep\\Downloads\\better-genshin-impact-main\\Fischless.WindowsInput\\Fischless.WindowsInput.csproj"
             }
           }
         }
