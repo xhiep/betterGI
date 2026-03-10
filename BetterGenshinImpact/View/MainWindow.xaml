@@ -10,7 +10,7 @@
                  xmlns:tray="http://schemas.lepo.co/wpfui/2022/xaml/tray"
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:viewModel="clr-namespace:BetterGenshinImpact.ViewModel"
-                 Title="BetterGenshinImpact"
+                 Title="更好的原神"
                  Width="900"
                  Height="600"
                  d:Background="#D2D2D2"
@@ -60,7 +60,7 @@
                            IsFooterSeparatorVisible="False"
                            OpenPaneLength="160">
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="Bắt Đầu"
+                <ui:NavigationViewItem Content="启动"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:HomePage}">
                     <ui:NavigationViewItem.Icon>
@@ -68,14 +68,14 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="Kích Hoạt Thời Gian Thực"
+                <ui:NavigationViewItem Content="实时触发"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:TriggerSettingsPage}">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Timer24" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem Content="Tác Vụ Độc Lập"
+                <ui:NavigationViewItem Content="独立任务"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:TaskSettingsPage}">
                     <ui:NavigationViewItem.Icon>
@@ -85,7 +85,7 @@
 
                 <!--<ui:NavigationViewItemSeparator />-->
 
-                <ui:NavigationViewItem Content="Một Điều Lệnh"
+                <ui:NavigationViewItem Content="一条龙"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:OneDragonFlowPage}">
                     <ui:NavigationViewItem.Icon>
@@ -93,7 +93,7 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="Toàn Tự Động">
+                <ui:NavigationViewItem Content="全自动">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Bot24" />
                     </ui:NavigationViewItem.Icon>
@@ -101,7 +101,7 @@
 
                         <!--<ui:NavigationViewItemSeparator />-->
                         <!--  ConvertRange20  -->
-                        <ui:NavigationViewItem Content="Bộ Lập Lịch"
+                        <ui:NavigationViewItem Content="调度器"
                                                NavigationCacheMode="Enabled"
                                                TargetPageType="{x:Type pages:ScriptControlPage}">
                             <ui:NavigationViewItem.Icon>
@@ -109,7 +109,7 @@
                             </ui:NavigationViewItem.Icon>
                         </ui:NavigationViewItem>
                         <!--  WebAsset24 | DocumentJs16 | Script16  -->
-                        <ui:NavigationViewItem Content="Script JS"
+                        <ui:NavigationViewItem Content="JS 脚本"
                                                NavigationCacheMode="Enabled"
                                                TargetPageType="{x:Type pages:JsListPage}">
                             <ui:NavigationViewItem.Icon>
@@ -117,7 +117,7 @@
                             </ui:NavigationViewItem.Icon>
                         </ui:NavigationViewItem>
                         <!--  Map24  -->
-                        <ui:NavigationViewItem Content="Theo Dõi Bản Đồ"
+                        <ui:NavigationViewItem Content="地图追踪"
                                                NavigationCacheMode="Enabled"
                                                TargetPageType="{x:Type pages:MapPathingPage}">
                             <ui:NavigationViewItem.Icon>
@@ -125,7 +125,7 @@
                             </ui:NavigationViewItem.Icon>
                         </ui:NavigationViewItem>
                         <!--  Script16  -->
-                        <ui:NavigationViewItem Content="Ghi Và Phát Lại"
+                        <ui:NavigationViewItem Content="录制回放"
                                                NavigationCacheMode="Enabled"
                                                TargetPageType="{x:Type pages:KeyMouseRecordPage}">
                             <ui:NavigationViewItem.Icon>
@@ -135,7 +135,7 @@
                     </ui:NavigationViewItem.MenuItems>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="Điều Khiển Hỗ Trợ"
+                <ui:NavigationViewItem Content="辅助操控"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:MacroSettingsPage}">
                     <ui:NavigationViewItem.Icon>
@@ -143,7 +143,7 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="Phím Tắt"
+                <ui:NavigationViewItem Content="快捷键"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:HotKeyPage}">
                     <ui:NavigationViewItem.Icon>
@@ -157,7 +157,7 @@
                         <ui:SymbolIcon Symbol="KeyboardMouse16" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>-->
-                <ui:NavigationViewItem Content="Thông Báo"
+                <ui:NavigationViewItem Content="通知"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:NotificationSettingsPage}">
                     <ui:NavigationViewItem.Icon>
@@ -166,7 +166,7 @@
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.FooterMenuItems>
-                <ui:NavigationViewItem Content="Cài Đặt"
+                <ui:NavigationViewItem Content="设置"
                                        NavigationCacheMode="Enabled"
                                        TargetPageType="{x:Type pages:CommonSettingsPage}">
                     <ui:NavigationViewItem.Icon>
@@ -196,7 +196,7 @@
                                CornerRadius="0"
                                Icon="{ui:SymbolIcon Gift16}"
                                Foreground="{Binding RedeemCodeButtonForeground}"
-                               ToolTip="Lấy Thông Tin Mã Đổi Quà" />
+                               ToolTip="获取兑换码信息" />
                     <ui:Button Width="40"
                                Height="32"
                                Background="Transparent"
@@ -204,7 +204,7 @@
                                Command="{Binding SwitchBackdropCommand}"
                                CornerRadius="0"
                                Icon="{ui:SymbolIcon Blur24}"
-                               ToolTip="Chuyển Giao Diện Sáng/Tối" />
+                               ToolTip="切换深浅主题或背景样式" />
                     <ui:Button Width="32"
                                Height="32"
                                Background="Transparent"
@@ -212,7 +212,7 @@
                                Command="{Binding HideCommand}"
                                CornerRadius="0"
                                Icon="{ui:SymbolIcon CaretDown24}"
-                               ToolTip="Thu Nhỏ Xuống Khay Hệ Thống" />
+                               ToolTip="最小化到托盘" />
                 </StackPanel>
             </ui:TitleBar.TrailingContent>
         </ui:TitleBar>
@@ -229,11 +229,11 @@
                         <markup:ServiceLocator Type="{x:Type viewModel:NotifyIconViewModel}" />
                     </ContextMenu.DataContext>
                     <ui:MenuItem Command="{Binding CheckUpdateCommand}"
-                                 Header="Kiểm Tra Cập Nhật"
+                                 Header="检查更新"
                                  Icon="{ui:SymbolIcon ArrowAutofitUp24}" />
                     <Separator />
                     <ui:MenuItem Command="{Binding ExitCommand}"
-                                 Header="Thoát"
+                                 Header="退出"
                                  Icon="{ui:SymbolIcon Dismiss24}" />
                 </ContextMenu>
             </tray:NotifyIcon.Menu>

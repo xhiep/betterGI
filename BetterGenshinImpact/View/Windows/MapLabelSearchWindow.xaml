@@ -28,7 +28,7 @@
                 <ui:TextBox x:Name="SearchTextBox"
                             Grid.Column="0"
                             Height="32"
-                            PlaceholderText="Tìm kiếm phân loại điểm đánh dấu trong khu vực hiện tại"
+                            PlaceholderText="搜索当前区域下的标点分类"
                             Text="{Binding MapLabelSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <ui:Button Grid.Column="1"
                            Width="34"

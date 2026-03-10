@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <!-- 标题栏 -->
-        <ui:TitleBar Name="MyTitleBar" Grid.Row="0" Title="Mã Đổi Quà">
+        <ui:TitleBar Name="MyTitleBar" Grid.Row="0" Title="兑换码">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Resources/Images/logo.png" />
             </ui:TitleBar.Icon>
@@ -45,11 +45,11 @@
             <StackPanel Grid.Row="0" Margin="0,0,0,15">
                 <ui:TextBlock FontSize="24"
                               FontWeight="SemiBold"
-                              Text="Mã Đổi Quà Mới Nhất"
+                              Text="最新兑换码动态"
                               Margin="0,0,0,5" />
                 <ui:TextBlock FontSize="14"
                               Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
-                              Text="Xem mã đổi quà Genshin mới nhất, tự động đổi một chạm"
+                              Text="查看最新的国服原神的兑换码，一键自动兑换"
                               TextWrapping="Wrap" />
             </StackPanel>
 
@@ -61,7 +61,7 @@
                         Margin="0,0,0,10"
                         Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <ui:ProgressRing Width="16" Height="16" IsIndeterminate="True" Margin="0,0,8,0" />
-                <ui:TextBlock Text="Đang Tải Mã Đổi Thưởng..." Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}" />
+                <ui:TextBlock Text="正在加载兑换码..." Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}" />
             </StackPanel>
 
             <!-- Feed 列表 -->
@@ -115,7 +115,7 @@
                                         </ui:TextBlock>
                                         <ui:TextBlock FontSize="12"
                                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                      Text="Có hiệu lực đến">
+                                                      Text="有效期至">
                                             <ui:TextBlock.Style>
                                                 <Style TargetType="{x:Type ui:TextBlock}">
                                                     <Style.Triggers>
@@ -220,14 +220,14 @@
                                     <StackPanel Grid.Row="5"
                                                 Orientation="Horizontal"
                                                 Margin="0,0,0,8">
-                                        <ui:Button Content="Sao Chép"
+                                        <ui:Button Content="复制"
                                                    Appearance="Secondary"
                                                    FontSize="12"
                                                    Padding="12,6"
                                                    Margin="0,0,8,0"
                                                    Command="{Binding DataContext.CopyItemCodesCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                    CommandParameter="{Binding}" />
-                                        <ui:Button Content="Đổi Ngay"
+                                        <ui:Button Content="一键兑换"
                                                    Appearance="Primary"
                                                    FontSize="12"
                                                    Padding="12,6"
@@ -251,12 +251,12 @@
                 <ui:Button Name="BtnGetLiveCodes"
                            Margin="0,0,10,0"
                            Appearance="Secondary"
-                           Content="Lấy Mã Preview Thời Gian Thực"
+                           Content="实时获取前瞻兑换码"
                            Command="{Binding GetLiveRedeemCodesCommand}"
                            Visibility="{Binding IsDisplayBtnGetLiveCodes, Converter={StaticResource BooleanToVisibilityConverter}}"
                            />
                 <ui:Button Name="BtnClose"
-                           Content="Đóng"
+                           Content="关闭"
                            Click="BtnCloseClick" />
             </StackPanel>
         </Grid>

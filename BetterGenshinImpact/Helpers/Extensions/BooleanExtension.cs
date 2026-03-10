@@ -4,6 +4,6 @@ public static class BooleanExtension
 {
     public static string ToChinese(this bool enabled)
     {
-        return enabled ? "Bật" : "Tắt";
+        return enabled ? "开启" : "关闭";
     }
 }

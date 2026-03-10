@@ -38,26 +38,26 @@
             <ui:TextBlock Grid.Row="0"
                           Margin="0,0,0,8"
                           FontTypography="BodyStrong"
-                          Text="Script Javascript Tùy Chỉnh (Tính Năng Thử Nghiệm)" />
+                          Text="自定义 Javascript 脚本（实验功能）" />
             <ui:TextBlock Grid.Row="1"
                           Margin="0,0,0,8"
                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                           TextWrapping="Wrap">
-                Có thể gọi các khả năng của BetterGI trong Genshin qua Javascript. Hãy dùng trong Bộ Lập Lịch!
+                可以通过 Javascript 调用 BetterGI 在原神中的各项能力。请在调度器中使用！
                 <Hyperlink Command="{Binding GoToJsScriptUrlCommand}"
                            Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
-                    Nhấp để xem hướng dẫn sử dụng và viết script Javascript
+                    点击查看 Javascript 脚本使用与编写教程
                 </Hyperlink>
             </ui:TextBlock>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <ui:Button Command="{Binding OpenScriptsFolderCommand}"
-                           Content="Mở Thư Mục Script"
+                           Content="打开脚本目录"
                            Icon="{ui:SymbolIcon FolderOpen24}" />
                 <Separator Width="10" Opacity="0" />
                 <ui:Button Command="{Binding OpenLocalScriptRepoCommand}" Icon="{ui:SymbolIcon Archive24}">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ui:TextBlock>Kho Script</ui:TextBlock>
+                        <ui:TextBlock>脚本仓库</ui:TextBlock>
                         <ui:InfoBadge Margin="0,-8,-14,0"
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Top"
@@ -111,20 +111,20 @@
                     <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderDarkStyle}">
                         <GridViewColumn Width="{Binding ElementName=Col1, Path=ActualWidth}"
                                         DisplayMemberBinding="{Binding FolderName}"
-                                        Header="Thư Mục" />
+                                        Header="目录" />
                         <GridViewColumn Width="{Binding ElementName=Col2, Path=ActualWidth}"
                                         DisplayMemberBinding="{Binding Manifest.Name}"
-                                        Header="Tên" />
+                                        Header="名称" />
                         <GridViewColumn Width="{Binding ElementName=Col3, Path=ActualWidth}"
                                         DisplayMemberBinding="{Binding Manifest.Version}"
-                                        Header="Phiên Bản" />
-                        <!--<GridViewColumn Width="{Binding ElementName=Col4, Path=ActualWidth}" Header="Thao Tác">
+                                        Header="版本" />
+                        <!--<GridViewColumn Width="{Binding ElementName=Col4, Path=ActualWidth}" Header="操作">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <ui:Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:JsListPage}}, Path=DataContext.StartRunCommand}"
                                                CommandParameter="{Binding ProjectPath}"
-                                               Content="Thực Thi Script"
+                                               Content="执行脚本"
                                                Icon="{ui:SymbolIcon Play24}" />
                                 </StackPanel>
 
@@ -137,17 +137,17 @@
                     <ContextMenu>
                         <MenuItem Command="{Binding OpenScriptProjectFolderCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
-                                  Header="Mở Thư Mục" />
+                                  Header="打开目录" />
                         <MenuItem Command="{Binding StartRunCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
-                                  Header="Thực Thi Script" />
+                                  Header="执行脚本" />
                         <MenuItem Command="{Binding RefreshCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
-                                  Header="Làm Mới" />
+                                  Header="刷新" />
                         <Separator />
                         <MenuItem Command="{Binding DeleteScriptCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
-                                  Header="Xóa" />
+                                  Header="删除" />
                     </ContextMenu>
                 </ListBox.ContextMenu>
                 <ListView.Style>

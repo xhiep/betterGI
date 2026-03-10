@@ -21,7 +21,7 @@ internal class WindowsInputMessageDispatcher : IInputMessageDispatcher
 
         if (num != (ulong)(long)inputs.Length)
         {
-            throw new Exception("Gửi tín hiệu phím chuột giả lập thất bại! Nguyên nhân thường gặp: 1. Bạn chưa chạy chương trình với quyền Admin; 2. Bị phần mềm diệt virus chặn (ví dụ 360/Avast...)");
+            throw new Exception("模拟键鼠消息发送失败！常见原因：1.你未以管理员权限运行程序；2.存在安全软件拦截（比如360）");
         }
     }
 }

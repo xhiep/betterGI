@@ -27,31 +27,31 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Margin="12">
-            <emoji:TextBlock Text="🔹 Phần mềm này mã nguồn mở và miễn phí, nếu thích hãy nhấn 🌟Star -> " Margin="5" FontSize="16">
+            <emoji:TextBlock Text="🔹 本软件开源且免费，喜欢的可以点🌟Star -> " Margin="5" FontSize="16">
                 <Hyperlink NavigateUri="https://github.com/babalae/better-genshin-impact"
                            RequestNavigate="HyperlinkRequestNavigate" Foreground="#1E9BFA">
                     Github
                 </Hyperlink>
             </emoji:TextBlock>
-            <emoji:TextBlock Text="🔹 Lần đầu sử dụng vui lòng xem" Margin="5" FontSize="16">
+            <emoji:TextBlock Text="🔹 首次使用请先查看" Margin="5" FontSize="16">
                 <Hyperlink NavigateUri="https://bettergi.com/quickstart.html"
                            RequestNavigate="HyperlinkRequestNavigate" Foreground="#1E9BFA">
-                    《Hướng Dẫn Bắt Đầu Nhanh》
+                    《快速上手教程》
                 </Hyperlink>
             </emoji:TextBlock>
             <emoji:TextBlock
                 Margin="5"
                 FontSize="16"
                 TextWrapping="Wrap">
-                <Run Text="❗Phần mềm này chưa bao giờ cấp phép cho bất kỳ nền tảng bên thứ ba nào để " /><Run Text="bán" Foreground="Red" />
-                <Run Text=". Nếu bạn đã trả phí để có phần mềm này (qua các sàn mua bán), hãy báo cáo người bán và yêu cầu " /><Run Text="hoàn tiền" Foreground="Red" /><Run Text="!" />
+                <Run Text="❗本软件从未授权任何第三方平台进行" /><Run Text="售卖" Foreground="Red" />
+                <Run Text="。如果你是付费获取的本软件（闲鱼、淘宝等），请举报商家并发起" /><Run Text="退款" Foreground="Red" /><Run Text="！" />
             </emoji:TextBlock>
             <!--<StackPanel Margin="5"
                         Orientation="Horizontal">
-                <ui:TextBlock Text="Phần mềm này " VerticalAlignment="Bottom"/>
-                <emoji:TextBlock Text="🔄Mã Nguồn Mở" FontSize="20" />
-                <ui:TextBlock Text="và " VerticalAlignment="Bottom"/>
-                <emoji:TextBlock Text="🆓Miễn Phí" FontSize="20"/>
+                <ui:TextBlock Text="本软件" VerticalAlignment="Bottom"/>
+                <emoji:TextBlock Text="🔄开源" FontSize="20" />
+                <ui:TextBlock Text="且" VerticalAlignment="Bottom"/>
+                <emoji:TextBlock Text="🆓免费" FontSize="20"/>
             </StackPanel>-->
 
             <StackPanel Margin="5"
@@ -61,7 +61,7 @@
                            Margin="5"
                            Appearance="Primary"
                            Click="BtnOkClick"
-                           Content="Xác Nhận"
+                           Content="确定"
                            IsDefault="True" />
             </StackPanel>
         </StackPanel>

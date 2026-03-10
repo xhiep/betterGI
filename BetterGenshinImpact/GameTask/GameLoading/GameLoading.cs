@@ -1,6 +1,5 @@
 using BetterGenshinImpact.Core.Config;
 using BetterGenshinImpact.GameTask.GameLoading.Assets;
-using BetterGenshinImpact.Core.Recognition;
 using System;
 using System.Diagnostics;
 using BetterGenshinImpact.GameTask.Common;
@@ -22,7 +21,7 @@ public class GameLoadingTrigger : ITaskTrigger
 {
     public static bool GlobalEnabled = true;
     
-    public string Name => "Tự động vào game";
+    public string Name => "自动开门";
 
     public bool IsEnabled { get => GlobalEnabled; set {} }
 
@@ -57,9 +56,6 @@ public class GameLoadingTrigger : ITaskTrigger
 
     private bool biliLoginClicked = false;
     private (double x1080, double y1080)? lastAgreementClickPos = null;
-
-    private int _enterAttemptCount = 0;
-    private DateTime _lastEnterAttemptTime = DateTime.MinValue;
 
     public GameLoadingTrigger()
     {
@@ -130,12 +126,12 @@ public class GameLoadingTrigger : ITaskTrigger
                 }
 
 
-                Debug.WriteLine($"[GameLoading] Đọc server game từ file: {GameServer}");
+                Debug.WriteLine($"[GameLoading] 从文件读取到游戏区服：{GameServer}");
                 // 这里注册表的优先级要比读取文件低，因为使用starward安装原神不会写入注册表
                 if (GameServer == null)
                 {
                     GameServer = GetGameServerRegistry();
-                    Debug.WriteLine($"[GameLoading] Đọc server game từ registry: {GameServer}");
+                    Debug.WriteLine($"[GameLoading] 从注册表读取到游戏区服：{GameServer}");
                     StartStarward();
                 }
             }
@@ -154,13 +150,13 @@ public class GameLoadingTrigger : ITaskTrigger
             }
             else
             {
-                TaskControl.Logger.LogWarning("Không tìm thấy giao thức Starward, vui lòng kiểm tra tài liệu trợ giúp!");
+                TaskControl.Logger.LogWarning("没有检测到 Starward 协议注册，请查看帮助文档！");
                 return false;
             }
         }
         catch (Exception ex)
         {
-            Debug.WriteLine("[GameLoading] Starward ghi nhận thời gian thất bại");
+            Debug.WriteLine("[GameLoading] Starward记录时间失败");
             return false;
         }
     }
@@ -200,7 +196,7 @@ public class GameLoadingTrigger : ITaskTrigger
         }
         catch (Exception e)
         {
-            TaskControl.Logger.LogDebug(e, "Lấy thông tin server thất bại");
+            TaskControl.Logger.LogDebug(e, "获取服务器失败");
         }
 
         return "";
@@ -229,7 +225,7 @@ public class GameLoadingTrigger : ITaskTrigger
         catch (Exception ex)
         {
             // 如果访问注册表时发生错误，记录调试信息
-            Debug.WriteLine($"[GameLoading] Lỗi kiểm tra giao thức Starward: {ex.Message}");
+            Debug.WriteLine($"[GameLoading] 检查 Starward 协议时发生错误: {ex.Message}");
         }
 
         // 如果键不存在或不符合条件，返回 false
@@ -285,7 +281,7 @@ public class GameLoadingTrigger : ITaskTrigger
             }
             catch (Exception ex)
             {
-                TaskControl.Logger.LogWarning("Lỗi kiểm tra B server: " + ex.Message);
+                TaskControl.Logger.LogWarning("B服判断异常: " + ex.Message);
             }
             IsBiliJudged = true;
         }
@@ -309,63 +305,6 @@ public class GameLoadingTrigger : ITaskTrigger
             TaskContext.Instance().PostMessageSimulator.LeftButtonClickBackground();
             biliLoginClicked = true;
             return;
-        }
-
-        // OCR 兜底：识别多语言“进入游戏/nhấn để vào/press to enter/开始/bắt đầu/nhấn vào màn hình”等提示
-        try
-        {
-            var w = content.CaptureRectArea.Width;
-            var h = content.CaptureRectArea.Height;
-            // 扩大ROI范围：底部提示条 + 中央大标题
-            var ocrBottom = content.CaptureRectArea.FindMulti(RecognitionObject.Ocr(w * 0.15, h * 0.70, w * 0.70, h * 0.28));
-            var ocrCenter = content.CaptureRectArea.FindMulti(RecognitionObject.Ocr(w * 0.20, h * 0.20, w * 0.60, h * 0.50));
-            string allText = string.Join(" ", new[]{ ocrBottom, ocrCenter }.Where(x=>x!=null).SelectMany(x=>x).Select(o=>o.Text));
-            string lower = allText.ToLowerInvariant();
-            static string RD(string s)
-            {
-                var formD = s.Normalize(System.Text.NormalizationForm.FormD);
-                var sb = new System.Text.StringBuilder(formD.Length);
-                foreach (var ch in formD)
-                {
-                    if (System.Globalization.CharUnicodeInfo.GetUnicodeCategory(ch) != System.Globalization.UnicodeCategory.NonSpacingMark)
-                        sb.Append(ch);
-                }
-                return sb.ToString().Normalize(System.Text.NormalizationForm.FormC);
-            }
-            string plain = RD(lower);
-            bool hintEnter = lower.Contains("进入游戏") || lower.Contains("点击进入")
-                              || lower.Contains("nhấn để vào") || plain.Contains("nhan de vao") || plain.Contains("vao game") || plain.Contains("nhan vao man hinh")
-                              || lower.Contains("press to enter") || lower.Contains("click to enter") || lower.Contains("tap to enter");
-            bool hintStart = lower.Contains("开始") || lower.Contains("start") || lower.Contains("bắt đầu") || plain.Contains("bat dau");
-            if (hintEnter)
-            {
-                GameCaptureRegion.GameRegion1080PPosClick(960, 980);
-                biliLoginClicked = true;
-                return;
-            }
-            if (hintStart)
-            {
-                GameCaptureRegion.GameRegion1080PPosClick(960, 540);
-                biliLoginClicked = true;
-                return;
-            }
-        }
-        catch { /* ignore OCR fallback errors */ }
-
-        // 最终兜底：定时尝试点击屏幕中心/底部，最多5次，避免语言差异或动画导致漏识别
-        if ((DateTime.Now - _lastEnterAttemptTime).TotalSeconds >= 2 && _enterAttemptCount < 5)
-        {
-            // 前2次点底部提示区域，之后点正中心
-            if (_enterAttemptCount < 2)
-            {
-                GameCaptureRegion.GameRegion1080PPosClick(960, 980);
-            }
-            else
-            {
-                GameCaptureRegion.GameRegion1080PPosClick(960, 540);
-            }
-            _enterAttemptCount++;
-            _lastEnterAttemptTime = DateTime.Now;
         }
 
         // 只有在"进入游戏"按钮未出现时，才进行B服登录处理
@@ -393,7 +332,7 @@ public class GameLoadingTrigger : ITaskTrigger
                     var (remainingWindow, remainingType) = GetBiliLoginWindow(process);
                     if (remainingWindow == IntPtr.Zero)
                     {
-                        _logger.LogInformation("Đăng nhập B server hoàn tất, chuẩn bị vào game");
+                        _logger.LogInformation("B服登录完成，准备进入游戏");
                         // 添加延时确保窗口完全消失
                         Thread.Sleep(2000);
                         // 点击屏幕尝试找回焦点
@@ -485,7 +424,7 @@ public class GameLoadingTrigger : ITaskTrigger
             }
             catch (Exception ex)
             {
-                _logger.LogDebug($"Lỗi liệt kê cửa sổ: {ex.Message}");
+                _logger.LogDebug($"枚举窗口时出错: {ex.Message}");
             }
 
             return true;

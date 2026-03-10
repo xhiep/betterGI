@@ -35,24 +35,24 @@
         <ui:TextBlock Grid.Row="0"
                       Margin="0,0,0,8"
                       FontTypography="BodyStrong"
-                      Text="Tính Năng Ghi Và Phát Lại Bàn Phím/Chuột (Thử Nghiệm)" />
+                      Text="键鼠录制回放功能（实验功能）" />
         <ui:TextBlock Grid.Row="1"
                       Margin="0,0,0,8"
                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                       TextWrapping="Wrap">
-            Khuyến nghị dùng phím tắt để ghi trong game, sau khi ghi xong dùng trong Bộ Lập Lịch.<Hyperlink Command="{Binding GoToKmScriptUrlCommand}" Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
-                Nhấp để xem hướng dẫn tính năng ghi và phát lại
+            建议在游戏内使用快捷键进行录制，录制完成后在调度器中使用。<Hyperlink Command="{Binding GoToKmScriptUrlCommand}" Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
+                点击查看键鼠录制回放功能教程
             </Hyperlink>
         </ui:TextBlock>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <ui:Button Command="{Binding OpenScriptFolderCommand}"
-                       Content="Mở Thư Mục Script"
+                       Content="打开脚本目录"
                        Icon="{ui:SymbolIcon FolderOpen24}" />
             <Separator Width="10" Opacity="0" />
             <ui:Button Command="{Binding OpenLocalScriptRepoCommand}" Icon="{ui:SymbolIcon Archive24}">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <ui:TextBlock>Kho Script</ui:TextBlock>
+                    <ui:TextBlock>脚本仓库</ui:TextBlock>
                     <ui:InfoBadge Margin="0,-8,-14,0"
                                   HorizontalAlignment="Right"
                                   VerticalAlignment="Top"
@@ -63,12 +63,12 @@
             </ui:Button>
             <Separator Width="10" Opacity="0" />
             <ui:Button Command="{Binding StartRecordCommand}"
-                       Content="Bắt Đầu Ghi"
+                       Content="开始录制"
                        Icon="{ui:SymbolIcon Record20}"
                        IsEnabled="{Binding IsRecording, Converter={StaticResource InverseBooleanConverter}}" />
             <Separator Width="10" Opacity="0" />
             <ui:Button Command="{Binding StopRecordCommand}"
-                       Content="Dừng Ghi"
+                       Content="停止录制"
                        Icon="{ui:SymbolIcon Stop24}"
                        IsEnabled="{Binding IsRecording}" />
         </StackPanel>
@@ -97,17 +97,17 @@
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderDarkStyle}">
                     <GridViewColumn Width="{Binding ElementName=Col1, Path=ActualWidth}"
                                     DisplayMemberBinding="{Binding Name}"
-                                    Header="Tên" />
+                                    Header="名称" />
                     <GridViewColumn Width="{Binding ElementName=Col2, Path=ActualWidth}"
                                     DisplayMemberBinding="{Binding CreateTimeStr}"
-                                    Header="Thời Gian Tạo" />
-                    <GridViewColumn Width="{Binding ElementName=Col3, Path=ActualWidth}" Header="Thao Tác">
+                                    Header="创建时间" />
+                    <GridViewColumn Width="{Binding ElementName=Col3, Path=ActualWidth}" Header="操作">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <ui:Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:KeyMouseRecordPage}}, Path=DataContext.StartPlayCommand}"
                                                CommandParameter="{Binding Path}"
-                                               Content="Phát Script"
+                                               Content="播放脚本"
                                                Icon="{ui:SymbolIcon Play24}" />
                                 </StackPanel>
 
@@ -120,10 +120,10 @@
                 <ContextMenu>
                     <MenuItem Command="{Binding EditScriptCommand}"
                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
-                              Header="Sửa Tên" />
+                              Header="修改名称" />
                     <MenuItem Command="{Binding DeleteScriptCommand}"
                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
-                              Header="Xóa" />
+                              Header="删除" />
                 </ContextMenu>
             </ListBox.ContextMenu>
             <ListView.Style>

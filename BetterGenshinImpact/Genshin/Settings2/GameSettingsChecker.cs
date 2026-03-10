@@ -14,27 +14,27 @@ public class GameSettingsChecker
             var settingStr = GenshinGameSettings.GetStrFromRegistry();
             if (settingStr == null)
             {
-                TaskControl.Logger.LogDebug("Lấy cài đặt game Genshin Impact thất bại");
+                TaskControl.Logger.LogDebug("获取原神游戏设置失败");
                 return;
             }
 
             GenshinGameSettings? settings = GenshinGameSettings.Parse(settingStr);
             if (settings == null)
             {
-                TaskControl.Logger.LogDebug("Lấy cài đặt game Genshin Impact thất bại");
+                TaskControl.Logger.LogDebug("获取原神游戏设置失败");
                 return;
             }
 
             GenshinGameInputSettings? inputSettings = GenshinGameInputSettings.Parse(settings.InputData);
             if (inputSettings == null)
             {
-                TaskControl.Logger.LogError("Lấy cài đặt đầu vào game Genshin Impact thất bại");
+                TaskControl.Logger.LogError("获取原神游戏输入设置失败");
                 return;
             }
             
             if (settings.GammaValue != "2.200000047683716")
             {
-                TaskControl.Logger.LogError("Phát hiện độ sáng game không phải giá trị mặc định, sẽ ảnh hưởng đến hoạt động bình thường. Vui lòng khôi phục độ sáng mặc định tại Genshin: Cài Đặt Game → Hình Ảnh → Độ Sáng!");
+                TaskControl.Logger.LogError("检测到游戏亮度非默认值，将会影响功能正常使用，请在原神 游戏设置——图像——亮度 中恢复默认亮度！");
             }
 
             if (inputSettings.MouseSenseIndex != 2
@@ -42,21 +42,21 @@ public class GameSettingsChecker
                 || inputSettings.MouseFocusSenseIndex != 2
                 || inputSettings.MouseFocusSenseIndexY != 2)
             {
-                TaskControl.Logger.LogInformation("Hiện tại: Độ nhạy ngang camera {X1}, dọc {Y1}, ngang (chế độ ngắm) {X2}, dọc (chế độ ngắm) {Y2}",
+                TaskControl.Logger.LogInformation("当前：镜头水平灵敏度{X1}，镜头垂直灵敏度{Y1}，镜头水平灵敏度（瞄准模式）{X2}，镜头垂直灵敏度（瞄准模式）{Y2}",
                     inputSettings.MouseSenseIndex + 1, inputSettings.MouseSenseIndexY + 1,
                     inputSettings.MouseFocusSenseIndex + 1, inputSettings.MouseFocusSenseIndexY + 1);
-                TaskControl.Logger.LogError("Phát hiện độ nhạy camera không phải giá trị mặc định 3. Điều này sẽ ảnh hưởng đến tất cả chức năng di chuyển góc nhìn. Vui lòng khôi phục tại Genshin: Cài Đặt Game → Điều Khiển!");
+                TaskControl.Logger.LogError("检测到镜头灵敏度不是默认值3，将会影响所有视角移动功能的正常使用，请在原神 游戏设置——控制 中恢复默认灵敏度！");
             }
 
             var lang = (TextLanguage)settings.DeviceLanguageType;
             if (lang != TextLanguage.SimplifiedChinese)
             {
-                TaskControl.Logger.LogWarning("Ngôn ngữ game hiện tại là {Lang} (không phải Tiếng Trung giản thể). Một số chức năng nhận diện hình ảnh có thể hoạt động không chính xác.", lang);
+                TaskControl.Logger.LogWarning("当前游戏语言{Lang}不是简体中文，部分功能可能无法正常使用。The game language is not Simplified Chinese, some functions may not work properly", lang);
             }
         }
         catch (Exception e)
         {
-            TaskControl.Logger.LogDebug(e, "Lấy cài đặt game Genshin Impact thất bại");
+            TaskControl.Logger.LogDebug(e, "获取原神游戏设置失败");
         }
     }
 }

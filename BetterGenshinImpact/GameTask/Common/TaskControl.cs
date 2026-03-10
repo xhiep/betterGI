@@ -64,12 +64,12 @@ public class TaskControl
                     // 检查键是否被按下
                     if (IsKeyPressed(key)) // 强制转换 VK 枚举为 int
                     {
-                        Logger.LogWarning($"Hủy trạng thái nhấn của {key}.");
+                        Logger.LogWarning($"解除{key}的按下状态.");
                         Simulation.SendInput.Keyboard.KeyUp(key);
                     }
                 }
 
-                Logger.LogWarning("Phím tắt kích hoạt tạm dừng, đang chờ hủy");
+                Logger.LogWarning("快捷键触发暂停，等待解除");
                 foreach (var item in RunnerContext.Instance.SuspendableDictionary)
                 {
                     item.Value.Suspend();
@@ -84,7 +84,7 @@ public class TaskControl
         //从暂停中解除
         if (isSuspend)
         {
-            Logger.LogWarning("Đã hủy tạm dừng");
+            Logger.LogWarning("暂停已经解除");
             RunnerContext.Instance.ResumeAutoPick();
             foreach (var item in RunnerContext.Instance.SuspendableDictionary)
             {
@@ -100,7 +100,7 @@ public class TaskControl
             if (!SystemControl.IsGenshinImpactActiveByProcess())
             {
                 var name = SystemControl.GetActiveByProcess();
-                Logger.LogWarning($"Cửa sổ đang được focus: {name}, không phải Genshin Impact, tạm dừng");
+                Logger.LogWarning($"当前获取焦点的窗口为: {name}，不是原神，暂停");
                 throw new RetryException("当前获取焦点的窗口不是原神");
             }
         }
@@ -111,13 +111,13 @@ public class TaskControl
         {
             if (count >= 10 && count % 10 == 0)
             {
-                Logger.LogInformation("Nhiều lần thử không thành công, đang thử thu nhỏ rồi kích hoạt cửa sổ!");
+                Logger.LogInformation("多次尝试未恢复，尝试最小化后激活窗口！");
                 SystemControl.MinimizeAndActivateWindow(TaskContext.Instance().GameHandle);
             }
             else
             {
                 var name = SystemControl.GetActiveByProcess();
-                Logger.LogInformation("Cửa sổ đang được focus: {Name}, không phải Genshin Impact, đang thử khôi phục", name);
+                Logger.LogInformation("当前获取焦点的窗口为: {Name}，不是原神，尝试恢复窗口", name);
                 SystemControl.FocusWindow(TaskContext.Instance().GameHandle);
             }
 
@@ -189,7 +189,7 @@ public class TaskControl
         var image = gameCapture?.Capture();
         if (image == null)
         {
-            Logger.LogWarning("Chụp màn hình thất bại!");
+            Logger.LogWarning("截图失败!");
             // 重试3次
             for (var i = 0; i < 3; i++)
             {
@@ -202,7 +202,7 @@ public class TaskControl
                 Sleep(30);
             }
 
-            throw new Exception("Chụp màn hình thất bại sau nhiều lần thử!");
+            throw new Exception("尝试多次后,截图失败!");
         }
         else
         {

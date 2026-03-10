@@ -30,9 +30,9 @@ public partial class ScriptGroupConfigViewModel : ObservableObject, IViewModel
     [ObservableProperty]
     private ObservableCollection<KeyValuePair<string, string>> _onlyPickEliteDropsSource  = new()
     {
-        new KeyValuePair<string, string>("Closed", "Tắt tính năng"),
-        new KeyValuePair<string, string>("AllowAutoPickupForNonElite", "Cho phép tự nhặt (Không phải Tinh Anh)"),
-        new KeyValuePair<string, string>("DisableAutoPickupForNonElite", "Tắt tự nhặt (Không phải Tinh Anh)")
+        new KeyValuePair<string, string>("Closed", "关闭功能"),
+        new KeyValuePair<string, string>("AllowAutoPickupForNonElite", "非精英允许自动拾取"),
+        new KeyValuePair<string, string>("DisableAutoPickupForNonElite", "非精英关闭自动拾取")
     };    
     //跳过策略
     //GroupPhysicalPathSkipPolicy:  配置组且物理路径相同跳过
@@ -41,16 +41,16 @@ public partial class ScriptGroupConfigViewModel : ObservableObject, IViewModel
     [ObservableProperty]
     private ObservableCollection<KeyValuePair<string, string>> _skipPolicySource  = new()
     {
-        new KeyValuePair<string, string>("GroupPhysicalPathSkipPolicy", "Bỏ qua nếu cùng nhóm cấu hình & đường dẫn vật lý"),
-        new KeyValuePair<string, string>("PhysicalPathSkipPolicy", "Bỏ qua nếu cùng đường dẫn vật lý"),
-        new KeyValuePair<string, string>("SameNameSkipPolicy", "Bỏ qua nếu cùng loại & cùng tên")
+        new KeyValuePair<string, string>("GroupPhysicalPathSkipPolicy", "配置组且物理路径相同跳过"),
+        new KeyValuePair<string, string>("PhysicalPathSkipPolicy", "物理路径相同跳过"),
+        new KeyValuePair<string, string>("SameNameSkipPolicy", "同类型同名跳过")
     };     
     
     [ObservableProperty]
     private ObservableCollection<KeyValuePair<string, string>> _referencePointSource  = new()
     {
-        new KeyValuePair<string, string>("StartTime", "Thời gian bắt đầu"),
-        new KeyValuePair<string, string>("EndTime", "Thời gian kết thúc")
+        new KeyValuePair<string, string>("StartTime", "开始时间"),
+        new KeyValuePair<string, string>("EndTime", "结束时间")
     };  
     public ScriptGroupConfigViewModel(AllConfig config, ScriptGroupConfig scriptGroupConfig)
     {
@@ -78,11 +78,11 @@ public partial class ScriptGroupConfigViewModel : ObservableObject, IViewModel
         var index = _pathingConfig.TaskCycleConfig.GetExecutionOrder();
         if (index == -1)
         {
-            Toast.Error("Tính toán thất bại, vui lòng kiểm tra tham số!");
+            Toast.Error("计算失败，请检查参数！");
         }
         else
         {
-            Toast.Success("Số thứ tự thực thi hiện tại: "+index);
+            Toast.Success("当前执行序号为："+index);
         }
     }
 

@@ -108,241 +108,241 @@ public partial class KeyBindingsSettingsPageViewModel : ViewModel
     private void BuildKeyBindingsList()
     {
         // 动作按键
-        var actionDirectory = new KeyBindingSettingModel("Hành Động");
+        var actionDirectory = new KeyBindingSettingModel("动作");
 
         // 菜单按键
-        var menuDirectory = new KeyBindingSettingModel("Menu");
+        var menuDirectory = new KeyBindingSettingModel("菜单");
 
         // 添加动作按键的二级菜单
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Di chuyển lên",
+                    "向前移动",
                     nameof(_config.MoveForward),
                     _config.MoveForward
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Di chuyển xuống",
+                    "向后移动",
                     nameof(_config.MoveBackward),
                     _config.MoveBackward
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Di chuyển trái",
+                    "向左移动",
                     nameof(_config.MoveLeft),
                     _config.MoveLeft
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Di chuyển phải",
+                    "向右移动",
                     nameof(_config.MoveRight),
                     _config.MoveRight
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Chuyển Đi bộ/Chạy; Xuống dưới (trong một số chế độ)",
+                    "切换走/跑；特定操作模式下向下移动",
                     nameof(_config.SwitchToWalkOrRun),
                     _config.SwitchToWalkOrRun
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Tấn công thường",
+                    "普通攻击",
                     nameof(_config.NormalAttack),
                     _config.NormalAttack
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Kỹ năng nguyên tố (E)",
+                    "元素战技",
                     nameof(_config.ElementalSkill),
                     _config.ElementalSkill
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Kỹ năng nộ (Q)",
+                    "元素爆发",
                     nameof(_config.ElementalBurst),
                     _config.ElementalBurst
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Lướt (Bàn phím)",
+                    "冲刺（键盘）",
                     nameof(_config.SprintKeyboard),
                     _config.SprintKeyboard
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Lướt (Chuột)",
+                    "冲刺（鼠标）",
                     nameof(_config.SprintMouse),
                     _config.SprintMouse
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Chế độ ngắm bắn (R)",
+                    "切换瞄准模式",
                     nameof(_config.SwitchAimingMode),
                     _config.SwitchAimingMode
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Nhảy; Lên trên (trong một số chế độ)",
+                    "跳跃；特定操作模式下向上移动",
                     nameof(_config.Jump),
                     _config.Jump
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Thả mình/Hủy leo trèo",
+                    "落下",
                     nameof(_config.Drop),
                     _config.Drop
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Nhặt/Tương tác (Tự động nhặt do AutoPick quản lý)",
+                    "拾取/交互（自动拾取由AutoPick模块管理）",
                     nameof(_config.PickUpOrInteract),
                     _config.PickUpOrInteract
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Dùng đạo cụ nhanh (Z)",
+                    "快捷使用小道具",
                     nameof(_config.QuickUseGadget),
                     _config.QuickUseGadget
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Tương tác đặc biệt (T)",
+                    "特定玩法内交互操作",
                     nameof(_config.InteractionInSomeMode),
                     _config.InteractionInSomeMode
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Bật theo dõi nhiệm vụ (V)",
+                    "开启任务追踪",
                     nameof(_config.QuestNavigation),
                     _config.QuestNavigation
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Hủy khiêu chiến (P)",
+                    "中断挑战",
                     nameof(_config.AbandonChallenge),
                     _config.AbandonChallenge
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Đổi nhân vật 1",
+                    "切换小队角色1",
                     nameof(_config.SwitchMember1),
                     _config.SwitchMember1
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Đổi nhân vật 2",
+                    "切换小队角色2",
                     nameof(_config.SwitchMember2),
                     _config.SwitchMember2
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Đổi nhân vật 3",
+                    "切换小队角色3",
                     nameof(_config.SwitchMember3),
                     _config.SwitchMember3
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Đổi nhân vật 4",
+                    "切换小队角色4",
                     nameof(_config.SwitchMember4),
                     _config.SwitchMember4
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Đổi nhân vật 5",
+                    "切换小队角色5",
                     nameof(_config.SwitchMember5),
                     _config.SwitchMember5
                 ));
         actionDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở vòng chọn nhanh (Tab)",
+                    "呼出快捷轮盘",
                     nameof(_config.ShortcutWheel),
                     _config.ShortcutWheel
                 ));
 
         // 添加菜单按键的二级菜单
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Túi (B)",
+                    "打开背包",
                     nameof(_config.OpenInventory),
                     _config.OpenInventory
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Nhân Vật (C)",
+                    "打开角色界面",
                     nameof(_config.OpenCharacterScreen),
                     _config.OpenCharacterScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Bản Đồ (M)",
+                    "打开地图",
                     nameof(_config.OpenMap),
                     _config.OpenMap
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Menu Paimon (Esc)",
+                    "打开派蒙界面",
                     nameof(_config.OpenPaimonMenu),
                     _config.OpenPaimonMenu
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Bằng Chứng Mạo Hiểm (F1)",
+                    "打开冒险之证界面",
                     nameof(_config.OpenAdventurerHandbook),
                     _config.OpenAdventurerHandbook
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Chế Độ Co-op (F2)",
+                    "打开多人游戏界面",
                     nameof(_config.OpenCoOpScreen),
                     _config.OpenCoOpScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Cầu Nguyện (F3)",
+                    "打开祈愿界面",
                     nameof(_config.OpenWishScreen),
                     _config.OpenWishScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Nhật Ký Hành Trình (F4)",
+                    "打开纪行界面",
                     nameof(_config.OpenBattlePassScreen),
                     _config.OpenBattlePassScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Sự Kiện (F5)",
+                    "打开活动面板",
                     nameof(_config.OpenTheEventsMenu),
                     _config.OpenTheEventsMenu
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Cài Đặt Ấm/Quán Rượu (F6)",
+                    "打开玩法系统界面（尘歌壶内猫尾酒馆内）",
                     nameof(_config.OpenTheSettingsMenu),
                     _config.OpenTheSettingsMenu
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Chế Độ Sắp Xếp (F7)",
+                    "打开摆设界面（尘歌壶内）",
                     nameof(_config.OpenTheFurnishingScreen),
                     _config.OpenTheFurnishingScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Hồi Quy Sao (F8 - nếu có)",
+                    "打开星之归还（条件符合期间生效）",
                     nameof(_config.OpenStellarReunion),
                     _config.OpenStellarReunion
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Bật/Tắt Menu Nhiệm Vụ (J)",
+                    "开关任务菜单",
                     nameof(_config.OpenQuestMenu),
                     _config.OpenQuestMenu
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Thông Báo (Y)",
+                    "打开通知详情",
                     nameof(_config.OpenNotificationDetails),
                     _config.OpenNotificationDetails
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Chat (Enter)",
+                    "打开聊天界面",
                     nameof(_config.OpenChatScreen),
                     _config.OpenChatScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Hướng Dẫn Môi Trường (U)",
+                    "打开特殊环境说明",
                     nameof(_config.OpenSpecialEnvironmentInformation),
                     _config.OpenSpecialEnvironmentInformation
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Giáo Trình (G)",
+                    "查看教程详情",
                     nameof(_config.CheckTutorialDetails),
                     _config.CheckTutorialDetails
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Giữ để mở Tầm Nhìn Nguyên Tố (Mouse Middle)",
+                    "长按打开元素视野",
                     nameof(_config.ElementalSight),
                     _config.ElementalSight
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Hiện con trỏ chuột (Left Alt)",
+                    "呼出鼠标",
                     nameof(_config.ShowCursor),
                     _config.ShowCursor
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Thiết Lập Đội (L)",
+                    "打开队伍配置界面",
                     nameof(_config.OpenPartySetupScreen),
                     _config.OpenPartySetupScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Mở Danh Sách Bạn Bè (O)",
+                    "打开好友界面",
                     nameof(_config.OpenFriendsScreen),
                     _config.OpenFriendsScreen
                 ));
         menuDirectory.Children.Add(new KeyBindingSettingModel(
-                    "Ẩn UI (Chụp ảnh)",
+                    "隐藏主界面",
                     nameof(_config.HideUI),
                     _config.HideUI
                 ));

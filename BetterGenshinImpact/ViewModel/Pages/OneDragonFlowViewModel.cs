@@ -47,15 +47,15 @@ public partial class OneDragonFlowViewModel : ViewModel
 
     [ObservableProperty] private ObservableCollection<OneDragonTaskItem> _taskList =
     [
-        new("Nhận Thư"),
-        new("Ghép Nhựa"),
-        // new ("Ủy Thác Mỗi Ngày"),
-        new("Tự Động Bí Cảnh"),
-        new ("Tự Động U Cảnh Nguy Chiến"),
-        new ("Tự Động Hoa Địa Mạch"),
-        new("Nhận Quà Hàng Ngày"),
-        new ("Nhận Quà Ấm Trần Ca"),
-        // new ("Tự Động Thất Thánh Triệu"),
+        new("领取邮件"),
+        new("合成树脂"),
+        // new ("每日委托"),
+        new("自动秘境"),
+        new ("自动幽境危战"),
+        new ("自动地脉花"),
+        new("领取每日奖励"),
+        new ("领取尘歌壶奖励"),
+        // new ("自动七圣召唤"),
     ];
 
 
@@ -81,13 +81,13 @@ public partial class OneDragonFlowViewModel : ViewModel
     [ObservableProperty] private ObservableCollection<ScriptGroup> _scriptGroupsdefault =
         new ObservableCollection<ScriptGroup>()
         {
-            new() { Name = "Nhận Thư" },
-            new() { Name = "Ghép Nhựa" },
-            new() { Name = "Tự Động Bí Cảnh" },
-            new() { Name = "Tự Động U Cảnh Nguy Chiến" },
-            new() { Name = "Tự Động Hoa Địa Mạch" },
-            new() { Name = "Nhận Quà Hàng Ngày" },
-            new() {Name = "Nhận Quà Ấm Trần Ca" },
+            new() { Name = "领取邮件" },
+            new() { Name = "合成树脂" },
+            new() { Name = "自动秘境" },
+            new() { Name = "自动幽境危战" },
+            new() { Name = "自动地脉花" },
+            new() { Name = "领取每日奖励" },
+            new() {Name = "领取尘歌壶奖励" },
         };
 
     private readonly string _scriptGroupPath = Global.Absolute(@"User\ScriptGroup");
@@ -133,7 +133,7 @@ public partial class OneDragonFlowViewModel : ViewModel
                 }
                 catch (Exception e)
                 {
-                    _logger.LogInformation(e, "Đọc cấu hình nhóm thất bại");
+                    _logger.LogInformation(e, "读取配置组配置时失败");
                 }
             }
 
@@ -141,7 +141,7 @@ public partial class OneDragonFlowViewModel : ViewModel
         }
         catch (Exception e)
         {
-            _logger.LogInformation(e, "Đọc cấu hình nhóm thất bại");
+            _logger.LogInformation(e, "读取配置组配置时失败");
         }
     }
 
@@ -188,7 +188,7 @@ public partial class OneDragonFlowViewModel : ViewModel
                     }
                     if (pickTaskCount == 1)
                     {
-                        Toast.Success("Thêm nhiệm vụ OneDragon thành công");
+                        Toast.Success("一条龙任务添加成功");
                     }
                 }
                 else
@@ -196,7 +196,7 @@ public partial class OneDragonFlowViewModel : ViewModel
                     TaskList.Add(taskItem);
                     if (pickTaskCount == 1)
                     {
-                        Toast.Success("Thêm nhóm cấu hình thành công");
+                        Toast.Success("配置组添加成功");
                     }
                 }
             }
@@ -281,21 +281,21 @@ public partial class OneDragonFlowViewModel : ViewModel
     /// </summary>
     [ObservableProperty] private OneDragonFlowConfig? _selectedConfig;
 
-    [ObservableProperty] private List<string> _craftingBenchCountry = ["Fontaine", "Inazuma", "Liyue", "Mondstadt"];
+    [ObservableProperty] private List<string> _craftingBenchCountry = ["枫丹", "稻妻", "璃月", "蒙德"];
 
-    [ObservableProperty] private List<string> _adventurersGuildCountry = ["Natlan", "Fontaine", "Inazuma", "Liyue", "Mondstadt"];
+    [ObservableProperty] private List<string> _adventurersGuildCountry = ["挪德卡莱", "枫丹", "稻妻", "璃月", "蒙德"];
 
     [ObservableProperty] private List<string> _domainNameList = ["", ..MapLazyAssets.Instance.DomainNameList];
 
-    [ObservableProperty] private List<string> _completionActionList = ["Không", "Tắt game", "Tắt game và phần mềm", "Tắt máy"];
+    [ObservableProperty] private List<string> _completionActionList = ["无", "关闭游戏", "关闭游戏和软件", "关机"];
 
     [ObservableProperty] private List<string> _sundayEverySelectedValueList = ["","1", "2", "3"];
     
     [ObservableProperty] private List<string> _sundaySelectedValueList = ["","1", "2", "3"];
 
-    [ObservableProperty] private List<string> _secretTreasureObjectList = ["Vải", "Nhựa Khoảnh Khắc", "Kinh Nghiệm Anh Hùng", "Kinh Nghiệm Nhà Mạo Hiểm", "Ma Khoáng Tinh Đúc", "Mora", "Chúc Thánh Tinh Hoa", "Chúc Thánh Dầu"];
+    [ObservableProperty] private List<string> _secretTreasureObjectList = ["布匹","须臾树脂","大英雄的经验","流浪者的经验","精锻用魔矿","摩拉","祝圣精华","祝圣油膏"];
     
-    [ObservableProperty] private List<string> _sereniteaPotTpTypes = ["Dịch chuyển bản đồ", "Đạo cụ Ấm Trần Ca"];
+    [ObservableProperty] private List<string> _sereniteaPotTpTypes = ["地图传送", "尘歌壶道具"];
     
     public AllConfig Config { get; set; } = TaskContext.Instance().Config;
 
@@ -741,7 +741,7 @@ public partial class OneDragonFlowViewModel : ViewModel
     }
 
     [RelayCommand]
-    private void DeleteConfig()
+    private async Task DeleteConfig()
     {
         if (SelectedConfig == null)
         {
@@ -749,7 +749,14 @@ public partial class OneDragonFlowViewModel : ViewModel
             return;
         }
 
-        var result = System.Windows.MessageBox.Show($"确定要删除配置「{SelectedConfig.Name}」吗？", "删除配置", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+        var displayName = SelectedConfig.Name.Length > 14 
+            ? $"{SelectedConfig.Name[..4]}...{SelectedConfig.Name[^4..]}" 
+            : SelectedConfig.Name;
+        var result = await ThemedMessageBox.ShowAsync(
+            $"确定要删除配置「{displayName}」吗？", 
+            "删除配置", 
+            System.Windows.MessageBoxButton.YesNo, 
+            ThemedMessageBox.MessageBoxIcon.Question);
         if (result != System.Windows.MessageBoxResult.Yes)
         {
             return;
@@ -789,6 +796,8 @@ public partial class OneDragonFlowViewModel : ViewModel
             
             // 刷新任务列表
             LoadDisplayTaskListFromConfig();
+            SelectedTask = null!;
+            InputScriptGroupName = string.Empty;
             
             // 保存配置
             SaveConfig();

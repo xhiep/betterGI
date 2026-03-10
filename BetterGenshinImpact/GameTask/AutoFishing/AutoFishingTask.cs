@@ -147,7 +147,7 @@ namespace BetterGenshinImpact.GameTask.AutoFishing
                         TaskControl.CaptureGameImageNoRetry(TaskTriggerDispatcher.Instance().GameCapture);
                     if (bitmap == null)
                     {
-                        _logger.LogWarning("Chụp màn hình thất bại");
+                        _logger.LogWarning("截图失败");
                         continue;
                     }
 

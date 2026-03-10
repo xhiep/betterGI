@@ -62,17 +62,6 @@ public partial class MaskWindow : Window
         {
             _typeface = new FontFamily("Microsoft Yahei UI").GetTypefaces().First();
         }
-        if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "vi")
-        {
-            try
-            {
-                _typeface = new FontFamily("Segoe UI Variable, Segoe UI, Arial").GetTypefaces().First();
-            }
-            catch
-            {
-                _typeface = new FontFamily("Segoe UI").GetTypefaces().First();
-            }
-        }
 
         try
         {
@@ -90,7 +79,7 @@ public partial class MaskWindow : Window
     {
         if (_maskWindow == null)
         {
-            throw new Exception("MaskWindow chưa được khởi tạo");
+            throw new Exception("MaskWindow 未初始化");
         }
 
         return _maskWindow;
@@ -288,17 +277,17 @@ public partial class MaskWindow : Window
 
     private void PrintSystemInfo()
     {
-        _logger.LogInformation("BetterGenshinImpact {Version}", Global.Version);
+        _logger.LogInformation("更好的原神 {Version}", Global.Version);
         var systemInfo = TaskContext.Instance().SystemInfo;
         var width = systemInfo.GameScreenSize.Width;
         var height = systemInfo.GameScreenSize.Height;
         var dpiScale = TaskContext.Instance().DpiScale;
-        _logger.LogInformation("Cửa sổ lớp phủ đã khởi động, kích thước game {Width}x{Height}，tỉ lệ tài nguyên {Scale}，tỉ lệ DPI {Dpi}",
+        _logger.LogInformation("遮罩窗口已启动，游戏大小{Width}x{Height}，素材缩放{Scale}，DPI缩放{Dpi}",
             width, height, systemInfo.AssetScale.ToString("F"), dpiScale);
 
         if (width * 9 != height * 16)
         {
-            _logger.LogError("Độ phân giải game hiện tại không phải 16:9, các tính năng như 'Một điều lệnh', nhận diện đội hình, dịch chuyển bản đồ, theo dõi bản đồ và các nhiệm vụ tự động khác sẽ không hoạt động bình thường!");
+            _logger.LogError("当前游戏分辨率不是16:9，一条龙、配队识别、地图传送、地图追踪等所有独立任务与全自动任务相关功能，都将会无法正常使用！");
         }
 
         AfterburnerWarning();
@@ -314,7 +303,7 @@ public partial class MaskWindow : Window
     {
         if (Process.GetProcessesByName("MSIAfterburner").Length > 0)
         {
-            _logger.LogWarning("Phát hiện MSI Afterburner đang chạy. Nếu thông tin hiển thị đè lên các yếu tố nhận diện hình ảnh có thể gây thất bại. Vui lòng tắt MSI Afterburner hoặc điều chỉnh vị trí thông tin và thử lại!");
+            _logger.LogWarning("检测到 MSI Afterburner 正在运行，如果信息位于特定UI上遮盖图像识别要素可能导致识别失败，请关闭MSI Afterburner 或者调整信息位置后重试！");
         }
     }
 
@@ -430,7 +419,7 @@ public partial class MaskWindow : Window
         }
         catch (Exception ex) when (!ct.IsCancellationRequested)
         {
-            _logger.LogWarning(ex, "Có lỗi xảy ra khi chuyển đổi danh mục nhãn bản đồ");
+            _logger.LogWarning(ex, "切换地图标点分类时发生异常");
         }
     }
 
@@ -537,7 +526,7 @@ public partial class MaskWindow : Window
 
                                 var formattedText = new FormattedText(
                                     drawable.Text,
-                                    CultureInfo.CurrentUICulture,
+                                    CultureInfo.GetCultureInfo("zh-cn"),
                                     FlowDirection.LeftToRight,
                                     mediumTypeface,
                                     scaledFontSize,
@@ -555,7 +544,7 @@ public partial class MaskWindow : Window
                             {
                                 double defaultFontSize = (36 * scaleTo1080) / pixelsPerDip;
                                 drawingContext.DrawText(new FormattedText(drawable.Text,
-                                    CultureInfo.CurrentUICulture,
+                                    CultureInfo.GetCultureInfo("zh-cn"),
                                     FlowDirection.LeftToRight,
                                     _typeface,
                                     defaultFontSize, Brushes.Black, pixelsPerDip), renderPoint);

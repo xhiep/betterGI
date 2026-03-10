@@ -179,7 +179,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
     {
         // 一级目录/快捷键
         var bgiEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt BetterGI",
+            "启动停止 BetterGI",
             nameof(Config.HotKeyConfig.BgiEnabledHotkey),
             Config.HotKeyConfig.BgiEnabledHotkey,
             Config.HotKeyConfig.BgiEnabledHotkeyType,
@@ -188,51 +188,51 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         HotKeySettingModels.Add(bgiEnabledHotKeySettingModel);
 
         var systemDirectory = new HotKeySettingModel(
-            "Điều Khiển Hệ Thống"
+            "系统控制"
         );
         HotKeySettingModels.Add(systemDirectory);
 
         var timerDirectory = new HotKeySettingModel(
-            "Tác Vụ Thời Gian Thực"
+            "实时任务"
         );
         HotKeySettingModels.Add(timerDirectory);
 
         var soloTaskDirectory = new HotKeySettingModel(
-            "Tác Vụ Độc Lập"
+            "独立任务"
         );
         HotKeySettingModels.Add(soloTaskDirectory);
 
         var macroDirectory = new HotKeySettingModel(
-            "Hỗ Trợ Điều Khiển"
+            "操控辅助"
         );
         HotKeySettingModels.Add(macroDirectory);
 
         var devDirectory = new HotKeySettingModel(
-            "Nhà Phát Triển"
+            "开发者"
         );
         HotKeySettingModels.Add(devDirectory);
 
         // 二级快捷键
         systemDirectory.Children.Add(new HotKeySettingModel(
-            "Dừng Script/Tác Vụ Hiện Tại",
+            "停止当前脚本/独立任务",
             nameof(Config.HotKeyConfig.CancelTaskHotkey),
             Config.HotKeyConfig.CancelTaskHotkey,
             Config.HotKeyConfig.CancelTaskHotkeyType,
             (_, _) =>
             {
-                _logger.LogInformation("Phát hiện nhấn phím tắt dừng {Key}, dừng tác vụ hiện tại", Config.HotKeyConfig.CancelTaskHotkey);
+                _logger.LogInformation("检测到您配置的停止快捷键{Key}按下，停止当前执行任务", Config.HotKeyConfig.CancelTaskHotkey);
                 CancellationContext.Instance.ManualCancel();
             }
         ));
         systemDirectory.Children.Add(new HotKeySettingModel(
-            "Tạm Dừng Script/Tác Vụ Hiện Tại",
+            "暂停当前脚本/独立任务",
             nameof(Config.HotKeyConfig.SuspendHotkey),
             Config.HotKeyConfig.SuspendHotkey,
             Config.HotKeyConfig.SuspendHotkeyType,
             (_, _) => { RunnerContext.Instance.IsSuspend = !RunnerContext.Instance.IsSuspend; }
         ));
         var takeScreenshotHotKeySettingModel = new HotKeySettingModel(
-            "Chụp Màn Hình Game",
+            "游戏截图",
             nameof(Config.HotKeyConfig.TakeScreenshotHotkey),
             Config.HotKeyConfig.TakeScreenshotHotkey,
             Config.HotKeyConfig.TakeScreenshotHotkeyType,
@@ -241,7 +241,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         systemDirectory.Children.Add(takeScreenshotHotKeySettingModel);
 
         systemDirectory.Children.Add(new HotKeySettingModel(
-            "Bật/Tắt Cửa Sổ Nhật Ký Và Trạng Thái",
+            "日志与状态窗口展示开关",
             nameof(Config.HotKeyConfig.LogBoxDisplayHotkey),
             Config.HotKeyConfig.LogBoxDisplayHotkey,
             Config.HotKeyConfig.LogBoxDisplayHotkeyType,
@@ -254,84 +254,84 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         var autoPickEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt Tự Động Nhặt",
+            "自动拾取开关",
             nameof(Config.HotKeyConfig.AutoPickEnabledHotkey),
             Config.HotKeyConfig.AutoPickEnabledHotkey,
             Config.HotKeyConfig.AutoPickEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.AutoPickConfig.Enabled = !TaskContext.Instance().Config.AutoPickConfig.Enabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Tự động nhặt", ToChinese(TaskContext.Instance().Config.AutoPickConfig.Enabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "自动拾取", ToChinese(TaskContext.Instance().Config.AutoPickConfig.Enabled));
             }
         );
         timerDirectory.Children.Add(autoPickEnabledHotKeySettingModel);
 
         var autoSkipEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt Tự Động Cốt Truyện",
+            "自动剧情开关",
             nameof(Config.HotKeyConfig.AutoSkipEnabledHotkey),
             Config.HotKeyConfig.AutoSkipEnabledHotkey,
             Config.HotKeyConfig.AutoSkipEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.AutoSkipConfig.Enabled = !TaskContext.Instance().Config.AutoSkipConfig.Enabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Tự động cốt truyện", ToChinese(TaskContext.Instance().Config.AutoSkipConfig.Enabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "自动剧情", ToChinese(TaskContext.Instance().Config.AutoSkipConfig.Enabled));
             }
         );
         timerDirectory.Children.Add(autoSkipEnabledHotKeySettingModel);
 
         timerDirectory.Children.Add(new HotKeySettingModel(
-            "Bật/Tắt Tự Động Mời Hẹn",
+            "自动邀约开关",
             nameof(Config.HotKeyConfig.AutoSkipHangoutEnabledHotkey),
             Config.HotKeyConfig.AutoSkipHangoutEnabledHotkey,
             Config.HotKeyConfig.AutoSkipHangoutEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.AutoSkipConfig.AutoHangoutEventEnabled = !TaskContext.Instance().Config.AutoSkipConfig.AutoHangoutEventEnabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Tự động mời hẹn", ToChinese(TaskContext.Instance().Config.AutoSkipConfig.AutoHangoutEventEnabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "自动邀约", ToChinese(TaskContext.Instance().Config.AutoSkipConfig.AutoHangoutEventEnabled));
             }
         ));
 
         var autoFishingEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt Tự Động Câu Cá",
+            "自动钓鱼开关",
             nameof(Config.HotKeyConfig.AutoFishingEnabledHotkey),
             Config.HotKeyConfig.AutoFishingEnabledHotkey,
             Config.HotKeyConfig.AutoFishingEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.AutoFishingConfig.Enabled = !TaskContext.Instance().Config.AutoFishingConfig.Enabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Tự động câu cá", ToChinese(TaskContext.Instance().Config.AutoFishingConfig.Enabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "自动钓鱼", ToChinese(TaskContext.Instance().Config.AutoFishingConfig.Enabled));
             }
         );
         timerDirectory.Children.Add(autoFishingEnabledHotKeySettingModel);
 
         var quickTeleportEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt Dịch Chuyển Nhanh",
+            "快速传送开关",
             nameof(Config.HotKeyConfig.QuickTeleportEnabledHotkey),
             Config.HotKeyConfig.QuickTeleportEnabledHotkey,
             Config.HotKeyConfig.QuickTeleportEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.QuickTeleportConfig.Enabled = !TaskContext.Instance().Config.QuickTeleportConfig.Enabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Dịch chuyển nhanh", ToChinese(TaskContext.Instance().Config.QuickTeleportConfig.Enabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "快速传送", ToChinese(TaskContext.Instance().Config.QuickTeleportConfig.Enabled));
             }
         );
         timerDirectory.Children.Add(quickTeleportEnabledHotKeySettingModel);
         
         var skillCdEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt Hiển Thị Cooldown",
+            "冷却提示开关",
             nameof(Config.HotKeyConfig.SkillCdEnabledHotkey),
             Config.HotKeyConfig.SkillCdEnabledHotkey,
             Config.HotKeyConfig.SkillCdEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.SkillCdConfig.Enabled = !TaskContext.Instance().Config.SkillCdConfig.Enabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Gợi ý hồi chiêu", ToChinese(TaskContext.Instance().Config.SkillCdConfig.Enabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "冷却提示", ToChinese(TaskContext.Instance().Config.SkillCdConfig.Enabled));
             }
         );
         timerDirectory.Children.Add(skillCdEnabledHotKeySettingModel);
 
         var quickTeleportTickHotKeySettingModel = new HotKeySettingModel(
-            "Phím Tắt Kích Hoạt Dịch Chuyển Nhanh Thủ Công (Giữ Để Kích Hoạt)",
+            "手动触发快速传送触发快捷键（按住起效）",
             nameof(Config.HotKeyConfig.QuickTeleportTickHotkey),
             Config.HotKeyConfig.QuickTeleportTickHotkey,
             Config.HotKeyConfig.QuickTeleportTickHotkeyType,
@@ -341,20 +341,20 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         timerDirectory.Children.Add(quickTeleportTickHotKeySettingModel);
 
         var mapMaskEnabledHotKeySettingModel = new HotKeySettingModel(
-            "Bật/Tắt Lớp Phủ Bản Đồ",
+            "地图遮罩开关",
             nameof(Config.HotKeyConfig.MapMaskEnabledHotkey),
             Config.HotKeyConfig.MapMaskEnabledHotkey,
             Config.HotKeyConfig.MapMaskEnabledHotkeyType,
             (_, _) =>
             {
                 TaskContext.Instance().Config.MapMaskConfig.Enabled = !TaskContext.Instance().Config.MapMaskConfig.Enabled;
-                _logger.LogInformation("Đổi trạng thái {Name} thành [{Enabled}]", "Lớp phủ bản đồ", ToChinese(TaskContext.Instance().Config.MapMaskConfig.Enabled));
+                _logger.LogInformation("切换{Name}状态为[{Enabled}]", "地图遮罩", ToChinese(TaskContext.Instance().Config.MapMaskConfig.Enabled));
             }
         );
         timerDirectory.Children.Add(mapMaskEnabledHotKeySettingModel);
 
         var turnAroundHotKeySettingModel = new HotKeySettingModel(
-            "Giữ Để Xoay Góc Nhìn - Xoay Neuvillette",
+            "长按旋转视角 - 那维莱特转圈",
             nameof(Config.HotKeyConfig.TurnAroundHotkey),
             Config.HotKeyConfig.TurnAroundHotkey,
             Config.HotKeyConfig.TurnAroundHotkeyType,
@@ -364,7 +364,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         macroDirectory.Children.Add(turnAroundHotKeySettingModel);
 
         var enhanceArtifactHotKeySettingModel = new HotKeySettingModel(
-            "Nhấn Để Tăng Cường Thánh Di Vật Nhanh",
+            "按下快速强化圣遗物",
             nameof(Config.HotKeyConfig.EnhanceArtifactHotkey),
             Config.HotKeyConfig.EnhanceArtifactHotkey,
             Config.HotKeyConfig.EnhanceArtifactHotkeyType,
@@ -374,7 +374,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         macroDirectory.Children.Add(enhanceArtifactHotKeySettingModel);
 
         macroDirectory.Children.Add(new HotKeySettingModel(
-            "Nhấn Để Mua Nhanh Đồ Ở Cửa Hàng",
+            "按下快速购买商店物品",
             nameof(Config.HotKeyConfig.QuickBuyHotkey),
             Config.HotKeyConfig.QuickBuyHotkey,
             Config.HotKeyConfig.QuickBuyHotkeyType,
@@ -383,7 +383,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         macroDirectory.Children.Add(new HotKeySettingModel(
-            "Nhấn Để Vào/Ra Bình Trần Ca Nhanh",
+            "按下快速进出尘歌壶",
             nameof(Config.HotKeyConfig.QuickSereniteaPotHotkey),
             Config.HotKeyConfig.QuickSereniteaPotHotkey,
             Config.HotKeyConfig.QuickSereniteaPotHotkeyType,
@@ -391,7 +391,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Toàn Bộ",
+            "启动/停止一条龙",
             nameof(Config.HotKeyConfig.OnedragonHotkey),
             Config.HotKeyConfig.OnedragonHotkey,
             Config.HotKeyConfig.OnedragonHotkeyType,
@@ -399,7 +399,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Tự Động Bảy Thánh Triệu Hoán",
+            "启动/停止自动七圣召唤",
             nameof(Config.HotKeyConfig.AutoGeniusInvokationHotkey),
             Config.HotKeyConfig.AutoGeniusInvokationHotkey,
             Config.HotKeyConfig.AutoGeniusInvokationHotkeyType,
@@ -407,7 +407,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Tự Động Chặt Gỗ",
+            "启动/停止自动伐木",
             nameof(Config.HotKeyConfig.AutoWoodHotkey),
             Config.HotKeyConfig.AutoWoodHotkey,
             Config.HotKeyConfig.AutoWoodHotkeyType,
@@ -415,7 +415,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Tự Động Chiến Đấu",
+            "启动/停止自动战斗",
             nameof(Config.HotKeyConfig.AutoFightHotkey),
             Config.HotKeyConfig.AutoFightHotkey,
             Config.HotKeyConfig.AutoFightHotkeyType,
@@ -423,21 +423,21 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Tự Động Bí Cảnh",
+            "启动/停止自动秘境",
             nameof(Config.HotKeyConfig.AutoDomainHotkey),
             Config.HotKeyConfig.AutoDomainHotkey,
             Config.HotKeyConfig.AutoDomainHotkeyType,
             (_, _) => { SwitchSoloTask(_taskSettingsPageViewModel.SwitchAutoDomainCommand); }
         ));
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Tự Động Mini Game Âm Nhạc",
+            "启动/停止自动音游",
             nameof(Config.HotKeyConfig.AutoMusicGameHotkey),
             Config.HotKeyConfig.AutoMusicGameHotkey,
             Config.HotKeyConfig.AutoMusicGameHotkeyType,
             (_, _) => { SwitchSoloTask(_taskSettingsPageViewModel.SwitchAutoMusicGameCommand); }
         ));
         soloTaskDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Tự Động Câu Cá",
+            "启动/停止自动钓鱼",
             nameof(Config.HotKeyConfig.AutoFishingGameHotkey),
             Config.HotKeyConfig.AutoFishingGameHotkey,
             Config.HotKeyConfig.AutoFishingGameHotkeyType,
@@ -445,7 +445,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         macroDirectory.Children.Add(new HotKeySettingModel(
-            "Nhấp Nhanh Nút Xác Nhận Trong Game",
+            "快捷点击原神内确认按钮",
             nameof(Config.HotKeyConfig.ClickGenshinConfirmButtonHotkey),
             Config.HotKeyConfig.ClickGenshinConfirmButtonHotkey,
             Config.HotKeyConfig.ClickGenshinConfirmButtonHotkeyType,
@@ -453,18 +453,18 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
             {
                 if (Bv.ClickConfirmButton(TaskControl.CaptureToRectArea()))
                 {
-                    TaskControl.Logger.LogInformation("Nhấp nhanh nút {Btn} trong Genshin: Thành công", "Xác nhận");
+                    TaskControl.Logger.LogInformation("触发快捷点击原神内{Btn}按钮：成功", "确认");
                 }
                 else
                 {
-                    TaskControl.Logger.LogInformation("Nhấp nhanh nút {Btn} trong Genshin: Không tìm thấy hình ảnh nút", "Xác nhận");
+                    TaskControl.Logger.LogInformation("触发快捷点击原神内{Btn}按钮：未找到按钮图片", "确认");
                 }
             },
             true
         ));
 
         macroDirectory.Children.Add(new HotKeySettingModel(
-            "Nhấp Nhanh Nút Hủy Trong Game",
+            "快捷点击原神内取消按钮",
             nameof(Config.HotKeyConfig.ClickGenshinCancelButtonHotkey),
             Config.HotKeyConfig.ClickGenshinCancelButtonHotkey,
             Config.HotKeyConfig.ClickGenshinCancelButtonHotkeyType,
@@ -472,18 +472,18 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
             {
                 if (Bv.ClickCancelButton(TaskControl.CaptureToRectArea()))
                 {
-                    TaskControl.Logger.LogInformation("Nhấp nhanh nút {Btn} trong Genshin: Thành công", "Hủy");
+                    TaskControl.Logger.LogInformation("触发快捷点击原神内{Btn}按钮：成功", "取消");
                 }
                 else
                 {
-                    TaskControl.Logger.LogInformation("Nhấp nhanh nút {Btn} trong Genshin: Không tìm thấy hình ảnh nút", "Hủy");
+                    TaskControl.Logger.LogInformation("触发快捷点击原神内{Btn}按钮：未找到按钮图片", "取消");
                 }
             },
             true
         ));
 
         macroDirectory.Children.Add(new HotKeySettingModel(
-            "Phím Tắt Macro Chiến Đấu Một Chạm",
+            "一键战斗宏快捷键",
             nameof(Config.HotKeyConfig.OneKeyFightHotkey),
             Config.HotKeyConfig.OneKeyFightHotkey,
             Config.HotKeyConfig.OneKeyFightHotkeyType,
@@ -495,7 +495,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         });
 
         devDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Ghi Bàn Phím/Chuột",
+            "启动/停止键鼠录制",
             nameof(Config.HotKeyConfig.KeyMouseMacroRecordHotkey),
             Config.HotKeyConfig.KeyMouseMacroRecordHotkey,
             Config.HotKeyConfig.KeyMouseMacroRecordHotkeyType, async (_, _) =>
@@ -503,7 +503,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
                 var vm = App.GetService<KeyMouseRecordPageViewModel>();
                 if (vm == null)
                 {
-                    _logger.LogError("Không tìm thấy đối tượng singleton KeyMouseRecordPageViewModel!");
+                    _logger.LogError("无法找到 KeyMouseRecordPageViewModel 单例对象！");
                     return;
                 }
 
@@ -520,14 +520,14 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         devDirectory.Children.Add(new HotKeySettingModel(
-            "(Dev) Lấy Vị Trí Trung Tâm Bản Đồ Lớn",
+            "（开发）获取当前大地图中心点位置",
             nameof(Config.HotKeyConfig.RecBigMapPosHotkey),
             Config.HotKeyConfig.RecBigMapPosHotkey,
             Config.HotKeyConfig.RecBigMapPosHotkeyType,
             (_, _) =>
             {
                 var p = new TpTask(CancellationToken.None).GetPositionFromBigMap(MapTypes.Teyvat.ToString());
-                _logger.LogInformation("Vị trí bản đồ lớn: {Position}", p);
+                _logger.LogInformation("大地图位置：{Position}", p);
             }
         ));
 
@@ -535,7 +535,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         var pathRecording = false;
 
         devDirectory.Children.Add(new HotKeySettingModel(
-            "Bắt Đầu/Dừng Ghi Lộ Trình",
+            "启动/停止路径记录器",
             nameof(Config.HotKeyConfig.PathRecorderHotkey),
             Config.HotKeyConfig.PathRecorderHotkey,
             Config.HotKeyConfig.PathRecorderHotkeyType,
@@ -555,7 +555,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         ));
 
         devDirectory.Children.Add(new HotKeySettingModel(
-            "Thêm Điểm Đường Dẫn",
+            "添加路径点",
             nameof(Config.HotKeyConfig.AddWaypointHotkey),
             Config.HotKeyConfig.AddWaypointHotkey,
             Config.HotKeyConfig.AddWaypointHotkeyType,
@@ -573,7 +573,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
         if (RuntimeHelper.IsDebug)
         {
             var debugDirectory = new HotKeySettingModel(
-                "Kiểm Tra Nội Bộ"
+                "内部测试"
             );
             HotKeySettingModels.Add(debugDirectory);
 
@@ -598,7 +598,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
             //         PathPointRecorder.Instance.Switch();
             //     }));
             // HotKeySettingModels.Add(new HotKeySettingModel(
-            //     "（Thử Nghiệm）Tự Động Tìm Đường",
+            //     "（测试）自动寻路",
             //     nameof(Config.HotKeyConfig.AutoTrackPathHotkey),
             //     Config.HotKeyConfig.AutoTrackPathHotkey,
             //     Config.HotKeyConfig.AutoTrackPathHotkeyType,
@@ -608,7 +608,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
             //     }
             // ));
             debugDirectory.Children.Add(new HotKeySettingModel(
-                "(Thử Nghiệm) Kiểm Tra",
+                "（测试）测试",
                 nameof(Config.HotKeyConfig.Test1Hotkey),
                 Config.HotKeyConfig.Test1Hotkey,
                 Config.HotKeyConfig.Test1HotkeyType,
@@ -619,7 +619,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
                 }
             ));
             debugDirectory.Children.Add(new HotKeySettingModel(
-                "(Thử Nghiệm) Kiểm Tra 2",
+                "（测试）测试2",
                 nameof(Config.HotKeyConfig.Test2Hotkey),
                 Config.HotKeyConfig.Test2Hotkey,
                 Config.HotKeyConfig.Test2HotkeyType,
@@ -635,7 +635,7 @@ public partial class HotKeyPageViewModel : ObservableObject, IViewModel
             ));
 
             debugDirectory.Children.Add(new HotKeySettingModel(
-                "(Thử Nghiệm) Phát Lộ Trình Trong Bộ Nhớ",
+                "（测试）播放内存中的路径",
                 nameof(Config.HotKeyConfig.ExecutePathHotkey),
                 Config.HotKeyConfig.ExecutePathHotkey,
                 Config.HotKeyConfig.ExecutePathHotkeyType,

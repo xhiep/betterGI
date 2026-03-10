@@ -497,40 +497,32 @@ internal class GoToSereniteaPotTask
                     {
                         switch (potBuyItem)
                         {
-                            case "Vải":
                             case "布匹":
                                 buy.Add(ElementAssets.Instance.AYuanClothRo);
                                 break;
-                            case "Nhựa Khoảnh Khắc":
                             case "须臾树脂":
                                 buy.Add(ElementAssets.Instance.AYuanresinRo);
                                 break;
-                            case "Kinh Nghiệm Anh Hùng":
                             case "大英雄的经验":
                                 buy.Add(ElementAssets.Instance.SereniteapotExpBookRo);
                                 break;
-                            case "Kinh Nghiệm Nhà Mạo Hiểm":
                             case "流浪者的经验":
                                 buy.Add(ElementAssets.Instance.SereniteapotExpBookSmallRo);
                                 break;
-                            case "Ma Khoáng Tinh Đúc":
                             case "精锻用魔矿":
                                 buy.Add(ElementAssets.Instance.AYuanMagicmineralprecisionRo);
                                 break;
-                            case "Mora":
                             case "摩拉":
                                 buy.Add(ElementAssets.Instance.AYuanMOlaRo);
                                 break;
-                            case "Chúc Thánh Tinh Hoa":
                             case "祝圣精华":
                                 buy.Add(ElementAssets.Instance.AYuanExpBottleBigRo);
                                 break;
-                            case "Chúc Thánh Dầu":
                             case "祝圣油膏":
                                 buy.Add(ElementAssets.Instance.AYuanExpBottleSmallRo);
                                 break;
                             default:
-                                Logger.LogInformation("Vật phẩm không xác định: {potBuyItem}", potBuyItem);
+                                Logger.LogInformation("未知的商品");
                                 break;
                         }
                     }
@@ -646,7 +638,7 @@ internal class GoToSereniteaPotTask
         //  */
         // 进入尘歌壶
         var success = false;
-        if (SelectedConfig!.SereniteaPotTpType == "地图传送" || SelectedConfig!.SereniteaPotTpType == "Dịch chuyển bản đồ")
+        if (SelectedConfig!.SereniteaPotTpType == "地图传送")
         {
             success = await IntoSereniteaPot(ct);
         }

@@ -54,13 +54,13 @@ public partial class CommonSettingsPageViewModel : ViewModel
 
 
     private string _selectedCountry = string.Empty;
-    [ObservableProperty] private List<string> _adventurersGuildCountry = ["Không", "Fontaine", "Inazuma", "Liyue", "Mondstadt", "Sumeru", "Natlan"];
+    [ObservableProperty] private List<string> _adventurersGuildCountry = ["无", "枫丹", "稻妻", "璃月", "蒙德"];
     
     [ObservableProperty] private List<Tuple<TimeSpan, string>> _serverTimeZones =
     [
-        Tuple.Create(TimeSpan.FromHours(8), "Khác UTC+08"),
-        Tuple.Create(TimeSpan.FromHours(1), "Châu Âu UTC+01"),
-        Tuple.Create(TimeSpan.FromHours(-5), "Mỹ UTC-05")
+        Tuple.Create(TimeSpan.FromHours(8), "其他 UTC+08"),
+        Tuple.Create(TimeSpan.FromHours(1), "欧服 UTC+01"),
+        Tuple.Create(TimeSpan.FromHours(-5), "美服 UTC-05")
     ];
 
     public CommonSettingsPageViewModel(IConfigService configService, INavigationService navigationService,
@@ -82,14 +82,12 @@ public partial class CommonSettingsPageViewModel : ViewModel
     public ObservableCollection<string> MapPathingTypes { get; } = ["SIFT", "TemplateMatch"];
 
     [ObservableProperty] private FrozenDictionary<string, string> _languageDict =
-        new string[] { "zh-Hans", "zh-Hant", "en", "vi"}
+        new string[] { "zh-Hans", "zh-Hant", "en"}
             .ToFrozenDictionary(
                 c => c,
                 c =>
                 {
-                    var ci = new CultureInfo(c);
-                    CultureInfo.CurrentUICulture = ci;
-                    CultureInfo.CurrentCulture = ci;
+                    CultureInfo.CurrentUICulture = new CultureInfo(c);
                     var stringLocalizer = App.GetService<IStringLocalizer<CultureInfoNameToKVPConverter>>() ??
                                           throw new NullReferenceException();
                     return stringLocalizer["简体中文"].ToString();
@@ -102,12 +100,12 @@ public partial class CommonSettingsPageViewModel : ViewModel
         var cultureName = Config.OtherConfig.UiCultureInfoName ?? string.Empty;
         if (string.IsNullOrWhiteSpace(cultureName))
         {
-            throw new InvalidOperationException("Ngôn ngữ giao diện hiện tại đang trống, không thể cập nhật tệp ngôn ngữ.");
+            throw new InvalidOperationException("当前UI语言为空，无法更新语言文件。");
         }
 
         if (cultureName == "zh-Hans")
         {
-            await ThemedMessageBox.InformationAsync("zh-Hans không có tệp ngôn ngữ, không cần cập nhật.");
+            await ThemedMessageBox.InformationAsync("zh-Hans 无语言文件，无需更新。");
             return;
         }
 
@@ -144,7 +142,7 @@ public partial class CommonSettingsPageViewModel : ViewModel
 
                 var json = Encoding.UTF8.GetString(bytes);
                 _ = JsonConvert.DeserializeObject<Dictionary<string, string>>(json)
-                    ?? throw new JsonException("Tệp dịch không phải là từ điển JSON hợp lệ.");
+                    ?? throw new JsonException("翻译文件不是有效的 JSON 字典。");
                 break;
             }
             catch (Exception e)
@@ -158,11 +156,11 @@ public partial class CommonSettingsPageViewModel : ViewModel
         {
             if (allNotFound)
             {
-                await ThemedMessageBox.WarningAsync($"Tệp ngôn ngữ không tồn tại: {cultureName}.json");
+                await ThemedMessageBox.WarningAsync($"语言文件不存在：{cultureName}.json");
                 return;
             }
 
-            throw new Exception($"Tải xuống tệp ngôn ngữ thất bại: {cultureName}.json", lastError);
+            throw new Exception($"下载语言文件失败：{cultureName}.json", lastError);
         }
 
         var dir = Global.Absolute(@"User\I18n");

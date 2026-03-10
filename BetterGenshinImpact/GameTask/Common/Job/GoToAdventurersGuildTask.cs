@@ -156,11 +156,10 @@ public class GoToAdventurersGuildTask
     /// <returns></returns>
     public async Task GoToAdventurersGuild(string country, CancellationToken ct)
     {
-        var cnCountry = MapCountryToChinese(country);
-        var task = PathingTask.BuildFromFilePath(Global.Absolute(@$"GameTask\Common\Element\Assets\Json\冒险家协会_{cnCountry}.json"));
+        var task = PathingTask.BuildFromFilePath(Global.Absolute(@$"GameTask\Common\Element\Assets\Json\冒险家协会_{country}.json"));
         if (task == null)
         {
-            throw new Exception($"Không thể tải tệp theo dõi bản đồ cho: {country} ({cnCountry})");
+            throw new Exception("地图追踪文件加载失败");
         }
         var pathingTask = new PathExecutor(ct)
         {
@@ -186,24 +185,9 @@ public class GoToAdventurersGuildTask
 
                 if (i == retryTalkTimes - 1)
                 {
-                    throw new Exception("Đối thoại với Katheryne thất bại");
+                    throw new Exception("与凯瑟琳对话失败");
                 }
             }
         }
-    }
-
-    private string MapCountryToChinese(string country)
-    {
-        return country switch
-        {
-            "Mondstadt" => "蒙德",
-            "Liyue" => "璃月",
-            "Inazuma" => "稻妻",
-            "Sumeru" => "须弥",
-            "Fontaine" => "枫丹",
-            "Natlan" => "纳塔",
-            "Không" => "无",
-            _ => country // Fallback to original if not matched (maybe already Chinese)
-        };
     }
 }

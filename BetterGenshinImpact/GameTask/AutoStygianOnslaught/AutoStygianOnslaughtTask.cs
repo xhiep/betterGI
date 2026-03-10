@@ -79,12 +79,21 @@ public class AutoStygianOnslaughtTask : StateMachineBase<StygianState, BvPage>, 
     /// </summary>
     protected override ILogger Logger => TaskControl.Logger;
 
-    private readonly AutoStygianOnslaughtConfig _taskParam;
+    private readonly AutoStygianOnslaughtParam _taskParam;
     private readonly CombatScriptBag _combatScriptBag;
     private List<ResinUseRecord> _resinPriorityListWhenSpecifyUse;
     private LowerHeadThenWalkToTask? _lowerHeadThenWalkToTask;
+    public AutoStygianOnslaughtTask(AutoStygianOnslaughtParam taskParam)
+    {
+        AutoFightAssets.DestroyInstance();
+        _taskParam = taskParam;
+        _combatScriptBag = CombatScriptParser.ReadAndParse(taskParam.CombatScriptBagPath);
+        _resinPriorityListWhenSpecifyUse = ResinUseRecord.BuildFromDomainParam(taskParam);
 
-    public AutoStygianOnslaughtTask(AutoStygianOnslaughtConfig taskParam, string path)
+        // 注册所有状态处理器
+        RegisterAllStateHandlers();
+    }
+    public AutoStygianOnslaughtTask(AutoStygianOnslaughtParam taskParam, string path)
     {
         AutoFightAssets.DestroyInstance();
         _taskParam = taskParam;
@@ -795,7 +804,13 @@ public class AutoStygianOnslaughtTask : StateMachineBase<StygianState, BvPage>, 
 
     private async Task FindAndInteractLeylineFlowerLoop()
     {
-        await _lowerHeadThenWalkToTask!.Start(_ct);
+        // 先看看当前身边是否有F，有的话，直接F
+        using var ra1 = CaptureToRectArea();
+        var text = Bv.FindFKeyText(ra1);
+        if (string.IsNullOrEmpty(text) || !text.Contains("激活"))
+        {
+            await _lowerHeadThenWalkToTask!.Start(_ct);
+        }
 
         await NewRetry.WaitForAction(() =>
         {

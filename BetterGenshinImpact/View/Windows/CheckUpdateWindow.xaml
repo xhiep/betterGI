@@ -10,7 +10,7 @@
                  xmlns:webview="clr-namespace:BetterGenshinImpact.View.Controls.Webview"
                  xmlns:behavior="clr-namespace:BetterGenshinImpact.View.Behavior"
                  x:Name="app"
-                 Title="Phát Hiện Phiên Bản Mới"
+                 Title="发现新版本"
                  Width="680"
                  MinHeight="10"
                  SizeToContent="Height"
@@ -52,7 +52,7 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Kênh Mã Nguồn Mở"
+                                          Text="开源渠道"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
@@ -72,7 +72,7 @@
                         </ComboBox>
                         <ui:Button
                             Icon="{ui:SymbolIcon ArrowDownload24}"
-                            Content="Cập Nhật Ngay"
+                            Content="立即更新"
                             Command="{Binding UpdateFromGitHostPlatformCommand}" />
                     </StackPanel>
                 </ui:CardControl>
@@ -88,12 +88,12 @@
                             </Grid.RowDefinitions>
                             <emoji:TextBlock Grid.Row="0"
                                              Grid.Column="0"
-                                             Text="Dịch Vụ Steambird 🆓"
+                                             Text="Steambird 服务 🆓"
                                              TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Người dùng thông thường có thể nhấp đây để cập nhật trực tiếp"
+                                          Text="【国内】普通用户可点此直接更新"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardControl.Header>
@@ -101,7 +101,7 @@
                         <ui:Button
                             Appearance="Success"
                             Icon="{ui:SymbolIcon ArrowDownload24}"
-                            Content="Cập Nhật Ngay"
+                            Content="立即更新"
                             Command="{Binding UpdateFromSteambirdCommand}" />
                     </StackPanel>
                 </ui:CardControl>
@@ -117,12 +117,12 @@
                             </Grid.RowDefinitions>
                             <emoji:TextBlock Grid.Row="0"
                                           Grid.Column="0"
-                                          Text="Dịch Vụ Mirror 💰"
+                                          Text="Mirror酱服务 💰"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="【Trong Nước】 Người dùng Mirror có thể nhập CDK để cập nhật tốc độ cao"
+                                          Text="【国内】Mirror酱用户可以输入CDK高速更新"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardControl.Header>
@@ -131,11 +131,11 @@
                             Name="EditCdkButton"
                             Margin="0,0,8,0"
                             Icon="{ui:SymbolIcon TicketDiagonal24}"
-                            Content="Sửa CDK"
+                            Content="修改CDK"
                             Command="{Binding EditCdkCommand}" />
                         <ui:Button
                             Icon="{ui:SymbolIcon ArrowDownload24}"
-                            Content="Cập Nhật Ngay"
+                            Content="立即更新"
                             Command="{Binding UpdateFromMirrorChyanCommand}" />
                     </StackPanel>
                 </ui:CardControl>
@@ -152,12 +152,12 @@
                             </Grid.RowDefinitions>
                             <emoji:TextBlock Grid.Row="0"
                                              Grid.Column="0"
-                                             Text="Hutao Cloud ⚡"
+                                             Text="Hutao Cloud 胡桃云⚡"
                                              TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Người dùng Hutao Cloud CDN có thể dùng CDN Hutao Cloud để cập nhật tốc độ cao"
+                                          Text="胡桃云CDN用户，可使用 Hutao Cloud CDN 高速更新"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardControl.Header>
@@ -165,7 +165,7 @@
                         <ui:Button
                             Appearance="Primary"
                             Icon="{ui:SymbolIcon ArrowBounce24}"
-                            Content="Gọi Hutao"
+                            Content="唤起胡桃"
                             Command="{Binding OneKeyExecuteCommand}" />
                     </StackPanel>
                 </ui:CardControl>-->
@@ -178,7 +178,7 @@
                            MinWidth="90"
                            Margin="8,0,8,0"
                            Command="{Binding BackgroundUpdateCommand}"
-                           Content="Cập Nhật Nền"
+                           Content="后台更新"
                            Visibility="Collapsed" />
                 <Grid Grid.Column="0">
                     <ui:Button x:Name="OtherUpdateButton"
@@ -187,7 +187,7 @@
                                MinWidth="90"
                                Margin="8,0,8,0"
                                Command="{Binding OtherUpdateCommand}"
-                               Content="Tải Thủ Công" />
+                               Content="手动下载" />
                     <!-- 气泡提示 -->
                     <Popup x:Name="OtherUpdateTipPopup"
                             IsOpen="{Binding ShowOtherUpdateTip}"
@@ -210,7 +210,7 @@
                                                        ShadowDepth="2" 
                                                        BlurRadius="8"/>
                                  </Border.Effect>
-                                 <emoji:TextBlock Text="💡 Nếu kênh cập nhật trên không hoạt động, hãy nhấp nút này để tải thủ công gói cài đặt để cập nhật"
+                                 <emoji:TextBlock Text="💡 如果上方更新渠道无法正常更新，可以点击此按钮手动下载安装包进行更新"
                                                   Foreground="#FFE6E6E6"
                                                   TextWrapping="Wrap"
                                                   FontSize="12"/>
@@ -229,18 +229,18 @@
                            Margin="8,0,8,0"
                            Appearance="Success"
                            Command="{Binding UpdateCommand}"
-                           Content="Cập Nhật Ngay" />-->
+                           Content="立即更新" />-->
                 <ui:Button Name="IgnoreButton"
                            Grid.Column="2"
                            MinWidth="90"
                            Margin="8,0,8,0"
                            Command="{Binding IgnoreCommand}"
-                           Content="Không Nhắc Lại" />
+                           Content="不再提示" />
                 <ui:Button Grid.Column="3"
                            MinWidth="90"
                            Margin="8,0,8,0"
                            Command="{Binding CancelCommand}"
-                           Content="Hủy" />
+                           Content="取消" />
             </ui:Grid>
         </ui:Grid>
         <ui:TitleBar Title="{Binding Title, ElementName=app}"

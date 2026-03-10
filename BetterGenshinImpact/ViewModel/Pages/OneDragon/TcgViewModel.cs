@@ -4,5 +4,5 @@ namespace BetterGenshinImpact.ViewModel.Pages.OneDragon;
 
 public partial class TcgViewModel : OneDragonBaseViewModel
 {
-    public override string Title { get; } = "Tự Động Thất Thánh Triệu";
+    public override string Title { get; } = "自动七圣召唤";
 }

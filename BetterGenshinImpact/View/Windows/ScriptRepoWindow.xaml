@@ -7,7 +7,7 @@
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
                  xmlns:behavior="clr-namespace:BetterGenshinImpact.View.Behavior"
-                 Title="Kho Script"
+                 Title="脚本仓库"
                  Width="410"
                  MinWidth="360"
                  MinHeight="50"
@@ -56,7 +56,7 @@
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Margin="0,0,6,0" Symbol="BranchFork24" />
-                                <TextBlock Text="Cập Nhật Git Một Chạm" />
+                                <TextBlock Text="Git一键更新" />
                             </StackPanel>
                         </TabItem.Header>
                         <Grid Margin="0,12,0,0">
@@ -79,7 +79,7 @@
                                               Margin="0,0,8,0"
                                               VerticalAlignment="Center"
                                               Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                                              Text="Kênh Cập Nhật:" />
+                                              Text="更新渠道：" />
                                 <ComboBox Grid.Column="1"
                                           MinWidth="160"
                                           VerticalAlignment="Center"
@@ -100,7 +100,7 @@
                                               Margin="0,0,8,0"
                                               VerticalAlignment="Center"
                                               Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                                              Text="Địa Chỉ Kho:" />
+                                              Text="仓库地址：" />
 
                                 <!-- 只读模式：显示文本 -->
                                 <Border Grid.Column="1"
@@ -141,7 +141,7 @@
                                               Margin="0,0,8,0"
                                               VerticalAlignment="Center"
                                               Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                                              Text="Tên Người Dùng:" />
+                                              Text="用户名称：" />
 
                                 <!-- 编辑模式：可输入 -->
                                 <TextBox Grid.Column="1"
@@ -163,7 +163,7 @@
                                               Margin="0,0,8,0"
                                               VerticalAlignment="Center"
                                               Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                                              Text="Token Truy Cập:" />
+                                              Text="访问令牌：" />
 
                                 <!-- 编辑模式：可输入 -->
                                 <PasswordBox x:Name="GitTokenPasswordBox"
@@ -183,14 +183,14 @@
                                 <ui:Button Grid.Column="0"
                                            Margin="0,0,4,0"
                                            Command="{Binding UpdateRepoCommand}"
-                                           Content="Cập Nhật Kho"
+                                           Content="更新仓库"
                                            Icon="{ui:SymbolIcon CloudSync24}"
                                            HorizontalAlignment="Stretch"
                                            IsEnabled="{Binding IsUpdating, Converter={StaticResource InverseBooleanConverter}}" />
                                 <ui:Button Grid.Column="1"
                                            Margin="4,0,0,0"
                                            Command="{Binding ResetRepoCommand}"
-                                           Content="Đặt Lại Kho"
+                                           Content="重置仓库"
                                            Icon="{ui:SymbolIcon ArrowReset24}"
                                            HorizontalAlignment="Stretch"
                                            IsEnabled="{Binding IsUpdating, Converter={StaticResource InverseBooleanConverter}}" />
@@ -205,7 +205,7 @@
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Margin="0,0,6,0" Symbol="DocumentArrowDown20" />
-                                <TextBlock Text="Cập Nhật Qua URL" />
+                                <TextBlock Text="URL更新" />
                             </StackPanel>
                         </TabItem.Header>
                         <Grid Margin="0,12,0,0">
@@ -219,7 +219,7 @@
                                           Margin="0,0,0,12"
                                           Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Tải thẳng gói kho script từ địa chỉ trực tuyến, phù hợp khi mạng tốt." />
+                                          Text="从在线地址直接下载脚本仓库压缩包，适用于网络环境较好的情况。" />
 
                             <Grid Grid.Row="1" Margin="0,0,0,12">
                                 <Grid.ColumnDefinitions>
@@ -231,7 +231,7 @@
                                               Margin="0,0,8,0"
                                               VerticalAlignment="Center"
                                               Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                                              Text="Địa Chỉ Tải:" />
+                                              Text="下载地址：" />
                                 <TextBox Grid.Column="1"
                                          MinWidth="160"
                                          VerticalAlignment="Center"
@@ -240,7 +240,7 @@
 
                             <ui:Button Grid.Row="2"
                                        Command="{Binding DownloadOnlineRepoCommand}"
-                                       Content="Tải và Nhập"
+                                       Content="下载并导入"
                                        Icon="{ui:SymbolIcon Cloud24}"
                                        HorizontalAlignment="Left" />
                         </Grid>
@@ -251,7 +251,7 @@
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Margin="0,0,6,0" Symbol="FolderZip24" />
-                                <TextBlock Text="Nhập Thủ Công" />
+                                <TextBlock Text="手动导入" />
                             </StackPanel>
                         </TabItem.Header>
                         <Grid Margin="0,12,0,0">
@@ -266,27 +266,27 @@
                                           Margin="0,0,0,12"
                                           Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Nhập kho script từ file zip cục bộ, phù hợp khi offline hoặc mạng không ổn định." />
+                                          Text="从本地zip文件导入脚本仓库，适用于离线环境或网络不稳定的情况。" />
 
                             <ui:TextBlock Grid.Row="1"
                                           Margin="0,0,0,12"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Hãy chọn file zip chứa nội dung kho script để nhập." />
+                                          Text="请选择包含脚本仓库内容的zip压缩包文件进行导入。" />
 
                             <ui:TextBlock Grid.Row="2"
                                           Margin="0,0,0,12"
                                           Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                                           TextWrapping="Wrap">
-                                <Run Text="Có thể lấy zip từ đây: " />
+                                <Run Text="可以从这里获取zip：" />
                                 <Hyperlink NavigateUri="https://bettergi.com/feats/autos/srepo.html" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <Run Text="Tài Liệu Kho Script" />
+                                    <Run Text="脚本仓库文档" />
                                 </Hyperlink>
                             </ui:TextBlock>
 
                             <ui:Button Grid.Row="3"
                                        Command="{Binding ImportLocalScriptsRepoZipCommand}"
-                                       Content="Chọn File Zip Để Nhập"
+                                       Content="选择zip文件导入"
                                        Icon="{ui:SymbolIcon FolderZip24}"
                                        HorizontalAlignment="Left" />
                         </Grid>
@@ -325,14 +325,14 @@
                            Margin="0,0,4,0"
                            Appearance="Primary"
                            Command="{Binding OpenLocalScriptRepoCommand}"
-                           Content="Mở Kho"
+                           Content="打开仓库"
                            Icon="{ui:SymbolIcon BookStar24}"
                            HorizontalAlignment="Stretch"
                            IsEnabled="{Binding IsUpdating, Converter={StaticResource InverseBooleanConverter}}" />
                 <ui:Button Grid.Column="1"
                            Margin="4,0,0,0"
                            Command="{Binding UpdateSubscribedScriptsCommand}"
-                           Content="Cập Nhật Đăng Ký Một Chạm"
+                           Content="一键更新订阅"
                            Icon="{ui:SymbolIcon ArrowDownload24}"
                            HorizontalAlignment="Stretch"
                            IsEnabled="{Binding IsUpdating, Converter={StaticResource InverseBooleanConverter}}" />

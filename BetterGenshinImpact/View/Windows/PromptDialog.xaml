@@ -61,7 +61,7 @@
                            Margin="5"
                            HorizontalAlignment="Left"
                            Appearance="Success"
-                           Content="Nút Góc Dưới Trái" 
+                           Content="左下角按钮" 
                            Grid.Column="0" />
 
             <!-- 原有的右侧按钮 -->
@@ -71,12 +71,12 @@
                                Margin="5"
                                Appearance="Primary"
                                Click="BtnOkClick"
-                               Content="Xác Nhận"
+                               Content="确定"
                                IsDefault="True" />
                 <ui:Button Name="BtnCancel"
                                Margin="5"
                                Click="BtnCancelClick"
-                               Content="Hủy"
+                               Content="取消"
                                IsCancel="True" />
             </StackPanel>
         </Grid>

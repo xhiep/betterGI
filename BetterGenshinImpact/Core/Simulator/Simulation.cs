@@ -24,7 +24,7 @@ public class Simulation
             // 检查键是否被按下
             if (IsKeyDown(key)) // 强制转换 VK 枚举为 int
             {
-                TaskControl.Logger.LogDebug($"Hủy trạng thái nhấn của {key}.");
+                TaskControl.Logger.LogDebug($"解除{key}的按下状态.");
                 SendInput.Keyboard.KeyUp(key);
             }
         }

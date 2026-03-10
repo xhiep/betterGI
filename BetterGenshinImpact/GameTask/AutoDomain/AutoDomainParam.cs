@@ -104,7 +104,7 @@ public class AutoDomainParam : BaseTaskParam<AutoDomainTask>
             strategyName = TaskContext.Instance().Config.AutoFightConfig.StrategyName;
         }
 
-        if ("根据队伍自动选择".Equals(strategyName) || "Tự động chọn theo đội hình".Equals(strategyName))
+        if ("根据队伍自动选择".Equals(strategyName))
         {
             return Global.Absolute(@"User\AutoFight\");
         }

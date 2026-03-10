@@ -18,7 +18,7 @@
     <StackPanel Margin="42,16,42,12">
         <ui:TextBlock Margin="0,0,0,8"
                       FontTypography="BodyStrong"
-                      Text="Cài Đặt Hỗ Trợ Điều Khiển" />
+                      Text="辅助操控设置" />
 
         <!--  一键战斗宏  -->
         <ui:CardExpander Margin="0,0,0,12"
@@ -37,12 +37,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Macro Một Nút (Theo Nhân Vật)"
+                                  Text="一键宏（按角色）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Sau khi kích hoạt sẽ nhận diện nhân vật đang chiến đấu và thực hiện macro tương ứng theo cấu hình"
+                                  Text="触发后会识别当前出战角色，并根据配置执行对应的宏"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -64,12 +64,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Cách Kích Hoạt Phím Tắt"
+                                  Text="快捷键触发方式"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Lặp khi giữ: thực hiện liên tục khi giữ phím; Bật/Tắt: nhấn để bật, nhấn lại để tắt"
+                                  Text="按住时重复：按住时重复执行；触发：按下启动再按关闭"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -91,14 +91,14 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Cấu Hình Macro"
+                                  Text="宏配置"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Cấu hình macro cho từng nhân vật, ví dụ: Hutao A nhảy nặng, <Hyperlink Command="{Binding GoToOneKeyMacroUrlCommand}" Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
-                            Nhấp để xem hướng dẫn
+                        配置每个角色执行的宏，比如：胡桃A重跳，<Hyperlink Command="{Binding GoToOneKeyMacroUrlCommand}" Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
+                            点击查看说明
                         </Hyperlink>
                     </ui:TextBlock>
                     <ui:Button Grid.Row="0"
@@ -106,7 +106,7 @@
                                Grid.Column="1"
                                Margin="0,0,36,0"
                                Command="{Binding EditAvatarMacroCommand}"
-                               Content="Đến Cài Đặt" />
+                               Content="前往设置" />
                 </Grid>
                 <Grid Margin="16">
                     <Grid.RowDefinitions>
@@ -120,12 +120,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Số Macro Chiến Đấu Mặc Định"
+                                  Text="默认战斗宏编号"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi macroPriority của nhân vật được đặt là 0, dùng số macro mặc định này (1~5)"
+                                  Text="当角色的 macroPriority 设置为0时，使用此默认宏编号（1~5）"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                   Grid.RowSpan="2"
@@ -145,11 +145,11 @@
                     </Grid.ColumnDefinitions>
                     <ui:TextBlock Grid.Row="0"
                                   FontTypography="Body"
-                                  Text="Cài Đặt Số Macro Cá Nhân Hóa Nhân Vật"
+                                  Text="角色个性化宏编号设置"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Cấu hình macro trên hỗ trợ đặt số macro riêng cho từng nhân vật. Đặt trường macroPriority (1-5) trong cấu hình macro nhân vật; đặt 0 thì dùng số macro chiến đấu mặc định bên trên."
+                                  Text="上方宏配置支持为每个角色单独设置宏编号。在角色宏配置中设置 macroPriority 字段（1-5），设置为0则使用上面的默认战斗宏编号。"
                                   TextWrapping="Wrap" />
                 </Grid>
             </StackPanel>
@@ -172,19 +172,19 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Neuvillette - Xoay Tròn"
+                                  Text="那维莱特 - 转圈圈"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Di chuyển chuột ngang nhanh, cần cấu hình phím tắt để kích hoạt"
+                                  Text="快速水平平移鼠标，需要配置快捷键进行触发"
                                   TextWrapping="Wrap" />
                     <ui:Button Grid.Row="0"
                                Grid.RowSpan="2"
                                Grid.Column="1"
                                Margin="0,0,24,0"
                                Command="{Binding GoToHotKeyPageCommand}"
-                               Content="Gán Phím Tắt" />
+                               Content="绑定快捷键" />
                 </Grid>
             </ui:CardExpander.Header>
             <StackPanel>
@@ -200,12 +200,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khoảng Cách Di Chuyển Chuột"
+                                  Text="移动鼠标距离"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Có thể là số âm; giá trị tuyệt đối càng lớn di chuyển càng nhanh, đừng cài quá lớn"
+                                  Text="可以为负数，绝对值越大移动越快，请不要配置太大"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -226,12 +226,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khoảng Thời Gian Di Chuyển Chuột (ms)"
+                                  Text="移动鼠标间隔（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Nên đặt số lớn hơn 0; sau khi cài xong hãy chuyển tab để có hiệu lực (các cấu hình khác cũng vậy)"
+                                  Text="尽量设置大于0的数字，配置完毕后请切换页签生效（其他配置也一样）"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -260,19 +260,19 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tăng Cường Thánh Di Vật Nhanh"
+                                  Text="快速强化圣遗物"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Bỏ qua nhanh màn hình hiển thị kết quả tăng cường, cần cấu hình phím tắt để kích hoạt"
+                                  Text="快速跳过强化结果展示，需要配置快捷键进行触发"
                                   TextWrapping="Wrap" />
                     <ui:Button Grid.Row="0"
                                Grid.RowSpan="2"
                                Grid.Column="1"
                                Margin="0,0,24,0"
                                Command="{Binding GoToHotKeyPageCommand}"
-                               Content="Gán Phím Tắt" />
+                               Content="绑定快捷键" />
                 </Grid>
             </ui:CardExpander.Header>
             <StackPanel>
@@ -288,12 +288,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Thời Gian Chờ Thêm Khi Tăng Cường (ms)"
+                                  Text="强化的额外等待时间（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi độ trễ cao không bỏ qua được màn hình kết quả tăng cường, cần tăng thời gian này"
+                                  Text="高延迟下无法跳过强化结果显示时，需要延长这个时间配置"
                                   TextWrapping="Wrap" />
                     <ui:NumberBox Grid.Row="0"
                                   Grid.RowSpan="2"
@@ -318,18 +318,18 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Mua Một Chạm"
+                                  Text="一键购买"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Dùng ở trang mua/đổi vật phẩm, bắt đầu từ vật phẩm được chọn, giữ phím để mua liên tục"
+                                  Text="在物品购买/兑换页使用，从选中物品处开始，长按持续购买"
                                   TextWrapping="Wrap" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Margin="0,0,36,0"
                        Command="{Binding GoToHotKeyPageCommand}"
-                       Content="Gán Phím Tắt" />
+                       Content="绑定快捷键" />
         </ui:CardControl>
 
         <!--  一键进出尘歌壶  -->
@@ -343,18 +343,18 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Vào/Ra Bình Trần Ca Một Chạm"
+                                  Text="一键进出尘歌壶"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Tự động mở túi đồ một chạm, đặt Bình Trần Ca và vào"
+                                  Text="一键自动打开背包，放置尘歌壶并进入"
                                   TextWrapping="Wrap" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Margin="0,0,36,0"
                        Command="{Binding GoToHotKeyPageCommand}"
-                       Content="Gán Phím Tắt" />
+                       Content="绑定快捷键" />
         </ui:CardControl>
 
         <!--  一键确认/取消  -->
@@ -368,18 +368,18 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Xác Nhận/Hủy Một Chạm"
+                                  Text="一键确认/取消"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Gán phím tắt vào nút xác nhận/hủy của Genshin"
+                                  Text="绑定快捷键到原神的确认/取消按钮"
                                   TextWrapping="Wrap" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button Margin="0,0,36,0"
                        Command="{Binding GoToHotKeyPageCommand}"
-                       Content="Gán Phím Tắt" />
+                       Content="绑定快捷键" />
         </ui:CardControl>
 
 
@@ -395,12 +395,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Giữ Dài Phím Cách = Nhấn Phím Cách Liên Tục"
+                                  Text="长按空格等于连续按下空格"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Dễ dàng giải đóng băng; không khuyến nghị bật vì có tình huống giữ phím cách dưới nước"
+                                  Text="轻松解除冻结，由于在水下存在长按的空格的场景，所以不推荐启用"
                                   TextWrapping="Wrap" />
                 </Grid>
             </ui:CardControl.Header>
@@ -417,12 +417,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Giữ Dài F = Nhấn F Liên Tục"
+                                  Text="长按 F 等于连续按下 F "
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Nhặt nhanh nhiều đồ rơi; với tính năng tự động nhặt thì ít cần thiết hơn"
+                                  Text="快速拾取大量掉落物，有自动拾取的功能下，就显得比较鸡肋了"
                                   TextWrapping="Wrap" />
                 </Grid>
             </ui:CardControl.Header>
@@ -442,18 +442,18 @@
                         Grid.Column="0"
                         FontTypography="Body"
                         TextWrapping="Wrap"
-                        Text="Rèn Nhanh 【Đang Phát Triển】" />
+                        Text="快速锻造【开发中】" />
                     <ui:TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                         TextWrapping="Wrap"
-                        Text="Dùng khi hàng đợi rèn đầy, tự động thu và rèn lại khối tinh thể" />
+                        Text="满收获队列时使用，自动收取并重新锻造水晶块" />
                 </Grid>
             </ui:CardControl.Header>
             <ui:Button
                 Margin="0,0,36,0"
-                Content="Gán Phím Tắt" />
+                Content="绑定快捷键" />
         </ui:CardControl>-->
     </StackPanel>
 </Page>

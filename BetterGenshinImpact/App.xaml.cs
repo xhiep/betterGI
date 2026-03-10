@@ -173,15 +173,7 @@ public partial class App : Application
                 // Configuration
                 //services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
                 
-                var cultureName = all.OtherConfig.UiCultureInfoName;
-                if (string.IsNullOrWhiteSpace(cultureName))
-                {
-                    cultureName = "vi";
-                }
-                var uiCulture = new CultureInfo(cultureName);
-                I18N.Culture = uiCulture;
-                CultureInfo.DefaultThreadCurrentCulture = uiCulture;
-                CultureInfo.DefaultThreadCurrentUICulture = uiCulture;
+                I18N.Culture = new CultureInfo("zh-Hans"); // #1846
             }
         )
         .Build();

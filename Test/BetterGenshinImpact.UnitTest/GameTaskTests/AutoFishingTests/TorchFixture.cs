@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using TorchSharp;
 
 namespace BetterGenshinImpact.UnitTest.GameTaskTests.AutoFishingTests
@@ -27,26 +26,10 @@ namespace BetterGenshinImpact.UnitTest.GameTaskTests.AutoFishingTests
     {
         public TorchLoader()
         {
-            // 查找主项目编译输出下的 User/config.json（兼容是否存在 x64、RID 目录等差异）
-            var repoRoot = Path.GetFullPath(@"..\..\..\..\");
-            var binRoot = Path.Combine(repoRoot, "BetterGenshinImpact", "bin");
-            string? configFullPath = null;
-            if (Directory.Exists(binRoot))
-            {
-                configFullPath = Directory.EnumerateFiles(binRoot, "config.json", SearchOption.AllDirectories)
-                    .FirstOrDefault(p => p.EndsWith(Path.Combine("User", "config.json"), StringComparison.OrdinalIgnoreCase));
-            }
-
-            if (string.IsNullOrEmpty(configFullPath))
-            {
-                UseTorch = false;
-                return;
-            }
-
-            var configurationRoot = new ConfigurationBuilder().AddJsonFile(configFullPath, optional: true).Build();
-            var section = configurationRoot.GetSection("autoFishingConfig");
-            var autoFishingConfig = section.Exists() ? section.Get<AutoFishingConfig>() : new AutoFishingConfig();
-
+            // 需要读取主项目编译目录中的配置
+            string configFullPath = Path.Combine(Path.GetFullPath(@"..\..\..\..\..\"), @"BetterGenshinImpact\bin\x64\Debug\net8.0-windows10.0.22621.0\User\config.json");
+            IConfigurationRoot configurationRoot = new ConfigurationBuilder().AddJsonFile(configFullPath, optional: false).Build();
+            AutoFishingConfig autoFishingConfig = configurationRoot.GetRequiredSection("autoFishingConfig").Get<AutoFishingConfig>() ?? throw new ArgumentNullException();
             try
             {
                 NativeLibrary.Load(autoFishingConfig.TorchDllFullPath);

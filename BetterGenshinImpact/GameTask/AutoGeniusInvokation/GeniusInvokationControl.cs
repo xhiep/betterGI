@@ -112,7 +112,7 @@ public class GeniusInvokationControl
             if (!SystemControl.IsGenshinImpactActiveByProcess())
             {
                 var name = SystemControl.GetActiveByProcess();
-                _logger.LogWarning($"Cửa sổ đang được focus: {name}, không phải Genshin Impact, tạm dừng");
+                _logger.LogWarning($"当前获取焦点的窗口为: {name}，不是原神，暂停");
                 throw new RetryException("当前获取焦点的窗口不是原神");
             }
         }, TimeSpan.FromSeconds(1), 100);

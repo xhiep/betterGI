@@ -54,14 +54,14 @@ namespace BetterGenshinImpact.GameTask.AutoGeniusInvokation.Model
         {
             return type switch
             {
-                ElementalType.Omni => "Toàn",
-                ElementalType.Cryo => "Băng",
-                ElementalType.Hydro => "Thủy",
-                ElementalType.Pyro => "Hỏa",
-                ElementalType.Electro => "Lôi",
-                ElementalType.Dendro => "Thảo",
-                ElementalType.Anemo => "Phong",
-                ElementalType.Geo => "Nham",
+                ElementalType.Omni => "全",
+                ElementalType.Cryo => "冰",
+                ElementalType.Hydro => "水",
+                ElementalType.Pyro => "火",
+                ElementalType.Electro => "雷",
+                ElementalType.Dendro => "草",
+                ElementalType.Anemo => "风",
+                ElementalType.Geo => "岩",
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null),
             };
         }

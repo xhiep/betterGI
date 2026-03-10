@@ -4,5 +4,5 @@ namespace BetterGenshinImpact.ViewModel.Pages.OneDragon;
 
 public partial class MailViewModel : OneDragonBaseViewModel
 {
-    public override string Title { get; } = "Nhận Thư";
+    public override string Title { get; } = "领取邮件";
 }

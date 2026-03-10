@@ -58,7 +58,7 @@ public partial class TaskSettingsPageViewModel : ViewModel
     private bool _switchAutoGeniusInvokationEnabled;
 
     [ObservableProperty]
-    private string _switchAutoGeniusInvokationButtonText = "Bắt Đầu";
+    private string _switchAutoGeniusInvokationButtonText = "启动";
 
     [ObservableProperty]
     private int _autoWoodRoundNum;
@@ -70,7 +70,7 @@ public partial class TaskSettingsPageViewModel : ViewModel
     private bool _switchAutoWoodEnabled;
 
     [ObservableProperty]
-    private string _switchAutoWoodButtonText = "Bắt Đầu";
+    private string _switchAutoWoodButtonText = "启动";
 
     //[ObservableProperty]
     //private string[] _combatStrategyList;
@@ -82,7 +82,7 @@ public partial class TaskSettingsPageViewModel : ViewModel
     private bool _switchAutoDomainEnabled;
 
     [ObservableProperty]
-    private string _switchAutoDomainButtonText = "Bắt Đầu";
+    private string _switchAutoDomainButtonText = "启动";
 
     [ObservableProperty]
     private int _autoStygianOnslaughtRoundNum;
@@ -91,13 +91,13 @@ public partial class TaskSettingsPageViewModel : ViewModel
     private bool _switchAutoStygianOnslaughtEnabled;
 
     [ObservableProperty]
-    private string _switchAutoStygianOnslaughtButtonText = "Bắt Đầu";
+    private string _switchAutoStygianOnslaughtButtonText = "启动";
 
     [ObservableProperty]
     private bool _switchAutoFightEnabled;
 
     [ObservableProperty]
-    private string _switchAutoFightButtonText = "Bắt Đầu";
+    private string _switchAutoFightButtonText = "启动";
 
     [ObservableProperty]
     private string _switchAutoTrackButtonText = "启动";
@@ -422,8 +422,10 @@ public partial class TaskSettingsPageViewModel : ViewModel
         }
 
         SwitchAutoStygianOnslaughtEnabled = true;
+        AutoStygianOnslaughtParam param = new AutoStygianOnslaughtParam();
+        param.SetAutoStygianOnslaughtConfig(Config.AutoStygianOnslaughtConfig);
         await new TaskRunner()
-            .RunSoloTaskAsync(new AutoStygianOnslaughtTask(Config.AutoStygianOnslaughtConfig, path));
+            .RunSoloTaskAsync(new AutoStygianOnslaughtTask(param, path));
         SwitchAutoStygianOnslaughtEnabled = false;
     }
 

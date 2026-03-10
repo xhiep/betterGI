@@ -20,7 +20,7 @@
 
         <ui:TextBlock Margin="0,0,0,8"
                       FontTypography="BodyStrong"
-                      Text="Cài Đặt Tác Vụ Tự Động Kích Hoạt Thời Gian Thực" />
+                      Text="实时触发的自动化任务设置" />
         <ui:CardExpander Margin="0,0,0,12"
                          ContentPadding="0"
                          Icon="{ui:SymbolIcon HandWave24}">
@@ -37,12 +37,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Nhặt"
+                                  Text="自动拾取"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi không phải hội thoại NPC và không trong danh sách đen, tự động nhấn F để nhặt/tương tác"
+                                  Text="选项不是NPC对话且不在黑名单时，自动按下 F 拾取/交互"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -66,13 +66,13 @@
                         Grid.Column="0"
                         FontTypography="Body"
                         TextWrapping="Wrap"
-                        Text="Chế Độ Nhặt Siêu Nhanh" />
+                        Text="极速拾取模式" />
                     <ui:TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                         TextWrapping="Wrap"
-                        Text="Khi bật, sẽ không nhận diện nội dung cụ thể, danh sách đen/trắng sẽ vô hiệu" />
+                        Text="打开时，将不再识别具体拾取内容，黑、白名单会失效" />
                     <ui:ToggleSwitch
                         Grid.Row="0"
                         Grid.RowSpan="2"
@@ -92,12 +92,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Chọn Engine Nhận Diện Chữ Tự Động Nhặt"
+                                  Text="选择自动拾取文字识别引擎"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Paddle nhận diện tất cả chữ, chậm hơn, ít tài nguyên; Yap nhận diện một phần, nhanh và chính xác, tốn nhiều tài nguyên"
+                                  Text="Paddle可识别所有文字,速度慢,消耗少;Yap可识别部分文字,快且准,消耗大"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -119,12 +119,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Danh Sách Đen"
+                                  Text="黑名单"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Loại trừ hội thoại NPC, các tùy chọn tương tác, vật phẩm không cần nhặt"
+                                  Text="排除 NPC 对话、各类交互选项、不需要拾取的物品等"
                                   TextWrapping="Wrap" />
                     <StackPanel Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -136,7 +136,7 @@
                             IsChecked="{Binding Config.AutoPickConfig.BlackListEnabled, Mode=TwoWay}" />
                         <ui:Button
                             Command="{Binding EditBlacklistCommand}"
-                            Content="Đến Cài Đặt" />
+                            Content="前往设置" />
                     </StackPanel>
 
                 </Grid>
@@ -152,12 +152,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Danh Sách Trắng"
+                                  Text="白名单"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Nội dung cần chủ động nhấn F để tương tác, dùng kết hợp với danh sách đen"
+                                  Text="需要主动按下 F 交互的内容，请配合黑名单使用"
                                   TextWrapping="Wrap" />
                     <StackPanel Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -169,7 +169,7 @@
                             IsChecked="{Binding Config.AutoPickConfig.WhiteListEnabled, Mode=TwoWay}" />
                         <ui:Button
                             Command="{Binding EditWhitelistCommand}"
-                            Content="Đến Cài Đặt" />
+                            Content="前往设置" />
                     </StackPanel>
                 </Grid>
                 <Grid Margin="16">
@@ -184,12 +184,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tùy Chỉnh Phím Nhặt"
+                                  Text="自定义拾取按键"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Mặc định là F, có sẵn E và G, cần đổi sang phím khác hãy đọc tài liệu"
+                                  Text="默认为 F，自带了 E 和 G 按键，需要改成其他键的请阅读文档"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -220,12 +220,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Cốt Truyện"
+                                  Text="自动剧情"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Nhanh chóng bỏ qua văn bản cốt truyện, tự động chọn tùy chọn, tự động nộp vật phẩm"
+                                  Text="快速跳过剧情文本、自动选择选项、自动提交物品等"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -247,12 +247,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Bật Chế Độ Nền (Chỉ Dùng Phím Tương Tác Cho Cốt Truyện)"
+                                  Text="启用后台模式（会只用交互键进行剧情）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Đừng thu nhỏ game, khi không trong hội thoại chuột sẽ tự động quay về game"
+                                  Text="游戏请不要最小化，不在对话中的时候鼠标会自动吸附回游戏中"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -273,12 +273,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Cửa Sổ Hình Trong Hình (Khuyến Nghị Bật Cùng Chế Độ Nền)"
+                                  Text="画中画窗口（建议和后台模式同时开启）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Hiển thị cửa sổ nhỏ khi game mất tiêu điểm, lăn chuột để zoom, chuột trái quay lại game, chuột phải đóng"
+                                  Text="游戏失焦时展示小窗，滚轮缩放，左键返回游戏，右键关闭"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -306,12 +306,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Cách Chọn Tùy Chọn"
+                                  Text="选择选项的方式"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Ở chế độ nền sẽ tự động chuyển sang dùng phím tương tác"
+                                  Text="后台模式下会自动切换到使用交互键"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -332,12 +332,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Bỏ Qua Nhanh Hội Thoại"
+                                  Text="快速跳过对话文本"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Nếu muốn nghe toàn bộ thoại cốt truyện chính, có thể tắt tính năng này"
+                                  Text="如果你要听完整的主线语音的话，可以关闭此功能"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -357,12 +357,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tùy Chỉnh Ưu Tiên Tùy Chọn Hội Thoại"
+                                  Text="自定义优先对话选项"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Ưu tiên cao hơn mục Ưu tiên chọn tùy chọn bên dưới"
+                                  Text="优先级高于下边的 选择选项优先级"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -392,13 +392,13 @@
                     <ui:TextBlock Grid.Row="0"  
                                   Grid.Column="0"  
                                   FontTypography="Body"  
-                                  Text="Văn Bản Tùy Chọn Ưu Tiên Tùy Chỉnh"  
+                                  Text="自定义优先选项文本"  
                                   TextWrapping="Wrap" />  
                     <ui:TextBlock Grid.Row="1"  
                                   Grid.Column="0"  
                                   Margin="0,-10,0,0"  
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"  
-                                  Text="Nhiều tùy chọn phân tách bằng dấu chấm phẩy hoặc xuống dòng"  
+                                  Text="多个选项用分号(中英文)分隔，或者换行"  
                                   TextWrapping="Wrap" />  
                     <ui:TextBox Grid.Row="0"  
                                 Grid.RowSpan="2"  
@@ -423,12 +423,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Ưu Tiên Chọn Tùy Chọn"
+                                  Text="选择选项优先级"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Cách chọn tùy chọn hội thoại sau khi vào hội thoại"
+                                  Text="进入对话后，对话选项的选择方式"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -449,12 +449,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Độ Trễ Trước Khi Chọn Tùy Chọn Hội Thoại (ms)"
+                                  Text="选择对话选项前的延迟（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Giúp bạn vẫn có thể nhìn rõ các tùy chọn khi đang tự động cốt truyện"
+                                  Text="方便在自动剧情的情况下，依旧能够看清楚选项"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -475,12 +475,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Độ Trễ Trước Khi Nhấn Nút Xác Nhận Hội Thoại (ms)"
+                                  Text="点击对话框确认按钮之前的延迟（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Giúp bạn vẫn có thể đọc hết nội dung hội thoại khi tự động cốt truyện"
+                                  Text="方便在自动剧情的情况下，依旧能够看完全部对话框文字"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -501,12 +501,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Nộp Vật Phẩm"
+                                  Text="自动提交物品"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi xuất hiện giao diện nộp vật phẩm trong hội thoại, sẽ tự động nộp, hỗ trợ nhiều vật phẩm"
+                                  Text="对话过程中出现提交物品界面，会自动提交，支持多个物品"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -526,12 +526,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Đóng Cửa Sổ Pop-Up"
+                                  Text="自动关闭弹出页"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Đóng các cửa sổ pop-up xuất hiện trong hội thoại, có thể vô tình đóng bản đồ, máy ảnh"
+                                  Text="关闭对话过程中出现的弹出页面，可能会误关地图、相机"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -551,12 +551,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Katheryne - Tự Động Nhận Phần Thưởng 'Ủy Thác Hàng Ngày'"
+                                  Text="凯瑟琳 - 自动领取『每日委托』奖励"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                Text="Khi nói chuyện với Katheryne, tự động nhận phần thưởng Ủy Thác Hàng Ngày"
+                                  Text="在与凯瑟琳对话时，会自动“领取『每日委托』奖励"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -577,18 +577,18 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Katheryne - Tự Động Phái Lại"
+                                  Text="凯瑟琳 - 自动重新派遣"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Tự động nhận phần thưởng thám hiểm đã hoàn thành và phái lại"
+                                  Text="自动领取已完成探索的奖励，并重新派遣"
                                   TextWrapping="Wrap" />
                     <!--<ui:Button
                         Grid.Row="0"
                         Grid.RowSpan="2"
                         Grid.Column="1"
-                        Content="Cấu Hình"
+                        Content="配置"
                         Margin="0,0,16,0"
                         Command="{Binding OpenReExploreCharacterBoxCommand}" />-->
                     <ui:ToggleSwitch Grid.Row="0"
@@ -619,12 +619,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Mời Hẹn"
+                                  Text="自动邀约"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Chỉ có hiệu lực khi Tự động cốt truyện được bật, tự động chọn tùy chọn mời hẹn"
+                                  Text="自动剧情开启的情况下此功能才会生效，自动选择邀约选项"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -646,12 +646,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Nhấp Khi Có Nút Bỏ Qua"
+                                  Text="存在跳过按钮时自动点击"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi có nút bỏ qua ở góc trên trái trong quá trình mời hẹn, tự động nhấp bỏ qua"
+                                  Text="邀约过程中左上角存在跳过按钮时候，自动点击跳过"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -671,12 +671,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Chọn Nhánh Mời Hẹn (Không Hỗ Trợ Chọn Gợi Ý Bong Bóng)"
+                                  Text="选择邀约分支（不支持气泡联想选择）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Sẽ chọn tùy chọn theo từ khóa của nhánh đã chọn"
+                                  Text="会按照选择分支的关键词进行选项选择"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -697,12 +697,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Độ Trễ Trước Khi Chọn Tùy Chọn Mời Hẹn (ms)"
+                                  Text="选择邀约选项前的延迟（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Giúp bạn vẫn có thể nhìn rõ các tùy chọn khi tự động mời hẹn"
+                                  Text="方便在自动邀约的情况下，依旧能够看清楚选项"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -730,12 +730,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Câu Cá Bán Tự Động"
+                                  Text="半自动钓鱼"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Câu cá bán tự động cần thả cần tay (câu cá toàn tự động đã chuyển sang Tác Vụ Độc Lập)"
+                                  Text="半自动钓鱼需要手动抛竿（全自动钓鱼已迁移至独立任务下）"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -757,13 +757,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Câu Cá Toàn Tự Động Đã Chuyển Sang Tác Vụ Độc Lập"
+                                  Text="全自动钓鱼已迁移至独立任务下"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Câu cá toàn tự động đã chuyển sang Tác vụ độc lập, vui lòng vào trang Tác vụ độc lập dùng kết hợp phím tắt
+                        全自动钓鱼已迁移至独立任务下，请到独立任务页配合快捷键使用
                     </ui:TextBlock>
                 </Grid>
             </StackPanel>
@@ -787,13 +787,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Dùng Thuốc"
+                                  Text="自动吃药"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Phát hiện nhân vật máu thấp, tự động dùng Túi dinh dưỡng di động để hồi máu
+                        检测角色红血状态，自动使用便携营养袋回复生命值
                     </ui:TextBlock>
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -815,12 +815,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khoảng Thời Gian Kích Hoạt (ms)"
+                                  Text="触发时间间隔（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Bao lâu kiểm tra một lần xem có máu thấp hay cần hồi sinh không"
+                                  Text="多少时间检查一次是否红血或需要复活"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -840,12 +840,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khoảng Thời Gian Dùng Thuốc (ms)"
+                                  Text="吃药时间间隔（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Tránh Dùng Thuốc Quá Thường Xuyên"
+                                  Text="防止频繁吃药"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -874,12 +874,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Dịch Chuyển Nhanh"
+                                  Text="快速传送"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi nhấp vào điểm dịch chuyển trên bản đồ lớn, tự động nhấp dịch chuyển"
+                                  Text="在大地图上点击传送点（或列表中有传送点）时，自动点击传送"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -901,12 +901,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khoảng Thời Gian Nhấp Điểm Dịch Chuyển Trong Danh Sách (ms)"
+                                  Text="点击候选列表传送点的间隔时间（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Người dùng thường không nên sửa, cần cấu hình theo thời gian nhận diện chữ, quá thấp sẽ gây lỗi click"
+                                  Text="普通用户请不要修改此配置，需要根据文字识别耗时配置，太低会导致点击失败"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -927,12 +927,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Thời Gian Chờ Giao Diện Dịch Chuyển Pop-Up Bên Phải (ms)"
+                                  Text="等待右侧传送弹出界面的时间（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Người dùng thường không nên sửa, không khuyến nghị dưới 80ms, quá thấp sẽ không nhận diện được nút dịch chuyển"
+                                  Text="普通用户请不要修改此配置，不建议低于80ms，太低会导致传送按钮识别不到"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -953,18 +953,18 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Bật Dịch Chuyển Bằng Phím Tắt"
+                                  Text="启用快捷键传送"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Nhấn
+                        按下
                         <Hyperlink Command="{Binding GoToHotKeyPageCommand}"
                                    Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
-                            [Phím tắt kích hoạt dịch chuyển nhanh thủ công]
+                            [手动触发快速传送触发快捷键]
                         </Hyperlink>
-                        mới thực hiện dịch chuyển nhanh
+                        后才进行快速传送
                     </ui:TextBlock>
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -992,13 +992,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Lớp Phủ Bản Đồ"
+                                  Text="地图遮罩"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Hiển thị vị trí bản đồ lớn và thông tin điểm đánh dấu trong cửa sổ overlay
+                        在遮罩窗口中显示大地图位置与标点信息
                     </ui:TextBlock>
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -1020,12 +1020,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Bật Lớp Phủ Minimap"
+                                  Text="启用小地图遮罩"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Hiển Thị Điểm Đánh Dấu Trên Minimap"
+                                  Text="在小地图上显示点位"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -1054,13 +1054,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Hiển Thị Cooldown"
+                                  Text="冷却提示"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Hiển thị thời gian hồi chiêu nguyên tố còn lại bên cạnh avatar nhân vật
+                        在头像旁显示角色元素战技剩余冷却时间
                     </ui:TextBlock>
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -1082,18 +1082,18 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Cấu Hình CD Nhân Vật"
+                                  Text="角色 CD 配置"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap"
-                                  Text="Cấu hình giá trị mặc định khi không nhận diện được CD cho nhân vật. Ví dụ: Mavuika dùng E hiển thị xe máy, không nhận diện được CD." />
+                                  Text="填写此项，为指定的角色配置未识别到 CD 数字时的默认值。如玛薇卡开 E 会显示摩托车，识别不到CD。" />
                     <ui:Button Grid.Row="0"
                                Grid.RowSpan="2"
                                Grid.Column="1"
                                Margin="10,0,24,0"
-                               Content="Đến Cấu Hình"
+                               Content="前往配置"
                                Icon="{ui:SymbolIcon Settings24}"
                                Command="{Binding EditSkillCdConfigCommand}" />
                 </Grid>
@@ -1109,13 +1109,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Kích Hoạt Khi Dùng Chiêu"
+                                  Text="使用战技时触发"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap"
-                                  Text="Nhận diện một lần khi dùng chiêu, nếu không chỉ kích hoạt khi chuyển nhân vật" />
+                                  Text="使用战技时也进行一次识别，否则仅在切人时触发" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
                                      Grid.Column="1"
@@ -1134,13 +1134,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Ẩn Khi Cooldown Về 0"
+                                  Text="冷却为0时隐藏"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap"
-                                  Text="Khi bật, sẽ ẩn bộ đếm khi đếm ngược về 0" />
+                                  Text="开启后倒计时为0时会隐藏计时器" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
                                      Grid.Column="1"
@@ -1162,13 +1162,13 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Điều Chỉnh Kiểu Bộ Đếm Thời Gian"
+                                          Text="计时器样式调节"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Điều chỉnh tọa độ X, Y, khoảng cách, kích thước và màu sắc bộ đếm" />
+                                          Text="调整计时器的横坐标、纵坐标、间隔、大小和颜色" />
                         </Grid>
                     </ui:CardExpander.Header>
                     <StackPanel>
@@ -1184,13 +1184,13 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Tọa Độ X"
+                                          Text="横坐标"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Điều chỉnh tọa độ X của bộ đếm, phạm vi: 0-1920, mặc định 1520." />
+                                          Text="调整计时器在界面上的横坐标，范围：0-1920，默认值1520。" />
                             <ui:TextBox Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="1"
@@ -1210,13 +1210,13 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Tọa Độ Y"
+                                          Text="纵坐标"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Điều chỉnh tọa độ Y của bộ đếm, phạm vi: 0-1080, mặc định 245." />
+                                          Text="调整计时器在界面上的纵坐标，范围：0-1080，默认值245。" />
                             <ui:TextBox Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="1"
@@ -1236,13 +1236,13 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Khoảng Cách Bộ Đếm"
+                                          Text="计时器间隔"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Điều chỉnh khoảng cách giữa các bộ đếm, phạm vi: 0-200, mặc định 91.2." />
+                                          Text="调整计时器之间的间隔，范围：0-200，默认值91.2。" />
                             <ui:TextBox Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="1"
@@ -1262,13 +1262,13 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Kích Thước Bộ Đếm"
+                                          Text="计时器大小"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                           TextWrapping="Wrap"
-                                          Text="Điều chỉnh kích thước bộ đếm, phạm vi: 0-10, mặc định 1." />
+                                          Text="调整计时器大小，范围：0-10，默认值1。" />
                             <ui:TextBox Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="1"
@@ -1289,12 +1289,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Màu Số Khi CD ≥ 0.8s"
+                                          Text="CD ≥ 0.8s 时数字颜色"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Hỗ trợ màu định dạng Hex 6 hoặc 8 ký tự"
+                                          Text="支持6位或8位 Hex 格式颜色"
                                           TextWrapping="Wrap" />
                             <!-- 颜色预览 -->
                             <Border Grid.Row="0"
@@ -1332,12 +1332,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Màu Nền Khi CD ≥ 0.8s"
+                                          Text="CD ≥ 0.8s 时背景颜色"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Hỗ trợ màu định dạng Hex 6 hoặc 8 ký tự"
+                                          Text="支持6位或8位 Hex 格式颜色"
                                           TextWrapping="Wrap" />
                             <!-- 颜色预览 -->
                             <Border Grid.Row="0"
@@ -1375,12 +1375,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Màu Số Khi CD &lt; 0.8s"
+                                          Text="CD &lt; 0.8s 时数字颜色"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Hỗ trợ màu định dạng Hex 6 hoặc 8 ký tự"
+                                          Text="支持6位或8位 Hex 格式颜色"
                                           TextWrapping="Wrap" />
                             <!-- 颜色预览 -->
                             <Border Grid.Row="0"
@@ -1418,12 +1418,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Màu Nền Khi CD &lt; 0.8s"
+                                          Text="CD &lt; 0.8s 时背景颜色"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Hỗ trợ màu định dạng Hex 6 hoặc 8 ký tự"
+                                          Text="支持6位或8位 Hex 格式颜色"
                                           TextWrapping="Wrap" />
                             <!-- 颜色预览 -->
                             <Border Grid.Row="0"
@@ -1467,13 +1467,13 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Nấu Ăn"
+                                  Text="自动烹饪"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Khi nấu ăn thủ công, tự động kết thúc ở trạng thái hoàn hảo (hãy tắt khi không dùng)
+                        手动烹饪时，自动在完美状态下结束烹饪（不用的时候请关闭）
                     </ui:TextBlock>
                 </Grid>
             </ui:CardControl.Header>
@@ -1497,13 +1497,13 @@
                         Grid.Column="0"
                         FontTypography="Body"
                         TextWrapping="Wrap"
-                        Text="Chiến Đấu Nhanh" />
+                        Text="快捷战斗" />
                     <ui:TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                         TextWrapping="Wrap"
-                        Text="Nhận diện thời gian thực nhân vật đang chiến đấu, giữ phím tắt để lặp macro chiến đấu của nhân vật hiện tại" />
+                        Text="实时识别当前出战角色，长按快捷后，循环执行当前角色战斗宏" />
                     <ui:ToggleSwitch
                         Grid.Row="0"
                         Grid.RowSpan="2"
@@ -1527,13 +1527,13 @@
                         Grid.Column="0"
                         FontTypography="Body"
                         TextWrapping="Wrap"
-                        Text="Cấu Hình Phím Tắt" />
+                        Text="快捷键配置" />
                     <ui:TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                         TextWrapping="Wrap"
-                        Text="Người dùng thường không nên sửa, cần cấu hình theo thời gian nhận diện chữ, quá thấp sẽ gây lỗi click" />
+                        Text="普通用户请不要修改此配置，需要根据文字识别耗时配置，太低会导致点击失败" />
                     <ui:TextBox
                         Grid.Row="0"
                         Grid.RowSpan="2"
@@ -1556,13 +1556,13 @@
                         Grid.Column="0"
                         FontTypography="Body"
                         TextWrapping="Wrap"
-                        Text="Thời Gian Chờ Giao Diện Dịch Chuyển Pop-Up Bên Phải (ms)" />
+                        Text="等待右侧传送弹出界面的时间（毫秒）" />
                     <ui:TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                         TextWrapping="Wrap"
-                        Text="Người dùng thường không nên sửa, không khuyến nghị dưới 80ms, quá thấp sẽ không nhận diện được nút dịch chuyển" />
+                        Text="普通用户请不要修改此配置，不建议低于80ms，太低会导致传送按钮识别不到" />
                     <ui:TextBox
                         Grid.Row="0"
                         Grid.RowSpan="2"

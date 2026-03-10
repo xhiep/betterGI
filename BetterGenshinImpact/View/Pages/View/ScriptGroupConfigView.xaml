@@ -19,7 +19,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Grid.Row="0" Title="Cài Đặt Nhóm Cấu Hình">
+        <ui:TitleBar Grid.Row="0" Title="配置组设置">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Resources/Images/logo.png" />
             </ui:TitleBar.Icon>
@@ -47,13 +47,13 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Cấu Hình Đi Bộ Theo Dõi Bản Đồ (Không bật thì dùng cấu hình điều kiện trong theo dõi bản đồ)"
+                                      Text="地图追踪行走配置（不启用则使用地图追踪内的条件配置）"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                       TextWrapping="Wrap">
-                            Buộc sửa số thứ tự nhân vật mở khiên/hồi máu trong đội khi đi bộ
+                            强制修改行走途中配置开盾/回血等角色在队伍内的编号
                         </ui:TextBlock>
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -75,12 +75,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Có Bật Tự Động Nhặt Không"
+                                      Text="是否开启自动拾取"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Khuyến nghị bật để nhặt vật rơi và vật thu thập trong đường đi"
+                                      Text="推荐开启以拾取路线中的掉落物、采集物"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -99,12 +99,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Có Bật Tự Động Dùng Thuốc Không"
+                                      Text="是否开启自动吃药"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Tự động dùng Túi dinh dưỡng di động khi phát hiện máu thấp"
+                                      Text="检测到红血状态时自动使用便携营养袋"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -123,12 +123,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Tên Đội Để Chuyển Sang (Để Trống Nếu Không Chuyển)"
+                                      Text="切换到队伍的名称（为空则不切换）"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Tên đội là tên bạn đặt thủ công trong game"
+                                      Text="队伍名称是你在游戏中手动设置的队伍名称文字"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -148,12 +148,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Buộc Đến Khu Vực Tượng Thần An Toàn Trước Khi Chuyển Đội"
+                                      Text="切换队伍前强制前往安全的神像区域"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Đến Tượng Thần Bảy Ngày để chuyển đội có thể tránh thất bại do trạng thái bất thường"
+                                      Text="前往七天神像切换队伍可以避免切换队伍时位于异常状态导致切换失败"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -172,12 +172,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Số Thứ Tự [Vị Trí Sinh Tồn] Trong Đội"
+                                      Text="【生存位】在队伍内的编号"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Vị trí nhân vật mở khiên/hồi máu, khuyến nghị Kirara, Layla"
+                                      Text="开盾/回血的角色位置，推荐琦良良、莱依拉"
                                       TextWrapping="Wrap" />
                         <ComboBox Grid.Row="0"
                                   Grid.RowSpan="2"
@@ -198,12 +198,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Khoảng Thời Gian Dùng Kỹ Năng Nguyên Tố [Vị Trí Sinh Tồn] (Giây)"
+                                      Text="【生存位】释放元素战技的间隔（秒）"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Có thể cần điền thời gian hơi lớn hơn CD kỹ năng thực tế"
+                                      Text="可能要填的时间略大于实际技能CD时间"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -223,19 +223,19 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="[Vị Trí Sinh Tồn] Có Giữ Kỹ Năng Nguyên Tố Không"
+                                      Text="【生存位】元素战技是否长按"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Zhongli giữ để mở khiên, Kirara giữ để biến thành mèo, v.v."
+                                      Text="钟离长按开盾、琦良良长按变猫等"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
                                          Grid.Column="1"
                                          IsChecked="{Binding PathingConfig.GuardianElementalSkillLongPress}"
-                                         OffContent="Nhấn Ngắn"
-                                         OnContent="Giữ Dài" />
+                                         OffContent="短按"
+                                         OnContent="长按" />
                     </Grid>
                     <Grid Margin="16">
                         <Grid.RowDefinitions>
@@ -249,12 +249,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Số Thứ Tự [Vị Trí Đi Bộ] Nhân Vật Di Chuyển Chính Trong Đội"
+                                      Text="【行走位】主要行走的角色在队伍内的编号"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Khuyến nghị giống vị trí sinh tồn, không có yêu cầu đặc biệt thì không cần cấu hình"
+                                      Text="推荐和生存位相同，没有特殊需求无需配置"
                                       TextWrapping="Wrap" />
                         <ComboBox Grid.Row="0"
                                   Grid.RowSpan="2"
@@ -276,12 +276,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Khoảng Thời Gian Dùng Đạo Cụ Nhỏ (ms)"
+                                      Text="使用小道具的间隔时间（毫秒）"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Tự Động Dùng Đạo Cụ Nhỏ Khi Di Chuyển, Nhập 0 Để Không Dùng"
+                                      Text="在移动期间自动使用小道具，填0为不使用"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -303,12 +303,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Chỉ Hồi Phục Khi Ở Điểm Dịch Chuyển"
+                                      Text="只在传送点时恢复"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Chỉ đến Tượng Thần hồi phục khi đường đi ở điểm dịch chuyển"
+                                      Text="只有路径在传送点时，才会去七天神像恢复"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -328,12 +328,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Không Thực Hiện Vào Một Số Giờ Nhất Định"
+                                      Text="不在某时执行"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Sau khi hoàn thành một tuyến đường, nếu thời gian hiện tại nằm trong khoảng đã cài (0-23), tác vụ theo dõi này sẽ bị bỏ qua. Thích hợp cho tác vụ dự phòng chạy liên tục, ví dụ muốn chạy qua đêm và bắt đầu tác vụ mới sau 4 giờ."
+                                      Text="当执行完一个路线后，如果时间为当前配置的时间（范围：0-23），则此地图追踪任务后续都将都跳过，适用于连续执行的兜底任务，例如想通宵挂机，并且在4点后，开始执行新的任务。"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -354,12 +354,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Không Hiển Thị Trong Tác Vụ Liên Tục"
+                                      Text="不在连续任务中显示"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Không hiển thị nhóm cấu hình này khi nhấp thực hiện liên tục"
+                                      Text="点击连续执行时，不显示该配置组"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -388,12 +388,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Cấu Hình Chu Kỳ Thực Hiện"
+                                                  Text="执行周期配置"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Quyết định có thực hiện nhóm cấu hình này không dựa trên đơn vị ngày"
+                                                  Text="以天为单位来决定是否执行此配置组"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -415,12 +415,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Thời Gian Phân Ranh"
+                                                  Text="分界时间"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Thời gian phân ranh, thường điền 0 hoặc 4; nếu 0 thì ngày bắt đầu từ 0h, nếu 4 thì ngày bắt đầu từ 4h sáng, trước 4h tính là ngày hôm trước."
+                                                  Text="分界时间，一般填0或4，如果填0则当天从0点开始算，如果填4，则当天从凌晨4点开始算，小于4点算前一天。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -440,12 +440,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Thời Gian Phân Ranh Tham Chiếu Múi Giờ Máy Chủ"
+                                                  Text="分界时间参考服务器时区"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-            Text="Khi bật, thời gian phân ranh trên sẽ dựa trên Cài Đặt Múi Giờ Máy Chủ. Không bật thì dùng giờ địa phương máy tính (hành vi cũ)."
+                                                  Text="启用后，上面的分界时间将基于“服务器时区设置”计算。不启用则使用电脑本地时间（旧版行为）。"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -465,12 +465,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Chu Kỳ"
+                                                  Text="周期"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Các vật liệu khác nhau có chu kỳ khác nhau, cài theo nhu cầu; ví dụ quặng là 3, vật liệu đột phá là 2, hoặc cài theo số ngày muốn thực hiện."
+                                                  Text="不同材料有不同的周期，按需配置，如矿石类是3、突破材料是2，或按照自已想几天执行一次配置即可。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -490,12 +490,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Số Thứ Tự Thực Hiện"
+                                                  Text="执行序号"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Số thứ tự chu kỳ thực hiện; lấy số ngày theo timestamp (điều chỉnh theo thời gian phân ranh), chia lấy dư cho chu kỳ rồi cộng 1; nếu kết quả khớp với cấu hình thì thực hiện, ngược lại bỏ qua. Hiểu đơn giản là ngày thứ mấy trong chu kỳ."
+                                                  Text="执行周期序号，按时间戳对应的天数(会根据分界时间修正)，对周期求余值加1，得出的值和配置执一致就会执行，否则跳过任务。可以理解为周期内第几天执行。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -517,19 +517,19 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Tính Số Thứ Tự Thực Hiện Hôm Nay"
+                                                  Text="计算当天执行序号"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Nhấp nút tính để tính số thứ tự thực hiện hôm nay (hôm nay là ngày thứ mấy trong chu kỳ)."
+                                                  Text="点击计算按钮，可计算出当天执行序号（今天是周期内的第几天）。"
                                                   TextWrapping="Wrap" />
                                     <ui:Button Grid.Row="0"
                                                Grid.RowSpan="2"
                                                Grid.Column="1"
                                                Margin="0,0,12,0"
                                                Command="{Binding GetExecutionOrderCommand}"
-                                               Content="Tính"
+                                               Content="计算"
                                                Icon="{ui:SymbolIcon Archive24}" />
                                    </Grid>
                                
@@ -560,12 +560,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Cấu Hình Bỏ Qua Thực Hiện"
+                                                  Text="跳过执行配置"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Cấu hình bỏ qua các tác vụ lịch biểu đã hoàn thành trong thời gian chỉ định (JS và các tác vụ không báo lỗi tính là thành công; tác vụ theo dõi đường đi chỉ tính thành công khi hoàn thành đường đi cuối cùng)"
+                                                  Text="跳过指定时间内完成的调度器任务（js等未抛出异常则算成功，路径追踪任务，走完最后路径才算成功）的配置"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -587,12 +587,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Chiến Lược Bỏ Qua Thực Hiện"
+                                                  Text="跳过执行策略"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Bỏ qua tác vụ dựa trên các chiến lược khác nhau"
+                                                  Text="根据不同的策略来跳过任务"
                                                   TextWrapping="Wrap" />
                                     <ComboBox Grid.Row="0"
                                               Grid.RowSpan="2"
@@ -615,12 +615,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Thời Gian Phân Ranh"
+                                                  Text="分界时间"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Thời gian phân ranh, thường điền 0 hoặc 4; 0 tính từ 0h, 4 tính từ 4h sáng, trước 4h tính là ngày hôm trước. Nhập số nhỏ hơn 0 hoặc lớn hơn 23 (như -1) thì không kích hoạt; phù hợp cho tình huống có giờ reset cố định và không lặp lại trong ngày."
+                                                  Text="分界时间，一般填0或4，如果填0则当天从0点开始算，如果填4，则当天从凌晨4点开始算，小于4点算前一天，填写小于0的数或大于23，如-1，则不启用，适用于考虑固定刷新时间，且一天内不重复执行的情况。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -640,12 +640,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Thời Gian Phân Ranh Tham Chiếu Múi Giờ Máy Chủ"
+                                                  Text="分界时间参考服务器时区"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-            Text="Khi bật, thời gian phân ranh trên sẽ dựa trên Cài Đặt Múi Giờ Máy Chủ. Không bật thì dùng giờ địa phương máy tính (hành vi cũ)."
+                                                  Text="启用后，上面的分界时间将基于“服务器时区设置”计算。不启用则使用电脑本地时间（旧版行为）。"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -665,12 +665,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Số Giây Khoảng Cách Với Lần Chạy Trước"
+                                                  Text="和上次运行的间隔秒数"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Nếu khoảng thời gian với lần chạy trước nhỏ hơn thời gian cài đặt thì bỏ qua; nhỏ hơn 0 thì không kích hoạt; đơn vị giây."
+                                                  Text="和上一次运行时间间隔时间小于配置时间，则跳过执行，小于0时不启用，出于精度考虑，这里使用秒为单位。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -690,12 +690,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Tham Chiếu Tính Thời Gian Khoảng Cách"
+                                                  Text="间隔时间计算参照"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Dựa vào cấu hình quyết định khoảng thời gian tính theo giờ bắt đầu hay giờ kết thúc"
+                                                  Text="根据配置决定，间隔时间是根据开始时间算，还是根据结束时间算"
                                                   TextWrapping="Wrap" />
                                     <ComboBox Grid.Row="0"
                                               Grid.RowSpan="2"
@@ -731,12 +731,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Ưu Tiên Thực Hiện Nhóm Cấu Hình Khác"
+                                                  Text="优先执行其他配置组"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Trước mỗi tác vụ, sẽ kiểm tra xem nhóm cấu hình ưu tiên có tác vụ có thể chạy không; nếu có thì chạy nhóm đó trước. Nhóm được cấu hình phải bật Bỏ Qua Thực Hiện, không hỗ trợ lồng nhau. Có thể dùng để tối ưu thời gian, ưu tiên vật liệu."
+                                                  Text="每个任务开始前，会先检查优先执行的其他配置组，是否有任务可以执行，如果可以执行，则会先执行其他配置组的任务，所配置的其他任务组，必须开启跳过执行配置，不支持套娃，才会生效。可用于卡时间、优先材料等提高收益。"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -758,12 +758,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Tên Nhóm Cấu Hình"
+                                                  Text="配置组名称"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Tên nhóm cấu hình; nhiều nhóm dùng dấu phẩy; chỉ có hiệu lực khi bật Bỏ Qua Thực Hiện."
+                                                  Text="配置组名，多个用逗号分隔，只有开启跳过执行配置，才会生效。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -783,12 +783,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Số Lần Thực Hiện Thêm"
+                                                  Text="额外执行次数"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Số lần thử thêm tối đa khi nhóm cấu hình này chạy tác vụ ưu tiên (ngăn lặp vô hạn do thất bại hoặc CD quá ngắn). Bộ đếm này sẽ xóa khi đóng tác vụ."
+                                                  Text="需要优先的任务，在此配置组执行时，最多尝试的额外次数（失败或者CD过短导致依旧满足条件），防止无限循环，另外，此计数关闭任务，继续执行会清空。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -823,13 +823,13 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Cấu Hình Chiến Đấu"
+                                      Text="战斗配置"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                       TextWrapping="Wrap">
-                            Cần bật cấu hình theo dõi bản đồ bên trên; bật mục này để đặt cấu hình chiến đấu riêng, tắt thì dùng cấu hình trong Tác Vụ Độc Lập
+                            需开启上方地图追踪配置，开启此项可制定战斗配置，关闭此项，则用于独立任务中的配置
                         </ui:TextBlock>
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -860,26 +860,26 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Chọn Chiến Lược Chiến Đấu"
+                                      Text="选择战斗策略"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Dùng Cho Chiến Đấu"
+                                      Text="用于战斗"
                                       TextWrapping="Wrap" />
                         <ui:Button Grid.Row="0"
                                    Grid.RowSpan="2"
                                    Grid.Column="1"
                                    Margin="0,0,12,0"
                                    Command="{Binding OpenLocalScriptRepoCommand}"
-                                   Content="Kho Script"
+                                   Content="脚本仓库"
                                    Icon="{ui:SymbolIcon Archive24}" />
                         <ui:Button Grid.Row="0"
                                    Grid.RowSpan="2"
                                    Grid.Column="2"
                                    Margin="0,0,12,0"
                                    Command="{Binding OpenFightFolderCommand}"
-                                   Content="Mở Thư Mục" />
+                                   Content="打开目录" />
                         <ComboBox Grid.Row="0"
                                   Grid.RowSpan="2"
                                   Grid.Column="3"
@@ -906,12 +906,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Tối Ưu Nhân Vật Ra Chiêu Theo CD Kỹ Năng"
+                                      Text="根据技能CD优化出招人员"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Dựa trên nhân vật và CD để quyết định bỏ qua ra chiêu khi CD nguyên tố chưa xong. Nhập tên nhân vật hoặc tên+số CD (phân cách bằng dấu phẩy), nhiều mục dùng dấu chấm phẩy. Ví dụ: Baizhu;Zhongli,12;. Nếutên nhân vật thì dùng CD tích hợp (hoặc điền số ≤0); nếu là tên+số thì số đó là CD ra chiêu (giây)."
+                                      Text="根据填入人或人和cd，来决定当此人元素战技cd未结束时，跳过此人出招，来优化战斗流程，可填入人名或人名数字（用逗号分隔），多种用分号分隔，例如:白术;钟离,12;，如果人名，则用内置cd检查（或填入数字也小于0），如果是人名和数字，则把数字当做出招cd(秒)。"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -943,12 +943,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Tự Động Phát Hiện Kết Thúc Chiến Đấu"
+                                                  Text="自动检测战斗结束"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Khi phát hiện chiến đấu đã kết thúc, dừng tính năng tự động chiến đấu"
+                                                  Text="检测到战斗已经结束的情况下，停止自动战斗功能"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -987,12 +987,12 @@
                                                     <ui:TextBlock Grid.Row="0"
                                                                   Grid.Column="0"
                                                                   FontTypography="Body"
-                                                                  Text="Kiểm Tra Kết Thúc Chiến Đấu Nhanh Hơn"
+                                                                  Text="更快检查结束战斗"
                                                                   TextWrapping="Wrap" />
                                                     <ui:TextBlock Grid.Row="1"
                                                                   Grid.Column="0"
                                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                                  Text="Kiểm tra nhanh kết thúc chiến đấu; trong một vòng script có thể kiểm tra sau mỗi số giây nhất định (mặc định 5) hoặc sau khi nhân vật chỉ định thực hiện thao tác."
+                                                                  Text="快速检查战斗结束，在一轮脚本中，可以每隔一定秒数（默认为5）或指定角色操作后，去检查（在每个角色完成该轮脚本时）。"
                                                                   TextWrapping="Wrap" />
                                                     <ui:ToggleSwitch Grid.Row="0"
                                                                      Grid.RowSpan="2"
@@ -1014,12 +1014,12 @@
                                                     <ui:TextBlock Grid.Row="0"
                                                                   Grid.Column="0"
                                                                   FontTypography="Body"
-                                                                  Text="Tham Số Kiểm Tra Kết Thúc Chiến Đấu Nhanh Hơn"
+                                                                  Text="更快检查结束战斗参数"
                                                                   TextWrapping="Wrap" />
                                                     <ui:TextBlock Grid.Row="1"
                                                                   Grid.Column="0"
                                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                                  Text="Tham số kiểm tra kết thúc chiến đấu nhanh: điền số hoặc tên nhân vật, phân cách bằng dấu chấm phẩy. VD: 5;Baizhu;Zhongli;. Nếu là số (≤0 thì không kiểm tra theo thời gian, đơn vị giây) sẽ đặt khoảng kiểm tra; nếu là tên nhân vật sẽ kiểm tra sau khi nhân vật đó thực hiện một vòng thao tác. Đồng thời mỗi vòngthúc chiến đấu thì dừng kiểm tra."
+                                                                  Text="快速检查战斗结束的参数，可填入数字和人名，多种用分号分隔，例如:5;白术;钟离;，如果是数字（小于等于0则不会根据时间去检查，单位为秒），则指定检查间隔，如果是人名，则该角色执行一轮操作后进行检查。同时每轮结束后检查不变。"
                                                                   TextWrapping="Wrap" />
                                                     <ui:TextBox Grid.Row="0"
                                                                 Grid.RowSpan="2"
@@ -1050,7 +1050,7 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Xoay Để Tìm Vị Trí Kẻ Địch (Tính Năng Thử Nghiệm)"
+                                                  Text="旋转寻找敌人位置（实验性功能）"
                                                   Margin="0,0,5,0"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -1060,7 +1060,7 @@
                                                   FontTypography="Body"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                                   FontSize="9"
-                                                  Text="Tốc Độ Xoay (Khuyến Nghị ~360° Mỗi Lần):"
+                                                  Text="旋转速度(建议单次360°左右)："
                                                   Margin="5,8,0,0"
                                                   HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"
@@ -1083,7 +1083,7 @@
                                                   VerticalAlignment="Stretch"
                                                   Margin="0,0,5,0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                Text="(Khuyến nghị ~1s Kiểm Tra Kết Thúc Nhanh) Trước khi mở giao diện đội kiểm tra kết thúc, kiểm tra kẻ địch trước. (Q trước: kiểm tra kết thúc trước khi dùng Q. Thử Quay Về Địch: tìm địch khi bắt đầu, cố quay về hướng địch)"
+                                                  Text="(建议配合1秒左右“更快检测结束战斗”) 打开队伍界面检测战斗结束前，先检测敌人，判断是否需靠近敌或旋转寻找敌人。(Q前检查：释放Q技能前检测是否结束战斗。尝试面敌：开战寻敌，战斗尝试面向敌人)"
                                                   TextWrapping="Wrap" />
                                     
                                     <ui:ToggleSwitch Grid.Row="0"
@@ -1099,7 +1099,7 @@
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                                   Margin="0,20,25,-10"
                                                   FontTypography="Body"
-                                                  Text="Kiểm Tra Trước Q"
+                                                  Text="Q前检测"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="1"
                                                      Grid.Column="3"
@@ -1122,7 +1122,7 @@
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                                   Margin="0,0,25,-45"
                                                   FontTypography="Body"
-                                                  Text="Thử Quay Mặt Về Địch"
+                                                  Text="尝试面敌"
                                                   TextWrapping="Wrap" />
                                 </Grid>
                                 
@@ -1138,12 +1138,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Độ Trễ Kiểm Tra Kết Thúc Chiến Đấu"
+                                                  Text="检查战斗结束的延时"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Độ trễ kiểm tra kết thúc chiến đấu. Mặc định 1.5s. Có thể đặt độ trễ riêng cho từng nhân vật; nhân vật không được chỉ định sẽ dùng giá trị mặc định. Định dạng: 2.5;Baizhu,1.5;Zhongli,1.0;"
+                                                  Text="检查战斗结束的延时，不同角色招式结束后的延时不一定相同，默认为1.5秒。也可以指定特定角色之后延时多少秒检查，未指定角色名，则默认为该值。格式如：2.5;白术,1.5;钟离,1.0;"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -1163,12 +1163,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Độ Trễ Kiểm Tra Sau Khi Nhấn Phím"
+                                                  Text="按键触发后检查延时"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Độ trễ kiểm tra màu sắc màn hình sau khi nhấn chuyển đội, mặc định 0.45s. Nếu thường xuyên nhận diện sai, hãy tăng giá trị này lên, ví dụ 0.75. Đảm bảo độ trễ không thực sự đóng giao diện cấu hình đội."
+                                                  Text="按下切换队伍后去检查屏幕色块的延时，默认为0.45秒。若频繁误判可以适当提高这个值，比如到0.75。确保这个延时不会真的把队伍配置界面切出来。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -1198,12 +1198,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Nhân Vật Hỗ Trợ/Khiên Ưu Tiên Dùng Kỹ Năng"
+                                          Text="盾奶位角色优先释放技能"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Phát hiện và dùng kỹ năng nguyên tố E của nhân vật hỗ trợ/khiên trong thời gian thực (bỏ trống để tắt)"
+                                          Text="战斗过程实时检测和释放盾奶位角E战技（空选为关闭此功能）"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardExpander.Header>
@@ -1237,12 +1237,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Vị Trí Nhân Vật Hỗ Trợ/Khiên Trong Đội"
+                                      Text="盾奶位角色在队伍中的位置"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Phát Hiện Tình Trạng Kỹ Năng Vị Trí Hỗ Trợ/Khiên Theo Thời Gian Thực"
+                                      Text="实时检测盾奶位技能情况"
                                       TextWrapping="Wrap" />
                         
                         <ComboBox Grid.Row="0"
@@ -1260,7 +1260,7 @@
                                       Margin="0,0,8,0"
                                       HorizontalAlignment="Right"
                                       FontTypography="Body"
-                                      Text="Vô Hiệu Chiến Lược Chiến Đấu Cho Nhân Vật Này"
+                                      Text="禁用该角色战斗策略"
                                       TextWrapping="Wrap"
                                       Style="{StaticResource GuardianVisibilityStyle}"/>
 
@@ -1269,7 +1269,7 @@
                                       Margin="0,0,10,0"
                                       HorizontalAlignment="Right"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Tự Động Dùng Kỹ Năng E hoặc Q"
+                                      Text="自动释放E或Q战技"
                                       TextWrapping="Wrap"
                                       Style="{StaticResource GuardianVisibilityStyle}"/>
                         
@@ -1280,7 +1280,7 @@
                                        FontSize="8"
                                        HorizontalAlignment="Center"
                                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                       Text="Kỹ Năng E"
+                                       Text="E战技"
                                        TextWrapping="Wrap"
                                        Style="{StaticResource GuardianVisibilityStyle}"/>
 
@@ -1309,7 +1309,7 @@
                                        FontSize="8"
                                        HorizontalAlignment="Center"
                                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                       Text="Bùng Phát Q"
+                                       Text="Q爆发"
                                        TextWrapping="Wrap"
                                        Style="{StaticResource GuardianVisibilityStyle}"/>
                         
@@ -1338,7 +1338,7 @@
                                       FontTypography="Body"
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Center"
-                                      Text="Nhận diện kỹ năng vị trí hỗ trợ/khiên nhấn ngắn hay giữ dài; Tắt: nhấn ngắn / Bật: giữ dài"
+                                      Text="检测盾奶位战技短按或长按，禁用:短按 / 启用:长按"
                                       TextWrapping="Wrap" 
                                       Style="{StaticResource GuardianVisibilityStyle}"/>
                         
@@ -1384,12 +1384,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Quét Cột Sáng Đồ Rơi"
+                                                  Text="扫描掉落物光柱"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Sau khi chiến đấu, xoay góc nhìn để tìm cột sáng đồ rơi và tiến lại gần (chỉ dùng khi không có Kazuha)"
+                                                  Text="战斗结束后旋转视角寻找掉落物光柱并靠近（仅在无万叶时备用）"
                                                   TextWrapping="Wrap" />
                                     <ui:ToggleSwitch Grid.Row="0"
                                                      Grid.RowSpan="2"
@@ -1411,12 +1411,12 @@
                                     <ui:TextBlock Grid.Row="0"
                                                   Grid.Column="0"
                                                   FontTypography="Body"
-                                                  Text="Thời Gian Quét Cột Sáng Đồ Rơi"
+                                                  Text="扫描掉落物光柱时长"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBlock Grid.Row="1"
                                                   Grid.Column="0"
                                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                                  Text="Đơn vị giây. 0 nghĩa là không quét cột sáng."
+                                                  Text="单位为秒。0表示不扫描掉落物光柱。"
                                                   TextWrapping="Wrap" />
                                     <ui:TextBox Grid.Row="0"
                                                 Grid.RowSpan="2"
@@ -1441,7 +1441,7 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Hành Động Gom Vật Liệu"
+                                      Text="聚集材料动作"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
@@ -1450,13 +1450,13 @@
                                       FontSize="10"
                                       FontTypography="Body"
                                       VerticalAlignment="Bottom"
-                                      Text="(Nhặt Lần Hai: Jean nhặt trống lần đầu rồi nhặt lại. Kazuha dù vừa dùng kỹ năng cũng sẽ buộc nhặt lại.)"
+                                      Text="(二次拾取：琴首次拾取空,再次拾取。即使万叶刚使用过技能，也会强制再次拾取。)"
                                       TextWrapping="Wrap" />
                         
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Sau chiến đấu, nếu có (Kazuha/Jean), thực hiện giữ E để gom vật liệu"
+                                      Text="战斗结束后，如存在(万叶/琴)，则执行长E聚集材料动作"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -1479,7 +1479,7 @@
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                       Margin="0,0,38,26"
                                       FontTypography="Body"
-                                      Text="Nhặt Lần Hai"
+                                      Text="二次拾取"
                                       TextWrapping="Wrap" />
                     </Grid>
                     <Grid Margin="16">
@@ -1494,12 +1494,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Ngưỡng Số Lần Chiến Đấu Để Nhặt Đồ"
+                                      Text="拾取战斗人次阈值"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Khi số lần chiến đấu nhỏ hơn ngưỡng này và chiến đấu kết thúc, sẽ không kích hoạt nhặt đồ và cấu hình Kazuha. Chỉ có hiệu lực khi ≥2."
+                                      Text="拾取战斗人次阈值,当战斗人次小于一定次数，就结束战斗情况下，不触发拾取掉落物和万叶拾取配置，只有不小于2时才生效。"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -1520,12 +1520,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Chế Độ Chỉ Nhặt Đồ Rơi Tinh Anh"
+                                      Text="只拾取精英掉落模式"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Cần hỗ trợ file đường đi, cần tích Phân Biệt Nhặt Đồ Theo Quái mới có hiệu lực. Có thể xem qua tab kho; quái tinh anh có thể đánh dấu trong Thêm > Cấu Hình Mở Rộng > Nhãn Quái của điểm. Chỉ nhặt các điểm được đánh dấu tinh anh hoặc huyền thoại. Quái thường cho phép tự động nhặt: đồ rơi dưới chân trong chiến đấu có thể tự nhặt, nhưng không thực hiện nhặt Kazuha và tự động nhặt. Không phải tinh anh - tắt nhặt: đồ rơi dưới chân trong chiến đấu cũng không tự nhặt."
+                                      Text="需要路径文件支持，需勾选区分怪物拾取才生效，可通过仓库标签查看，精英怪物可以在点位的更多》扩展配置》怪物标签中，可标记。只拾取标记为精英或传奇的点位。非精英允许自动拾取：战斗过程中掉落脚下的可以自动拾取，但不会执行万叶拾取和自动拾取配置逻辑。非精英关闭拾取：战斗过程中掉落到脚下的也不会自动拾取。"
                                       TextWrapping="Wrap" />
                         <ComboBox Grid.Row="0"
                                   Grid.RowSpan="2"
@@ -1549,12 +1549,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Tên Đội Kazuha Nhặt Đồ"
+                                      Text="万叶拾取队伍名"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Sau chiến đấu, nếu không có Kazuha thì chuyển sang đội có Kazuha (chỉ chuyển khi bật nhặt Kazuha và đã điền tên đội). Phù hợp khi cần thêm một người để nông kinh nghiệm thay vào vị trí của Kazuha; chiến lược chiến đấu nên tương thích với cả hai đội."
+                                      Text="战斗结束后，如果不存在万叶，则切换至存在万叶的队伍（基于开启万叶拾取情况下，并且填写队伍名才会切换），适用于需要多一个人刷经验时，替换调万叶的位置，战斗策略建议兼容两个队伍的，以防止队伍切换不成功也能继续战斗。"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -1577,12 +1577,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Chiến Đấu Hết Giờ (Giây)"
+                                  Text="自动战斗超时(秒)"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Tự động dừng chiến đấu sau khi đạt thời gian chỉ định"
+                                  Text="到达指定时间后，自动停止战斗"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -1595,12 +1595,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="2"
                                   FontTypography="Body"
-                                  Text="Phát Hiện Bơi Lội (Trong Quá Trình Tự Động Chiến Đấu)"
+                                  Text="游泳检测(自动战斗过程中)"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="2"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Quay về điểm chiến đấu trước, nếu thất bại thì đến Tượng Thần"
+                                  Text="先回战斗节点，失败则去七天神像"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -1631,17 +1631,17 @@
                                   FontTypography="Body"
                                   Text=""
                                   TextWrapping="Wrap">
-                            Cấu Hình Tự Động Ăn Thức Ăn -
+                            自动吃食物配置 -
                             <Hyperlink Command="{Binding GoToAutoEatUrlCommand}"
                                    Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
-                                Nhấp để xem cách gọi
+                                点击查看调用方法
                             </Hyperlink>
                         </ui:TextBlock>
                         <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-            Cấu hình thức ăn Buff cho script JS gọi
+                            供JS脚本调用Buff类食物配置；食物名称会忽略“美味的”等前缀，请填不带前缀的名称
                         </ui:TextBlock>
                     </Grid>
                 </ui:CardExpander.Header>
@@ -1658,13 +1658,13 @@
                         <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tên Món Ăn Tăng Tấn Công Mặc Định"
+                                  Text="默认的攻击类料理名称"
                                   TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                            Dùng khi tham số đầu vào "foodEffectType":1
+                            入参"foodEffectType":1时使用
                         </ui:TextBlock>
                         <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -1687,13 +1687,13 @@
                         <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tên Món Ăn Phiêu Lưu Mặc Định"
+                                  Text="默认的冒险类料理名称"
                                   TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                            Dùng khi tham số đầu vào "foodEffectType":2
+                            入参"foodEffectType":2时使用
                         </ui:TextBlock>
                         <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -1716,13 +1716,13 @@
                         <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tên Món Ăn Tăng Phòng Thủ Mặc Định"
+                                  Text="默认的防御类料理名称"
                                   TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                            Dùng khi tham số đầu vào "foodEffectType":3
+                            入参"foodEffectType":3时使用
                         </ui:TextBlock>
                         <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -1751,13 +1751,13 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Cấu Hình Thực Thi Shell"
+                                      Text="Shell执行配置"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                       TextWrapping="Wrap">
-                            Thực thi lệnh Shell trong nhóm này sẽ dùng cấu hình ở đây. Nếu tắt mục này thì dùng cấu hình mặc định.
+                            在本组中执行Shell命令会使用这里的配置。如关闭此项，则使用默认配置。
                         </ui:TextBlock>
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -1779,12 +1779,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Vô Hiệu Tác Vụ Shell"
+                                      Text="禁用Shell任务"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Nếu bật, tác vụ Shell sẽ bị bỏ qua"
+                                      Text="如果打开，则Shell任务会被跳过执行"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -1803,12 +1803,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Thời Gian Thực Thi Shell Hết Hạn"
+                                      Text="Shell执行超时"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Thời gian chờ lệnh trả về tối đa, đơn vị giây. Nếu thời gian &lt;=0 thì không chờ, trả về ngay."
+                                      Text="最长等待命令返回的时间，单位秒。如果时间&lt;=0则不等待，直接返回。"
                                       TextWrapping="Wrap" />
                         <ui:TextBox Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -1828,12 +1828,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Ẩn Cửa Sổ Thực Thi Lệnh"
+                                      Text="隐藏命令执行窗口"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Khuyến nghị bật, nếu không sẽ có một khung đen lớn."
+                                      Text="推荐启用，不然会有一个大黑框。"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -1852,12 +1852,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Ghi Đầu Ra Lệnh Vào Nhật Ký"
+                                      Text="在Log中记录命令输出"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Khi bật, nếu lệnh có đầu ra sẽ hiển thị trong nhật ký; tắt thì không hiển thị. (Chỉ hiển thị khi lệnh thực thi thành công và có đầu ra)"
+                                      Text="打开的话若命令有输出会在Log中显示，关闭则不显示。(只有命令执行成功且有输出才会显示)"
                                       TextWrapping="Wrap" />
                         <ui:ToggleSwitch Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -1884,13 +1884,13 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Cấu Hình Hành Động Theo Dõi Bản Đồ"
+                                      Text="地图追踪动作配置"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                       TextWrapping="Wrap">
-                            Khi theo dõi bản đồ đến điểm mục tiêu sẽ thực hiện một số hành động; một số hành động phải cấu hình vị trí nhân vật trong đội
+                            地图追踪到达目标点的时候会执行一些动作，有些动作必须配置对应角色在队伍内的位置
                         </ui:TextBlock>
 
                     </Grid>
@@ -1908,12 +1908,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Số Thứ Tự Nhân Vật Thực Hiện Tấn Công Thường Trong Đội"
+                                      Text="进行普通攻击的角色在队伍内的编号"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Thường dùng để thu thập thực vật cần phản ứng nguyên tố"
+                                      Text="一般用于收集需要元素反应才能采集的植物"
                                       TextWrapping="Wrap" />
                         <ComboBox Grid.Row="0"
                                   Grid.RowSpan="2"
@@ -1934,12 +1934,12 @@
                         <ui:TextBlock Grid.Row="0"
                                       Grid.Column="0"
                                       FontTypography="Body"
-                                      Text="Số Thứ Tự Nhân Vật Dùng Kỹ Năng Nguyên Tố Trong Đội"
+                                      Text="释放元素战技的角色在队伍内的编号"
                                       TextWrapping="Wrap" />
                         <ui:TextBlock Grid.Row="1"
                                       Grid.Column="0"
                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                      Text="Dùng để thu thập Đá Hổ Phách và các vật liệu khác"
+                                      Text="用于采集石珀等"
                                       TextWrapping="Wrap" />
                         <ComboBox Grid.Row="0"
                                   Grid.RowSpan="2"

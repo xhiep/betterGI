@@ -85,7 +85,7 @@ public class AutoLeyLineOutcropTask : ISoloTask
     private bool _overlayDisplayOriginalValue;
     private DateTime _lastMaskBringTopTime = DateTime.MinValue;
 
-    public string Name => "Tự Động Hoa Địa Mạch";
+    public string Name => "自动地脉花";
 
     public AutoLeyLineOutcropTask(AutoLeyLineOutcropParam taskParam, bool oneDragonMode = false)
     {
@@ -1180,7 +1180,7 @@ public class AutoLeyLineOutcropTask : ISoloTask
     private static string BuildAutoFightStrategyPath(AutoFightConfig config)
     {
         var path = Global.Absolute(@"User\AutoFight\" + config.StrategyName + ".txt");
-        if ("根据队伍自动选择".Equals(config.StrategyName) || "Tự động chọn theo đội hình".Equals(config.StrategyName))
+        if ("根据队伍自动选择".Equals(config.StrategyName))
         {
             path = Global.Absolute(@"User\AutoFight\");
         }
@@ -1522,9 +1522,7 @@ public class AutoLeyLineOutcropTask : ISoloTask
         foreach (var res in list)
         {
             var text = res.Text;
-            if (text.Contains("激活地脉之花", StringComparison.Ordinal) || text.Contains("选择激活方式", StringComparison.Ordinal)
-                || text.Contains("Kích hoạt Hoa Địa Mạch", StringComparison.OrdinalIgnoreCase) || text.Contains("Chọn cách kích hoạt", StringComparison.OrdinalIgnoreCase)
-                || text.Contains("Kích hoạt", StringComparison.OrdinalIgnoreCase))
+            if (text.Contains("激活地脉之花", StringComparison.Ordinal) || text.Contains("选择激活方式", StringComparison.Ordinal))
             {
                 return true;
             }

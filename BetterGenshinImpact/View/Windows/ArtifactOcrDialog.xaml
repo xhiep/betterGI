@@ -53,12 +53,12 @@
                            Margin="5"
                            Appearance="Primary"
                            Click="BtnOkClick"
-                           Content="Làm Mới"
+                           Content="刷新"
                            IsDefault="True" />
                 <ui:Button Name="BtnCancel"
                            Margin="5"
                            Click="BtnCancelClick"
-                           Content="Thoát"
+                           Content="退出"
                            IsCancel="True" />
             </StackPanel>
         </StackPanel>

@@ -338,7 +338,7 @@ namespace BetterGenshinImpact.GameTask
 
                 if (bitmap == null)
                 {
-                    _logger.LogWarning("Chụp màn hình thất bại!");
+                    _logger.LogWarning("截图失败!");
                     return;
                 }
 
@@ -490,7 +490,7 @@ namespace BetterGenshinImpact.GameTask
                 }
                 catch (Exception)
                 {
-                    _logger.LogInformation("Chụp màn hình thất bại, không lấy được hình ảnh");
+                    _logger.LogInformation("截图失败，未获取到图像");
                     return;
                 }
 

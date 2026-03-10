@@ -470,7 +470,7 @@ public class AutoDomainTask : ISoloTask
 
                 using var confirmRectArea2 = ra.Find(RecognitionObject.Ocr(ra.Width * 0.263, ra.Height * 0.32,
                     ra.Width - ra.Width * 0.263 * 2, ra.Height - ra.Height * 0.32 - ra.Height * 0.353));
-                if (confirmRectArea2.IsExist() && (confirmRectArea2.Text.Contains("是否仍要挑战该秘境") || confirmRectArea2.Text.Contains("tiếp tục khiêu chiến") || confirmRectArea2.Text.Contains("nhựa")))
+                if (confirmRectArea2.IsExist() && confirmRectArea2.Text.Contains("是否仍要挑战该秘境"))
                 {
                     Logger.LogWarning("自动秘境：检测到树脂不足提示：{Text}", confirmRectArea2.Text);
                     throw new Exception("当前树脂不足，自动秘境停止运行。");

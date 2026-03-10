@@ -207,11 +207,10 @@ public class GoToCraftingBenchTask
     /// <returns></returns>
     public async Task GoToCraftingBench(string country, CancellationToken ct)
     {
-        var cnCountry = MapCountryToChinese(country);
-        var task = PathingTask.BuildFromFilePath(Global.Absolute(@$"GameTask\Common\Element\Assets\Json\合成台_{cnCountry}.json"));
+        var task = PathingTask.BuildFromFilePath(Global.Absolute(@$"GameTask\Common\Element\Assets\Json\合成台_{country}.json"));
         if (task == null)
         {
-            throw new Exception($"Không thể tải tệp theo dõi bản đồ cho: {country} ({cnCountry})");
+            throw new Exception("地图追踪文件加载失败");
         }
 
         var pathingTask = new PathExecutor(ct)
@@ -220,7 +219,7 @@ public class GoToCraftingBenchTask
             {
                 Enabled = true,
                 AutoSkipEnabled = true,
-                AutoRunEnabled = cnCountry != "枫丹",
+                AutoRunEnabled = country != "枫丹",
             },
             EndAction = region => Bv.FindFAndPress(region, text: this.craftLocalizedString)
         };
@@ -246,25 +245,11 @@ public class GoToCraftingBenchTask
                 // 最后 check
                 if (!IsInCraftingTalkUi())
                 {
-                    throw new Exception("Chưa vào giao diện đối thoại với Bàn chế tạo");
+                    throw new Exception("未进入和合成台交互对话界面");
                 }
             
             }
         }
-    }
-
-    private string MapCountryToChinese(string country)
-    {
-        return country switch
-        {
-            "Mondstadt" => "蒙德",
-            "Liyue" => "璃月",
-            "Inazuma" => "稻妻",
-            "Sumeru" => "须弥",
-            "Fontaine" => "枫丹",
-            "Natlan" => "纳塔",
-            _ => country // Fallback to original if not matched (maybe already Chinese)
-        };
     }
 
 

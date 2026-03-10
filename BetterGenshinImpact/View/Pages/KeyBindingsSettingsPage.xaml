@@ -28,16 +28,16 @@
         <ui:TextBlock Grid.Row="0"
                       Margin="0,0,0,8"
                       FontTypography="BodyStrong"
-                      Text="Cài Đặt Gán Phím" />
+                      Text="按键绑定设置" />
         <ui:TextBlock Grid.Row="1"
                       Margin="0,0,0,8"
                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-            Text="Cài đặt phím tắt tại đây mặc định áp dụng cho tất cả tính năng tích hợp trừ tự động nhặt, câu cá, nhạc game và chặt gỗ. Bật Ánh Xạ Phím Toàn Cục trong Cài Đặt để áp dụng cho script JS, script chiến đấu và script chiến lược đơn giản trong theo dõi bản đồ. Hãy đặt thủ công phím nhặt đồ, Trở Về Ngôi Sao và các phím tương tự." />
+                      Text="此处的按键设置默认对除自动拾取、钓鱼、音游、伐木外的内置功能有效，在设置中打开“启用全局按键映射”开关可对JS脚本、战斗脚本和地图追踪内包含的简易策略脚本生效。请手动设置拾取按键、星之归还按键、隐藏主界面按键。"
                       TextWrapping="Wrap" />
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">
             <ui:Button Command="{Binding FetchFromRegistryCommand}"
-                       Content="Đọc Từ Registry"
+                       Content="从注册表读取"
                        Icon="{ui:SymbolIcon Notepad32}" />
         </StackPanel>
 
@@ -53,14 +53,14 @@
                 <ui:TreeListView BorderThickness="0" ItemsSource="{Binding KeyBindingSettingModels}">
                     <ui:TreeListView.Columns>
                         <GridViewColumnCollection>
-                            <ui:GridViewColumn Width="{Binding ActualWidth, ElementName=TreeColumnStar}" Header="Hành Động">
+                            <ui:GridViewColumn Width="{Binding ActualWidth, ElementName=TreeColumnStar}" Header="动作">
                                 <ui:GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <ui:TreeRowExpander Content="{Binding ActionName}" />
                                     </DataTemplate>
                                 </ui:GridViewColumn.CellTemplate>
                             </ui:GridViewColumn>
-                            <ui:GridViewColumn Width="120" Header="Gán Phím">
+                            <ui:GridViewColumn Width="120" Header="按键绑定">
                                 <ui:GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <kb:KeyBindingTextBox Padding="16,6,16,6"

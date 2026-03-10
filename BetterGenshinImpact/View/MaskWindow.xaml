@@ -12,17 +12,13 @@
         xmlns:controls="clr-namespace:BetterGenshinImpact.View.Controls"
         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-        xmlns:behavior="clr-namespace:BetterGenshinImpact.View.Behavior"
-        behavior:AutoTranslateInterceptor.EnableAutoTranslate="True"
         Title="MaskWindow"
         Width="500"
         Height="800"
         d:DesignWidth="1920"
         d:DesignHeight="1080"
         AllowsTransparency="True"
-        FontFamily="Segoe UI Variable, Segoe UI, Arial, /Resources/Fonts/MiSans-Regular.ttf#MiSans"
-        TextOptions.TextFormattingMode="Display"
-        TextOptions.TextRenderingMode="ClearType"
+        FontFamily="{DynamicResource TextThemeFontFamily}"
         ShowActivated="False"
         ShowInTaskbar="False"
         Topmost="True"
@@ -281,9 +277,9 @@
                         <d:FlowDocument FontFamily="{Binding FontFamily, ElementName=LogTextBox}"
                                         FontSize="{Binding FontSize, ElementName=LogTextBox}">
                             <Paragraph>
-                                <Run>[00:00:00 INF] Genshin Impact Tốt Hơn</Run>
+                                <Run>[00:00:00 INF] 更好的原神</Run>
                                 <LineBreak />
-                                <Run>[00:00:00 INF] Cửa sổ overlay đã khởi động, kích thước game 1920x1080, tỉ lệ tài nguyên 1.00, DPI 1</Run>
+                                <Run>[00:00:00 INF] 遮罩窗口已启动，游戏大小1920x1080，素材缩放1.00，DPI缩放1</Run>
                                 <LineBreak />
                                 <Run>[00:00:01 INF] Never gonna give you up</Run>
                                 <LineBreak />
@@ -302,7 +298,7 @@
                   Panel.ZIndex="999"
                   Visibility="{Binding Config.MaskWindowConfig.OverlayLayoutEditEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Đang Ở Chế Độ Chỉnh Sửa"
+                    <TextBlock Text="当前处于编辑模式"
                                FontSize="72"
                                FontWeight="DemiBold"
                                Foreground="#CCFFFFFF"
@@ -311,7 +307,7 @@
                             <DropShadowEffect Opacity="0.8" BlurRadius="10" ShadowDepth="0" />
                         </TextBlock.Effect>
                     </TextBlock>
-                    <TextBlock Text="Có thể điều chỉnh vị trí và kích thước hộp nhật ký, thanh trạng thái"
+                    <TextBlock Text="可以调整日志框、状态栏控件的位置和大小"
                                Margin="0,8,0,0"
                                FontSize="22"
                                FontWeight="SemiBold"
@@ -321,7 +317,7 @@
                             <DropShadowEffect Opacity="0.8" BlurRadius="10" ShadowDepth="0" />
                         </TextBlock.Effect>
                     </TextBlock>
-                    <TextBlock Text="Nhấp chuột phải vào điều khiển để thoát chế độ chỉnh sửa"
+                    <TextBlock Text="右键相关控件可退出编辑状态"
                                Margin="0,8,0,0"
                                FontSize="22"
                                FontWeight="SemiBold"
@@ -372,7 +368,7 @@
                                FontSize="34"
                                FontStretch="Medium"
                                FontWeight="DemiBold"
-                               Text="T">
+                               Text="西">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="White" Opacity="{Binding Config.MaskWindowConfig.TextOpacity}" />
                         </TextBlock.Foreground>
@@ -385,7 +381,7 @@
                                FontSize="34"
                                FontStretch="Medium"
                                FontWeight="DemiBold"
-                               Text="N">
+                               Text="南">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="White" Opacity="{Binding Config.MaskWindowConfig.TextOpacity}" />
                         </TextBlock.Foreground>
@@ -398,7 +394,7 @@
                                FontSize="34"
                                FontStretch="Medium"
                                FontWeight="DemiBold"
-                               Text="Đ">
+                               Text="东">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="White" Opacity="{Binding Config.MaskWindowConfig.TextOpacity}" />
                         </TextBlock.Foreground>
@@ -411,7 +407,7 @@
                                FontSize="34"
                                FontStretch="Medium"
                                FontWeight="DemiBold"
-                               Text="B">
+                               Text="北">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="White" Opacity="{Binding Config.MaskWindowConfig.TextOpacity}" />
                         </TextBlock.Foreground>
@@ -543,7 +539,7 @@
                                         Height="16"
                                         Visibility="{Binding IsTextLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <ui:ProgressRing Width="16" Height="16" IsIndeterminate="True" Margin="0,0,8,0" />
-                                <TextBlock Foreground="#B3FFFFFF" Text="Đang tải văn bản..." />
+                                <TextBlock Foreground="#B3FFFFFF" Text="正在加载文本..." />
                             </StackPanel>
 
                             <TextBlock Margin="0,6,0,0"
@@ -634,7 +630,7 @@
                                                 VerticalAlignment="Center"
                                                 Visibility="{Binding IsImageLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <ui:ProgressRing Width="16" Height="16" IsIndeterminate="True" Margin="0,0,8,0" />
-                                        <TextBlock Foreground="#B3FFFFFF" Text="Đang tải ảnh..." />
+                                        <TextBlock Foreground="#B3FFFFFF" Text="图片加载中..." />
                                     </StackPanel>
 
                                     <TextBlock HorizontalAlignment="Center"
@@ -800,7 +796,7 @@
                                             <ui:TextBox x:Name="MapLabelSearchTextBox"
                                                         Grid.Column="1"
                                                         Height="32"
-                                                        PlaceholderText="Tìm kiếm phân loại điểm đánh dấu trong khu vực hiện tại"
+                                                        PlaceholderText="搜索当前区域下的标点分类"
                                                         Text="{Binding MapLabelSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                         PreviewMouseLeftButtonDown="MapLabelSearchTextBox_OnPreviewMouseLeftButtonDown" />
 
@@ -935,7 +931,7 @@
                                                                       VerticalAlignment="Center"
                                                                       Foreground="White"
                                                                       FontTypography="BodyStrong"
-                                                                      Text="Đang tải..." />
+                                                                      Text="加载中..." />
                                                     </Grid>
                                                 </Grid>
                                             </Border>
@@ -979,7 +975,7 @@
                                                             HorizontalContentAlignment="Center"
                                                             VerticalContentAlignment="Center"
                                                             Cursor="Hand"
-                                                            ToolTip="Đặt Lại Lựa Chọn"
+                                                            ToolTip="重置选择"
                                                             Command="{Binding ResetSelectedMapLabelSelectionCommand}">
                                                         <Border Width="40"
                                                                 Height="40"

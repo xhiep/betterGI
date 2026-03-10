@@ -1,16 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
 using Fischless.HotkeyCapture;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Input;
-using BetterGenshinImpact;
-using BetterGenshinImpact.Core.Config;
-using BetterGenshinImpact.Service.Interface;
 
 namespace BetterGenshinImpact.Model;
 
@@ -78,17 +73,10 @@ public partial class HotKeySettingModel : ObservableObject
         ConfigPropertyName = configPropertyName;
         HotKey = HotKey.FromString(hotkey);
         HotKeyType = (HotKeyTypeEnum)Enum.Parse(typeof(HotKeyTypeEnum), hotKeyTypeCode);
-        LocalizeHotKeyTypeName();
+        HotKeyTypeName = HotKeyType.ToChineseName();
         OnKeyPressAction = onKeyPressAction;
         IsHold = isHold;
         SwitchHotkeyTypeEnabled = !isHold;
-        WeakReferenceMessenger.Default.Register<PropertyChangedMessage<object>>(this, (_, msg) =>
-        {
-            if (msg.PropertyName == nameof(OtherConfig.UiCultureInfoName))
-            {
-                LocalizeHotKeyTypeName();
-            }
-        });
     }
 
     public void RegisterHotKey()
@@ -205,13 +193,6 @@ public partial class HotKeySettingModel : ObservableObject
     public void OnSwitchHotKeyType()
     {
         HotKeyType = HotKeyType == HotKeyTypeEnum.GlobalRegister ? HotKeyTypeEnum.KeyboardMonitor : HotKeyTypeEnum.GlobalRegister;
-        LocalizeHotKeyTypeName();
-    }
-
-    private void LocalizeHotKeyTypeName()
-    {
-        var zh = HotKeyType.ToChineseName();
-        var tr = App.GetService<ITranslationService>();
-        HotKeyTypeName = tr?.Translate(zh, TranslationSourceInfo.From(MissingTextSource.UiDynamicBinding)) ?? zh;
+        HotKeyTypeName = HotKeyType.ToChineseName();
     }
 }

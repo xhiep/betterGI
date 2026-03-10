@@ -9,7 +9,6 @@
              xmlns:model="clr-namespace:BetterGenshinImpact.Model"
              xmlns:pages="clr-namespace:BetterGenshinImpact.ViewModel.Pages"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             xmlns:behavior="clr-namespace:BetterGenshinImpact.View.Behavior"
              d:DataContext="{d:DesignInstance Type=pages:HotKeyPageViewModel}"
              d:DesignHeight="850"
              d:DesignWidth="600"
@@ -17,7 +16,6 @@
              ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
              FontFamily="{StaticResource TextThemeFontFamily}"
              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-             behavior:AutoTranslateInterceptor.EnableAutoTranslate="True"
              mc:Ignorable="d">
 
     <Grid Margin="42,16,42,12">
@@ -29,11 +27,11 @@
         <ui:TextBlock Grid.Row="0"
                       Margin="0,0,0,8"
                       FontTypography="BodyStrong"
-                      Text="Cài Đặt Phím Tắt" />
+                      Text="快捷键设置" />
         <ui:TextBlock Grid.Row="1"
                       Margin="0,0,0,8"
                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                      Text="Phím tắt toàn cục: chỉ hỗ trợ tổ hợp phím và phím chức năng; có hiệu lực ngay sau khi khởi động ứng dụng. Lắng nghe bàn phím/chuột: hỗ trợ bất kỳ phím bàn phím đơn lẻ và nút cạnh chuột; chỉ có hiệu lực sau khi tính năng được khởi động (khuyến nghị). Nhấp nút loại để chuyển loại phím tắt. Các tính năng yêu cầu giữ phím không thể dùng phím tắt toàn cục."
+                      Text="全局热键：只支持组合键和功能键，软件启动直接生效。键鼠监听：支持任意键盘单键、鼠标侧键，功能启动后才生效（推荐）。点击类型按钮可以切换快捷键类型。其中存在长按需求的功能不能使用全局热键。"
                       TextWrapping="Wrap" />
 
         <!--<ItemsControl Grid.Row="2" ItemsSource="{Binding HotKeySettingModels}">
@@ -76,14 +74,14 @@
                 <ui:TreeListView BorderThickness="0" ItemsSource="{Binding HotKeySettingModels}">
                     <ui:TreeListView.Columns>
                         <GridViewColumnCollection>
-                            <ui:GridViewColumn Width="{Binding ActualWidth, ElementName=TreeColumnStar}" Header="Tính Năng">
+                            <ui:GridViewColumn Width="{Binding ActualWidth, ElementName=TreeColumnStar}" Header="功能">
                                 <ui:GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <ui:TreeRowExpander Content="{Binding FunctionName}" />
                                     </DataTemplate>
                                 </ui:GridViewColumn.CellTemplate>
                             </ui:GridViewColumn>
-                            <ui:GridViewColumn Width="100" Header="Loại Phím Tắt">
+                            <ui:GridViewColumn Width="100" Header="快捷键类型">
                                 <ui:GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <ui:Button Height="33"
@@ -95,7 +93,7 @@
                                     </DataTemplate>
                                 </ui:GridViewColumn.CellTemplate>
                             </ui:GridViewColumn>
-                            <ui:GridViewColumn Width="120" Header="Cấu Hình Phím Tắt">
+                            <ui:GridViewColumn Width="120" Header="配置快捷键">
                                 <ui:GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <hotKey:HotKeyTextBox Padding="16,6,16,6"

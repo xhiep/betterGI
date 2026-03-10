@@ -16,17 +16,17 @@
                    Text="{Binding Title}" />
 
         <ui:ToggleSwitch Margin="0,0,0,10"
-                         Content="Nhận Tất Cả Thư"
+                         Content="领取所有邮件"
                          IsChecked="{Binding CollectAllMail}" />
 
         <ui:ToggleSwitch Margin="0,0,0,10"
-                         Content="Nhận Tệp Đính Kèm"
+                         Content="领取附件"
                          IsChecked="{Binding CollectAttachments}" />
 
         <ui:NumberBox Margin="0,0,0,10"
                       Maximum="100"
                       Minimum="1"
-                      PlaceholderText="Số Lượng Thư Tối Đa"
+                      PlaceholderText="最大领取邮件数量"
                       Value="{Binding MaxMailsToCollect}" />
     </StackPanel>
 </UserControl>

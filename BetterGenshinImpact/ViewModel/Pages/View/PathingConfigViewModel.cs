@@ -31,7 +31,7 @@ public partial class PathingConfigViewModel : ObservableObject, IViewModel
     {
         Config.PathingConditionConfig.AvatarConditions.Add(new Condition
         {
-            Subject = "Nhân vật trong đội"
+            Subject = "队伍中角色"
         });
     }
 

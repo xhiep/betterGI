@@ -28,8 +28,8 @@
         <Border Height="200" CornerRadius="8">
             <Border.ContextMenu>
                 <ContextMenu>
-                    <ui:MenuItem Header="Đổi Ảnh Nền" Command="{Binding ChangeBannerImageCommand}" Icon="{ui:SymbolIcon Image24}" />
-                    <ui:MenuItem Header="Khôi Phục Ảnh Mặc Định" Command="{Binding ResetBannerImageCommand}" Icon="{ui:SymbolIcon ArrowCounterclockwise24}" />
+                    <ui:MenuItem Header="更换背景图片" Command="{Binding ChangeBannerImageCommand}" Icon="{ui:SymbolIcon Image24}" />
+                    <ui:MenuItem Header="恢复默认图片" Command="{Binding ResetBannerImageCommand}" Icon="{ui:SymbolIcon ArrowCounterclockwise24}" />
                 </ContextMenu>
             </Border.ContextMenu>
             <Grid>
@@ -54,12 +54,12 @@
                         <ui:TextBlock FontTypography="Title" Text="BetterGI" />
                         <ui:TextBlock FontTypography="Subtitle"
                                       Opacity="0.8"
-                                      Text="BetterGenshinImpact - Miễn Phí &amp; Mã Nguồn Mở" />
+                                      Text="更好的原神，免费且开源" />
                         <ui:TextBlock FontTypography="BodyStrong" Opacity="0.5">
                             <Hyperlink Command="{Binding GoToWikiUrlCommand}"
                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                        TextDecorations="None">
-                                <Run>Nhấn Để Xem Tài Liệu Và Hướng Dẫn</Run>
+                                <Run>点击查看文档与教程</Run>
                                 <Run FontFamily="{StaticResource FluentSystemIcons}" FontWeight="Light">&#xEE7A;</Run>
                             </Hyperlink>
 
@@ -86,30 +86,30 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Bật Công Cụ Chụp Màn Hình BetterGI!"
+                                  Text="BetterGI 截图器，启动！"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
                                   TextWrapping="Wrap">
-                        Phải bật công cụ chụp màn hình mới dùng được các tính năng,<Run FontWeight="Bold" TextDecorations="Underline">
-                            Nhấp để mở rộng cài đặt khởi động
+                        截图器启动后才能使用各项功能，<Run FontWeight="Bold" TextDecorations="Underline">
+                            点击展开启动相关配置
                         </Run>
-                        .</ui:TextBlock>
+                        。</ui:TextBlock>
                     <StackPanel Grid.Row="0"
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
                                 Margin="0,0,24,0"
                                 Orientation="Horizontal">
                         <controls:TwoStateButton DisableCommand="{Binding StopTriggerCommand}"
-                                                 DisableContent="Dừng"
+                                                 DisableContent="停止"
                                                  DisableIcon="{ui:SymbolIcon Dismiss24}"
                                                  EnableCommand="{Binding StartTriggerCommand}"
-                                                 EnableContent="Bắt Đầu"
+                                                 EnableContent="启动"
                                                  EnableIcon="{ui:SymbolIcon Play24}"
                                                  IsChecked="{Binding TaskDispatcherEnabled, Mode=OneWay}" />
                         <!--  <ui:Button Command="{Binding StartTriggerCommand}"  -->
-                        <!--  Content="Bắt Đầu"  -->
+                        <!--  Content="启动"  -->
                         <!--  Icon="{ui:SymbolIcon Play24}"  -->
                         <!--  Visibility="{Binding TaskDispatcherEnabled, Converter={StaticResource BooleanToVisibilityRevertConverter}, Mode=OneWay}" />  -->
                         <!--  <ui:Button Command="{Binding StopTriggerCommand}"  -->
@@ -133,12 +133,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Chế Độ Chụp Màn Hình"
+                                  Text="截图模式"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khuyến nghị dùng BitBlt, ít lỗi hơn"
+                                  Text="推荐选择 BitBlt，问题较少"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -168,12 +168,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khoảng Thời Gian Trigger (ms)"
+                                  Text="触发器间隔（毫秒）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Mặc định 50ms, người dùng thường không nên chỉnh, xem tài liệu để biết thêm"
+                                  Text="默认50ms，普通用户不建议调整这个值，具体调整方式见文档"
                                   TextWrapping="Wrap" />
                     <ui:TextBox Grid.Row="0"
                                 Grid.RowSpan="2"
@@ -195,12 +195,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Bật Cache Bitmap Cho WindowsGraphicsCapture"
+                                  Text="WindowsGraphicsCapture 截图方式启用位图缓存"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Nếu xuất hiện màn hình đen hoặc giảm FPS, hãy thử tắt tính năng này và khởi động lại"
+                                  Text="云原神出现获取到黑屏图案、原神出现掉帧的情况请尝试关闭此功能，并重启软件"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -222,12 +222,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Cài Đặt Thiết Bị Suy Luận AI"
+                                  Text="AI推理设备设置"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Thay đổi cần khởi động lại chương trình"
+                                  Text="修改后需要重启程序生效"
                                   TextWrapping="Wrap" />
                     <ComboBox Grid.Row="0"
                               Grid.RowSpan="2"
@@ -246,7 +246,7 @@
                                Grid.Column="2"
                                Margin="0,0,36,0"
                                Command="{Binding OpenHardwareAccelerationSettingsCommand}"
-                               Content="Thêm..." />
+                               Content="更多..." />
                 </Grid>
                 <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
                 <Grid Margin="16">
@@ -261,19 +261,19 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Kiểm Tra Chụp Màn Hình"
+                                  Text="测试图像捕获"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Thử nghiệm các chế độ chụp màn hình"
+                                  Text="测试功能，测试几种截图模式的效果"
                                   TextWrapping="Wrap" />
                     <ui:Button Grid.Row="0"
                                Grid.RowSpan="2"
                                Grid.Column="1"
                                Margin="0,0,36,0"
                                Command="{Binding StartCaptureTestCommand}"
-                               Content="Kiểm Tra Chụp Màn Hình" />
+                               Content="测试图像捕获" />
                 </Grid>
                 <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
                 <Grid Margin="16">
@@ -288,19 +288,19 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Chọn Cửa Sổ Thủ Công (Dùng Khi Không Tìm Thấy Cửa Sổ Game)"
+                                  Text="手动选择窗口（无法找到原神窗口时使用）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                Text="Dùng khi Genshin đang chạy nhưng nhấn Bắt Đầu vẫn không tìm thấy cửa sổ"
+                                  Text="原神已经启动的情况下，点击“启动”仍旧提示无法找到窗口时使用"
                                   TextWrapping="Wrap" />
                     <ui:Button Grid.Row="0"
                                Grid.RowSpan="2"
                                Grid.Column="1"
                                Margin="0,0,36,0"
                                Command="{Binding ManualPickWindowCommand}"
-                               Content="Chọn Cửa Sổ Chụp" />
+                               Content="选择捕获窗口" />
                 </Grid>
                 <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
                 <Grid Margin="16">
@@ -316,12 +316,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Tắt Tối Ưu Cửa Sổ Win11 Để Hỗ Trợ BitBlt"
+                                  Text="自动关闭 Windows11 窗口化优化以支持 BitBlt"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Thay đổi cài đặt cần khởi động lại game"
+                                  Text="修改设置后重启游戏生效"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -333,7 +333,7 @@
                                Grid.Column="2"
                                Margin="0,0,36,0"
                                Command="{Binding OpenDisplayAdvancedGraphicsSettingsCommand}"
-                               Content="Cài Đặt Thủ Công" />
+                               Content="手动设置" />
                 </Grid>
             </StackPanel>
         </ui:CardExpander>
@@ -355,12 +355,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Khởi Động Genshin Cùng Lúc"
+                                  Text="同时启动原神"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Khi bật công cụ, nếu Genshin chưa chạy sẽ tự động mở game."
+                                  Text="启动截图器时，如果原神未启动，则自动启动原神。"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -383,7 +383,7 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Vị Trí Cài Đặt Genshin (Không Hỗ Trợ Cloud Genshin)"
+                                  Text="原神安装位置（不支持云原神的联动启动）"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
@@ -395,7 +395,7 @@
                                Grid.Column="1"
                                Margin="0,0,36,0"
                                Command="{Binding SelectInstallPathCommand}"
-                               Content="Duyệt" />
+                               Content="浏览" />
                 </Grid>
                 <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
                 <Grid Margin="16">
@@ -408,13 +408,13 @@
 
                         <ui:TextBlock FontTypography="Body" TextWrapping="Wrap">
                             <ui:TextBlock.Inlines>
-                                <Run Text="Tham Số Khởi Động" />
+                                <Run Text="启动参数" />
                                 <ui:HyperlinkButton Margin="4,0,0,0"
                                                     Padding="0"
                                                     Command="{Binding OpenGameCommandLineDocumentCommand}"
                                                     Cursor="Hand">
                                     <ui:HyperlinkButton.Content>
-                                        <TextBlock FontSize="11" Text="Mở Tài Liệu" />
+                                        <TextBlock FontSize="11" Text="打开文档" />
                                     </ui:HyperlinkButton.Content>
                                 </ui:HyperlinkButton>
                             </ui:TextBlock.Inlines>
@@ -422,7 +422,7 @@
 
                         <ui:TextBlock Margin="0,4,0,0"
                                     Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                    Text="Nếu không biết tham số khởi động là gì, hãy để trống."
+                                    Text="如果你不知道什么是启动参数请不要填写。"
                                     TextWrapping="Wrap" />
                     </StackPanel>
                     <!--  常见启动参数：无边框 -popupwindow 指定分辨率 -screen-width 1920 -screen-height 1080  -->
@@ -430,7 +430,7 @@
                                 Width="300"
                                 Margin="0,0,36,0"
                                 VerticalAlignment="Top"
-                                PlaceholderText="Ví dụ: -screen-width 1920"
+                                PlaceholderText="示例：-screen-width 1920"
                                 Text="{Binding Config.GenshinStartConfig.GenshinStartArgs, Mode=TwoWay}"
                                 TextWrapping="Wrap"
                                 AcceptsReturn="True" />
@@ -448,12 +448,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Vào Game"
+                                  Text="自动进入游戏"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Tự động vào game sau khi khởi động (mở cửa tự động, nhận thẻ tháng)"
+                                  Text="原神启动后自动进入游戏（自动开门、领取月卡）"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -474,12 +474,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Dùng CMD Để Khởi Động Game"
+                                  Text="使用 CMD 启动游戏"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                Text="Nếu Genshin hiển thị cảnh báo về công cụ bất hợp pháp, thử bật tùy chọn này"
+                                  Text="如果原神弹窗“检测到非法工具，请重启机器”，请尝试开启此选项"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -500,12 +500,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Dùng Starward Ghi Thời Gian Chơi"
+                                  Text="使用Starward记录游戏时间"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Sau khi khởi động game, Starward sẽ đồng bộ ghi thời gian"
+                                  Text="启动游戏后Starward将同步记录时间"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"
@@ -528,12 +528,12 @@
                     <ui:TextBlock Grid.Row="0"
                                   Grid.Column="0"
                                   FontTypography="Body"
-                                  Text="Tự Động Nhận Thẻ Tháng"
+                                  Text="自动点击获取月卡"
                                   TextWrapping="Wrap" />
                     <ui:TextBlock Grid.Row="1"
                                   Grid.Column="0"
                                   Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                  Text="Tự động nhấn nhận thẻ tháng sau khi vào game nếu có"
+                                  Text="进入游戏后自动点击月卡，如果有的话"
                                   TextWrapping="Wrap" />
                     <ui:ToggleSwitch Grid.Row="0"
                                      Grid.RowSpan="2"

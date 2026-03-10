@@ -40,7 +40,7 @@
                     <ui:TextBlock Margin="0,0,0,8"
                                   FontSize="16"
                                   FontTypography="BodyStrong"
-                                  Text="Cài Đặt Theo Dõi Bản Đồ (Ưu tiên cấu hình từ cao đến thấp; giao diện còn một số vấn đề chưa giải quyết)" />
+                                  Text="地图追踪设置（相关配置优先级从高到低,UI样式还有问题未解决）" />
 
                 </StackPanel>
 
@@ -49,7 +49,7 @@
 
                         <ui:TextBlock Margin="0,0,0,8"
                                       FontTypography="BodyStrong"
-                                      Text="Cài Đặt Chuyển Đổi Đội (Khi có hành động hoặc vật phẩm thu thập phù hợp trong đường đi, tự động chuyển sang đội tương ứng)" />
+                                      Text="队伍切换设置（路径中存在符合条件的动作、采集物的情况下，自动切换至对应队伍）" />
                         <!--  使用ItemsControl来动态显示筛选条件  -->
                         <ItemsControl dd:DragDrop.IsDragSource="True"
                                       dd:DragDrop.IsDropTarget="True"
@@ -101,7 +101,7 @@
                                         <ui:TextBlock Margin="10,0"
                                                       VerticalAlignment="Center"
                                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}">
-                                            thì chuyển sang đội
+                                            则切换到队伍
                                         </ui:TextBlock>
 
 
@@ -114,7 +114,7 @@
                                         <Button
                                             Command="{Binding DataContext.RemovePartyConditionConfigCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                             CommandParameter="{Binding}"
-                                            Content="Xóa" />
+                                            Content="删除" />
                                     </WrapPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -123,7 +123,7 @@
                         <!--  添加条件按钮  -->
                         <Button HorizontalAlignment="Left"
                                 Command="{Binding AddPartyConditionConfigCommand}"
-                                Content="+ Thêm Điều Kiện" />
+                                Content="+ 添加条件" />
                     </StackPanel>
                 </ui:Card>
 
@@ -132,7 +132,7 @@
 
                         <ui:TextBlock Margin="0,0,0,8"
                                       FontTypography="BodyStrong"
-                                      Text="Cài Đặt Nhân Vật (Khi có nhiều nhân vật phù hợp, ưu tiên nhân vật có số thứ tự đội thấp hơn trong game)" />
+                                      Text="角色设置（存在多个符合条件的角色情况下，优先使用游戏内编队编号更小的）" />
                         <!--  使用ItemsControl来动态显示筛选条件  -->
                         <ItemsControl dd:DragDrop.IsDragSource="True"
                                       dd:DragDrop.IsDropTarget="True"
@@ -178,7 +178,7 @@
                                         <ui:TextBlock Margin="10,0"
                                                       VerticalAlignment="Center"
                                                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}">
-                                            thì nhân vật thực hiện
+                                            则角色执行
                                         </ui:TextBlock>
 
                                         <!--  结果  -->
@@ -192,7 +192,7 @@
                                         <Button
                                             Command="{Binding DataContext.RemoveAvatarConditionConfigCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                             CommandParameter="{Binding}"
-                                            Content="Xóa" />
+                                            Content="删除" />
                                     </WrapPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -201,7 +201,7 @@
                         <!--  添加条件按钮  -->
                         <Button HorizontalAlignment="Left"
                                 Command="{Binding AddAvatarConditionConfigCommand}"
-                                Content="+ Thêm Điều Kiện" />
+                                Content="+ 添加条件" />
                     </StackPanel>
                 </ui:Card>
 
@@ -218,12 +218,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Khoảng Thời Gian Dùng Đạo Cụ Nhỏ (ms)"
+                                          Text="使用小道具的间隔时间（毫秒）"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Tự Động Dùng Đạo Cụ Nhỏ Khi Di Chuyển, Nhập 0 Để Không Dùng"
+                                          Text="在移动期间自动使用小道具，填0为不使用"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardControl.Header>
@@ -249,12 +249,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Bật Tự Động Dùng Thuốc"
+                                          Text="开启自动吃药"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Tự động dùng Túi dinh dưỡng di động khi phát hiện máu thấp"
+                                          Text="检测到红血状态时自动使用便携营养袋"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardControl.Header>
@@ -278,12 +278,12 @@
                             <ui:TextBlock Grid.Row="0"
                                           Grid.Column="0"
                                           FontTypography="Body"
-                                          Text="Chỉ Hồi Phục Khi Ở Điểm Dịch Chuyển"
+                                          Text="只在传送点时恢复"
                                           TextWrapping="Wrap" />
                             <ui:TextBlock Grid.Row="1"
                                           Grid.Column="0"
                                           Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                          Text="Chỉ đến Tượng Thần hồi phục khi đường đi ở điểm dịch chuyển"
+                                          Text="只有路径在传送点时，才会去七天神像恢复"
                                           TextWrapping="Wrap" />
                         </Grid>
                     </ui:CardControl.Header>
@@ -295,7 +295,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <ui:TitleBar Name="MyTitleBar" Grid.Row="0" Title="Cài Đặt Theo Dõi Bản Đồ">
+        <ui:TitleBar Name="MyTitleBar" Grid.Row="0" Title="地图追踪设置">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Resources/Images/logo.png" />
             </ui:TitleBar.Icon>

@@ -9,32 +9,32 @@ namespace BetterGenshinImpact.GameTask.AutoFishing.Model;
 /// </summary>
 public class BigFishType
 {
-    public static readonly BigFishType Medaka = new("medaka", BaitType.FruitPasteBait, "Cá Khổng Tước", 0);
-    public static readonly BigFishType LargeMedaka = new("large medaka", BaitType.FruitPasteBait, "Cá Khổng Tước - Lớn", 1);
-    public static readonly BigFishType Stickleback = new("stickleback", BaitType.RedrotBait, "Cá Gai", 2);
-    public static readonly BigFishType Koi = new("koi", BaitType.FakeFlyBait, "Giả Long", 3);
-    public static readonly BigFishType KoiHead = new("koi head", BaitType.FakeFlyBait, "Giả Long - Đầu", 3);
-    public static readonly BigFishType Butterflyfish = new("butterflyfish", BaitType.FalseWormBait, "Cá Bướm", 4);
-    public static readonly BigFishType Pufferfish = new("pufferfish", BaitType.FakeFlyBait, "Cá Nóc", 5);
+    public static readonly BigFishType Medaka = new("medaka", BaitType.FruitPasteBait, "花鳉", 0);
+    public static readonly BigFishType LargeMedaka = new("large medaka", BaitType.FruitPasteBait, "大花鳉", 1);
+    public static readonly BigFishType Stickleback = new("stickleback", BaitType.RedrotBait, "棘鱼", 2);
+    public static readonly BigFishType Koi = new("koi", BaitType.FakeFlyBait, "假龙", 3);
+    public static readonly BigFishType KoiHead = new("koi head", BaitType.FakeFlyBait, "假龙头", 3);
+    public static readonly BigFishType Butterflyfish = new("butterflyfish", BaitType.FalseWormBait, "蝶鱼", 4);
+    public static readonly BigFishType Pufferfish = new("pufferfish", BaitType.FakeFlyBait, "炮鲀", 5);
 
-    public static readonly BigFishType Ray = new("ray", BaitType.FakeFlyBait, "Cá Đuối", 6);
+    public static readonly BigFishType Ray = new("ray", BaitType.FakeFlyBait, "鳐", 6);
 
     // public static readonly BigFishType FormaloRay = new("formalo ray", "飞蝇假饵", "佛玛洛鳐");
     // public static readonly BigFishType DivdaRay = new("divda ray", "飞蝇假饵", "迪芙妲鳐");
-    public static readonly BigFishType Angler = new("angler", BaitType.SugardewBait, "Cá Sừng", 7);
-    public static readonly BigFishType AxeMarlin = new("axe marlin", BaitType.SugardewBait, "Cá Rìu", 8);
-    public static readonly BigFishType HeartfeatherBass = new("heartfeather bass", BaitType.SourBait, "Cá Vược", 9);
-    public static readonly BigFishType MaintenanceMek = new("maintenance mek", BaitType.FlashingMaintenanceMekBait, "Cơ Quan Bảo Trì", 10);
-    public static readonly BigFishType Unihornfish = new("unihornfish", BaitType.SpinelgrainBait, "Cá Một Sừng", 10);
-    public static readonly BigFishType Sunfish = new("sunfish", BaitType.SpinelgrainBait, "Cá Mặt Trăng", 7);
-    public static readonly BigFishType Rapidfish = new("rapidfish", BaitType.SpinelgrainBait, "Cá Lướt Sóng", 9);
-    public static readonly BigFishType PhonyUnihornfish = new("phony unihornfish", BaitType.EmberglowBait, "Cá Một Sừng Nhiên Tố", 10);
-    public static readonly BigFishType MagmaRapidfish = new("magma rapidfish", BaitType.EmberglowBait, "Cá Lướt Sóng Dung Nham", 9);
-    public static readonly BigFishType SecretSourceScoutSweeper = new ("secret source", BaitType.EmberglowBait, "Cơ Quan Bí Nguồn - Tuần Tra", 9);
+    public static readonly BigFishType Angler = new("angler", BaitType.SugardewBait, "角鲀", 7);
+    public static readonly BigFishType AxeMarlin = new("axe marlin", BaitType.SugardewBait, "斧枪鱼", 8);
+    public static readonly BigFishType HeartfeatherBass = new("heartfeather bass", BaitType.SourBait, "心羽鲈", 9);
+    public static readonly BigFishType MaintenanceMek = new("maintenance mek", BaitType.FlashingMaintenanceMekBait, "维护机关", 10);
+    public static readonly BigFishType Unihornfish = new("unihornfish", BaitType.SpinelgrainBait, "独角鱼", 10);
+    public static readonly BigFishType Sunfish = new("sunfish", BaitType.SpinelgrainBait, "翻车鲀", 7);
+    public static readonly BigFishType Rapidfish = new("rapidfish", BaitType.SpinelgrainBait, "斗士急流鱼", 9);
+    public static readonly BigFishType PhonyUnihornfish = new("phony unihornfish", BaitType.EmberglowBait, "燃素独角鱼", 10);
+    public static readonly BigFishType MagmaRapidfish = new("magma rapidfish", BaitType.EmberglowBait, "炽岩斗士急流鱼", 9);
+    public static readonly BigFishType SecretSourceScoutSweeper = new ("secret source", BaitType.EmberglowBait, "秘源机关・巡戒使", 9);
 
-    public static readonly BigFishType MaulerShark = new ("mauler shark", BaitType.RefreshingLakkaBait, "Cá Mập", 9);
-    public static readonly BigFishType CrystalEye = new("crystal eye", BaitType.RefreshingLakkaBait, "Cá Mắt Kính", 9);
-    public static readonly BigFishType AxeheadFish = new ("axehead", BaitType.BerryBait, "Cá Đầu Rìu", 9);
+    public static readonly BigFishType MaulerShark = new ("mauler shark", BaitType.RefreshingLakkaBait, "凶凶鲨", 9);
+    public static readonly BigFishType CrystalEye = new("crystal eye", BaitType.RefreshingLakkaBait, "明眼鱼", 9);
+    public static readonly BigFishType AxeheadFish = new ("axehead", BaitType.BerryBait, "巨斧鱼", 9);
 
     public static IEnumerable<BigFishType> Values
     {

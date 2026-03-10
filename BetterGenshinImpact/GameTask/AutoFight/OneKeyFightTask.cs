@@ -19,8 +19,8 @@ namespace BetterGenshinImpact.GameTask.AutoFight;
 /// </summary>
 public class OneKeyFightTask : Singleton<OneKeyFightTask>
 {
-    public static readonly string HoldOnMode = "Lặp lại khi giữ";
-    public static readonly string TickMode = "Kích hoạt";
+    public static readonly string HoldOnMode = "按住时重复";
+    public static readonly string TickMode = "触发";
 
     private Dictionary<string, List<CombatCommand>>? _avatarMacros;
     private CancellationTokenSource? _cts = null;
@@ -45,7 +45,7 @@ public class OneKeyFightTask : Singleton<OneKeyFightTask>
         {
             _activeMacroPriority = TaskContext.Instance().Config.MacroConfig.CombatMacroPriority;
             _avatarMacros = LoadAvatarMacros();
-            Logger.LogInformation("Đã tải cấu hình macro một chạm");
+            Logger.LogInformation("加载一键宏配置完成");
         }
 
         if (IsHoldOnMode())

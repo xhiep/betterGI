@@ -6,7 +6,7 @@
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:behavior="clr-namespace:BetterGenshinImpact.View.Behavior"
                  xmlns:pages="clr-namespace:BetterGenshinImpact.View.Pages"
-                 Title="Cài Đặt Gán Phím"
+                 Title="按键绑定设置"
                  Width="800"
                  Height="600"
                  d:DesignHeight="600"
@@ -23,7 +23,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ui:TitleBar Grid.Row="0"
-                     Title="Cài Đặt Gán Phím"
+                     Title="按键绑定设置"
                      Icon="pack://application:,,,/Assets/logo.ico" />
     </Grid>
 </ui:FluentWindow>
