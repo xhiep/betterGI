@@ -1,0 +1,460 @@
+using System;
+using System.Collections.Frozen;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using Windows.System;
+using BetterGenshinImpact.Core.Config;
+using BetterGenshinImpact.Core.Recognition;
+using BetterGenshinImpact.Core.Recognition.OCR;
+using BetterGenshinImpact.Core.Recognition.OCR.Paddle;
+using BetterGenshinImpact.Core.Script;
+using BetterGenshinImpact.GameTask;
+using BetterGenshinImpact.GameTask.AutoTrackPath;
+using BetterGenshinImpact.GameTask.Common.Element.Assets;
+using BetterGenshinImpact.GameTask.LogParse;
+using BetterGenshinImpact.Helpers;
+using BetterGenshinImpact.Helpers.Http;
+using BetterGenshinImpact.Model;
+using BetterGenshinImpact.Service.Interface;
+using BetterGenshinImpact.Service.Notification;
+using BetterGenshinImpact.View.Controls.Webview;
+using BetterGenshinImpact.View.Converters;
+using BetterGenshinImpact.View.Pages;
+using BetterGenshinImpact.View.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
+using Microsoft.Win32;
+using Newtonsoft.Json;
+using Wpf.Ui;
+
+namespace BetterGenshinImpact.ViewModel.Pages;
+
+public partial class CommonSettingsPageViewModel : ViewModel
+{
+    private readonly INavigationService _navigationService;
+
+    private readonly NotificationService _notificationService;
+    private readonly TpConfig _tpConfig = TaskContext.Instance().Config.TpConfig;
+
+    private string _selectedArea = string.Empty;
+
+
+    private string _selectedCountry = string.Empty;
+    [ObservableProperty] private List<string> _adventurersGuildCountry = ["Không", "Fontaine", "Inazuma", "Liyue", "Mondstadt", "Sumeru", "Natlan"];
+    
+    [ObservableProperty] private List<Tuple<TimeSpan, string>> _serverTimeZones =
+    [
+        Tuple.Create(TimeSpan.FromHours(8), "Khác UTC+08"),
+        Tuple.Create(TimeSpan.FromHours(1), "Châu Âu UTC+01"),
+        Tuple.Create(TimeSpan.FromHours(-5), "Mỹ UTC-05")
+    ];
+
+    public CommonSettingsPageViewModel(IConfigService configService, INavigationService navigationService,
+        NotificationService notificationService)
+    {
+        Config = configService.Get();
+        _navigationService = navigationService;
+        _notificationService = notificationService;
+        InitializeCountries();
+        InitializeMiyousheCookie();
+        // 初始化OCR模型选择
+        SelectedPaddleOcrModelConfig = Config.OtherConfig.OcrConfig.PaddleOcrModelConfig;
+    }
+
+    public AllConfig Config { get; set; }
+    public ObservableCollection<string> CountryList { get; } = new();
+    public ObservableCollection<string> Areas { get; } = new();
+
+    public ObservableCollection<string> MapPathingTypes { get; } = ["SIFT", "TemplateMatch"];
+
+    [ObservableProperty] private FrozenDictionary<string, string> _languageDict =
+        new string[] { "zh-Hans", "zh-Hant", "en", "vi"}
+            .ToFrozenDictionary(
+                c => c,
+                c =>
+                {
+                    var ci = new CultureInfo(c);
+                    CultureInfo.CurrentUICulture = ci;
+                    CultureInfo.CurrentCulture = ci;
+                    var stringLocalizer = App.GetService<IStringLocalizer<CultureInfoNameToKVPConverter>>() ??
+                                          throw new NullReferenceException();
+                    return stringLocalizer["简体中文"].ToString();
+                }
+            );
+
+    [RelayCommand]
+    private async Task OnUpdateUiLanguageAsync()
+    {
+        var cultureName = Config.OtherConfig.UiCultureInfoName ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(cultureName))
+        {
+            throw new InvalidOperationException("Ngôn ngữ giao diện hiện tại đang trống, không thể cập nhật tệp ngôn ngữ.");
+        }
+
+        if (cultureName == "zh-Hans")
+        {
+            await ThemedMessageBox.InformationAsync("zh-Hans không có tệp ngôn ngữ, không cần cập nhật.");
+            return;
+        }
+
+        var urls = new[]
+        {
+            $"https://raw.githubusercontent.com/babalae/bettergi-i18n/refs/heads/main/i18n/{cultureName}.json",
+            $"https://cnb.cool/bettergi/bettergi-i18n/-/git/raw/main/i18n/{cultureName}.json"
+        };
+
+        using var httpClient = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(30)
+        };
+
+        byte[]? bytes = null;
+        Exception? lastError = null;
+        var allNotFound = true;
+        foreach (var url in urls)
+        {
+            try
+            {
+                using var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.UserAgent.ParseAdd("BetterGenshinImpact");
+                using var response = await httpClient.SendAsync(request);
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    lastError = new HttpRequestException("Language file not found.", null, response.StatusCode);
+                    continue;
+                }
+
+                allNotFound = false;
+                response.EnsureSuccessStatusCode();
+                bytes = await response.Content.ReadAsByteArrayAsync();
+
+                var json = Encoding.UTF8.GetString(bytes);
+                _ = JsonConvert.DeserializeObject<Dictionary<string, string>>(json)
+                    ?? throw new JsonException("Tệp dịch không phải là từ điển JSON hợp lệ.");
+                break;
+            }
+            catch (Exception e)
+            {
+                lastError = e;
+                allNotFound = false;
+            }
+        }
+
+        if (bytes == null)
+        {
+            if (allNotFound)
+            {
+                await ThemedMessageBox.WarningAsync($"Tệp ngôn ngữ không tồn tại: {cultureName}.json");
+                return;
+            }
+
+            throw new Exception($"Tải xuống tệp ngôn ngữ thất bại: {cultureName}.json", lastError);
+        }
+
+        var dir = Global.Absolute(@"User\I18n");
+        Directory.CreateDirectory(dir);
+        var path = Path.Combine(dir, $"{cultureName}.json");
+        var tmp = $"{path}.{Guid.NewGuid():N}.tmp";
+        await File.WriteAllBytesAsync(tmp, bytes);
+
+        if (File.Exists(path))
+        {
+            File.Replace(tmp, path, null);
+        }
+        else
+        {
+            File.Move(tmp, path);
+        }
+
+        var translator = App.GetService<ITranslationService>() ?? throw new NullReferenceException();
+        translator.Reload();
+    }
+
+    public string SelectedCountry
+    {
+        get => _selectedCountry;
+        set
+        {
+            if (SetProperty(ref _selectedCountry, value))
+            {
+                UpdateAreas(value);
+                SelectedArea = Areas.FirstOrDefault() ?? string.Empty;
+            }
+        }
+    }
+
+    public string SelectedArea
+    {
+        get => _selectedArea;
+        set
+        {
+            if (SetProperty(ref _selectedArea, value))
+            {
+                UpdateRevivePoint(SelectedCountry, SelectedArea);
+            }
+        }
+    }
+
+    public ObservableCollection<PaddleOcrModelConfig> PaddleOcrModelConfigs { get; } =
+        new(Enum.GetValues(typeof(PaddleOcrModelConfig)).Cast<PaddleOcrModelConfig>());
+
+    [ObservableProperty] private PaddleOcrModelConfig _selectedPaddleOcrModelConfig;
+
+    [RelayCommand]
+    public void OnQuestionButtonOnClick()
+    {
+        //            Owner = this,
+        WebpageWindow cookieWin = new()
+        {
+            Title = "日志分析",
+            Width = 800,
+            Height = 600,
+
+            WindowStartupLocation = WindowStartupLocation.CenterOwner
+        };
+        cookieWin.NavigateToHtml(TravelsDiaryDetailManager.generHtmlMessage());
+        cookieWin.Show();
+    }
+
+    private void InitializeMiyousheCookie()
+    {
+        OtherConfig.Miyoushe mcfg = TaskContext.Instance().Config.OtherConfig.MiyousheConfig;
+        if (mcfg.Cookie == string.Empty &&
+            mcfg.LogSyncCookie)
+        {
+            var config = LogParse.LoadConfig();
+            mcfg.Cookie = config.Cookie;
+        }
+    }
+
+    private void InitializeCountries()
+    {
+        var countries = MapLazyAssets.Instance.GoddessPositions.Values
+            .OrderBy(g => int.TryParse(g.Id, out var id) ? id : int.MaxValue)
+            .GroupBy(g => g.Country)
+            .Select(grp => grp.Key);
+        CountryList.Clear();
+        foreach (var country in countries)
+        {
+            if (!string.IsNullOrEmpty(country))
+            {
+                CountryList.Add(country);
+            }
+        }
+
+        _selectedCountry = _tpConfig.ReviveStatueOfTheSevenCountry;
+        UpdateAreas(SelectedCountry);
+        _selectedArea = _tpConfig.ReviveStatueOfTheSevenArea;
+        UpdateRevivePoint(SelectedCountry, SelectedArea);
+    }
+
+    private void UpdateAreas(string country)
+    {
+        Areas.Clear();
+        SelectedArea = string.Empty;
+        if (string.IsNullOrEmpty(country)) return;
+
+        var areas = MapLazyAssets.Instance.GoddessPositions.Values
+            .Where(g => g.Country == country)
+            .OrderBy(g => int.TryParse(g.Id, out var id) ? id : int.MaxValue)
+            .GroupBy(g => g.Level1Area)
+            .Select(grp => grp.Key);
+        foreach (var area in areas)
+        {
+            if (!string.IsNullOrEmpty(area))
+            {
+                Areas.Add(area);
+            }
+        }
+    }
+
+    // 当国家或区域改变时更新坐标
+    private void UpdateRevivePoint(string country, string area)
+    {
+        if (string.IsNullOrEmpty(country) || string.IsNullOrEmpty(area)) return;
+
+        var goddess = MapLazyAssets.Instance.GoddessPositions.Values
+            .FirstOrDefault(g => g.Country == country && g.Level1Area == area);
+        if (goddess == null) return;
+        _tpConfig.ReviveStatueOfTheSevenCountry = country;
+        _tpConfig.ReviveStatueOfTheSevenArea = area;
+        _tpConfig.ReviveStatueOfTheSevenPointX = goddess.X;
+        _tpConfig.ReviveStatueOfTheSevenPointY = goddess.Y;
+        _tpConfig.ReviveStatueOfTheSeven = goddess;
+    }
+
+    [RelayCommand]
+    public void OnRefreshMaskSettings()
+    {
+        WeakReferenceMessenger.Default.Send(
+            new PropertyChangedMessage<object>(this, "RefreshSettings", new object(), "重新计算控件位置"));
+    }
+
+    [RelayCommand]
+    private void OnResetMaskOverlayLayout()
+    {
+        var c = Config.MaskWindowConfig;
+        c.StatusListLeftRatio = 20.0 / 1920;
+        c.StatusListTopRatio = 807.0 / 1080;
+        c.StatusListWidthRatio = 477.0 / 1920;
+        c.StatusListHeightRatio = 24.0 / 1080;
+
+        c.LogTextBoxLeftRatio = 20.0 / 1920;
+        c.LogTextBoxTopRatio = 832.0 / 1080;
+        c.LogTextBoxWidthRatio = 477.0 / 1920;
+        c.LogTextBoxHeightRatio = 188.0 / 1080;
+
+        OnRefreshMaskSettings();
+    }
+
+    [RelayCommand]
+    private void OnSwitchMaskEnabled()
+    {
+        // if (Config.MaskWindowConfig.MaskEnabled)
+        // {
+        //     MaskWindow.Instance().Show();
+        // }
+        // else
+        // {
+        //     MaskWindow.Instance().Hide();
+        // }
+    }
+
+    [RelayCommand]
+    public void OnGoToHotKeyPage()
+    {
+        _navigationService.Navigate(typeof(HotKeyPage));
+    }
+
+    [RelayCommand]
+    public void OnSwitchTakenScreenshotEnabled()
+    {
+    }
+
+    [RelayCommand]
+    public void OnGoToFolder()
+    {
+        var path = Global.Absolute(@"log\screenshot\");
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+
+        Process.Start("explorer.exe", path);
+    }
+
+    [RelayCommand]
+    public void OnGoToLogFolder()
+    {
+        var path = Global.Absolute(@"log");
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+
+        Process.Start("explorer.exe", path);
+    }
+
+    [RelayCommand]
+    private async Task ImportLocalScriptsRepoZip()
+    {
+        Directory.CreateDirectory(ScriptRepoUpdater.ReposPath);
+
+        var dialog = new OpenFileDialog
+        {
+            Title = "选择脚本仓库压缩包",
+            Filter = "Zip Files (*.zip)|*.zip",
+            Multiselect = false
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            try
+            {
+                await ScriptRepoUpdater.Instance.ImportLocalRepoZip(dialog.FileName);
+                ThemedMessageBox.Information("脚本仓库离线包导入成功！");
+            }
+            catch (Exception ex)
+            {
+                ThemedMessageBox.Error($"脚本仓库离线包导入失败：{ex.Message}");
+            }
+        }
+    }
+
+    [RelayCommand]
+    private void OpenAboutWindow()
+    {
+        var aboutWindow = new AboutWindow();
+        aboutWindow.Owner = Application.Current.MainWindow;
+        aboutWindow.ShowDialog();
+    }
+
+    [RelayCommand]
+    private void OpenKeyBindingsWindow()
+    {
+        var keyBindingsWindow = KeyBindingsWindow.Instance;
+        keyBindingsWindow.Owner = Application.Current.MainWindow;
+        keyBindingsWindow.ShowDialog();
+    }
+
+
+    [RelayCommand]
+    private async Task CheckUpdateAsync()
+    {
+        await App.GetService<IUpdateService>()!.CheckUpdateAsync(new UpdateOption
+        {
+            Trigger = UpdateTrigger.Manual,
+            Channel = UpdateChannel.Stable
+        });
+    }
+
+    [RelayCommand]
+    private async Task CheckUpdateAlphaAsync()
+    {
+        var result = await ThemedMessageBox.ShowAsync("测试版本非常不稳定！\n测试版本非常不稳定！\n测试版本非常不稳定！\n\n是否继续检查更新？", "警告", MessageBoxButton.YesNo, ThemedMessageBox.MessageBoxIcon.Warning);
+        if (result != MessageBoxResult.Yes)
+        {
+            return;
+        }
+        
+        await App.GetService<IUpdateService>()!.CheckUpdateAsync(new UpdateOption
+        {
+            Trigger = UpdateTrigger.Manual,
+            Channel = UpdateChannel.Alpha,
+        });
+    }
+
+    // [RelayCommand]
+    // private async Task GotoGithubActionAsync()
+    // {
+    //     await Launcher.LaunchUriAsync(
+    //         new Uri("https://github.com/babalae/better-genshin-impact/actions/workflows/publish.yml"));
+    // }
+
+    [RelayCommand]
+    private async Task OnGameLangSelectionChanged(KeyValuePair<string, string> type)
+    {
+        await App.ServiceProvider.GetRequiredService<OcrFactory>().Unload();
+    }
+
+    [RelayCommand]
+    private async Task OnPaddleOcrModelConfigChanged(PaddleOcrModelConfig value)
+    {
+        Config.OtherConfig.OcrConfig.PaddleOcrModelConfig = value;
+        await App.ServiceProvider.GetRequiredService<OcrFactory>().Unload();
+    }
+}

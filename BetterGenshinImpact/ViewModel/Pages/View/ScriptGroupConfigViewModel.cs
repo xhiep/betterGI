@@ -1,0 +1,106 @@
+using BetterGenshinImpact.Core.Config;
+using BetterGenshinImpact.Core.Script.Group;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Windows.System;
+using Wpf.Ui.Violeta.Controls;
+
+namespace BetterGenshinImpact.ViewModel.Pages.View;
+
+public partial class ScriptGroupConfigViewModel : ObservableObject, IViewModel
+{
+    [ObservableProperty]
+    private AutoFightViewModel _autoFightViewModel;
+
+    [ObservableProperty]
+    private ScriptGroupConfig _scriptGroupConfig;
+
+    [ObservableProperty]
+    private PathingPartyConfig _pathingConfig;
+
+    [ObservableProperty]
+    private ShellConfig _shellConfig;
+
+    [ObservableProperty]
+    private bool _enableShellConfig;
+    [ObservableProperty]
+    private ObservableCollection<KeyValuePair<string, string>> _onlyPickEliteDropsSource  = new()
+    {
+        new KeyValuePair<string, string>("Closed", "Tắt tính năng"),
+        new KeyValuePair<string, string>("AllowAutoPickupForNonElite", "Cho phép tự nhặt (Không phải Tinh Anh)"),
+        new KeyValuePair<string, string>("DisableAutoPickupForNonElite", "Tắt tự nhặt (Không phải Tinh Anh)")
+    };    
+    //跳过策略
+    //GroupPhysicalPathSkipPolicy:  配置组且物理路径相同跳过
+    //PhysicalPathSkipPolicy:  物理路径相同跳过        
+    //SameNameSkipPolicy:   同类型同名跳过
+    [ObservableProperty]
+    private ObservableCollection<KeyValuePair<string, string>> _skipPolicySource  = new()
+    {
+        new KeyValuePair<string, string>("GroupPhysicalPathSkipPolicy", "Bỏ qua nếu cùng nhóm cấu hình & đường dẫn vật lý"),
+        new KeyValuePair<string, string>("PhysicalPathSkipPolicy", "Bỏ qua nếu cùng đường dẫn vật lý"),
+        new KeyValuePair<string, string>("SameNameSkipPolicy", "Bỏ qua nếu cùng loại & cùng tên")
+    };     
+    
+    [ObservableProperty]
+    private ObservableCollection<KeyValuePair<string, string>> _referencePointSource  = new()
+    {
+        new KeyValuePair<string, string>("StartTime", "Thời gian bắt đầu"),
+        new KeyValuePair<string, string>("EndTime", "Thời gian kết thúc")
+    };  
+    public ScriptGroupConfigViewModel(AllConfig config, ScriptGroupConfig scriptGroupConfig)
+    {
+        ScriptGroupConfig = scriptGroupConfig;
+        PathingConfig = scriptGroupConfig.PathingConfig;
+        AutoFightViewModel = new AutoFightViewModel(config);
+        ShellConfig = scriptGroupConfig.ShellConfig;
+        EnableShellConfig = scriptGroupConfig.EnableShellConfig;
+    }
+
+    [RelayCommand]
+    private void OnStrategyDropDownOpened(string type)
+    {
+        AutoFightViewModel.OnStrategyDropDownOpened(type);
+    }
+
+    [RelayCommand]
+    public void OnOpenLocalScriptRepo()
+    {
+        AutoFightViewModel.OnOpenLocalScriptRepo();
+    }
+    [RelayCommand]
+    public void OnGetExecutionOrder()
+    {
+        var index = _pathingConfig.TaskCycleConfig.GetExecutionOrder();
+        if (index == -1)
+        {
+            Toast.Error("Tính toán thất bại, vui lòng kiểm tra tham số!");
+        }
+        else
+        {
+            Toast.Success("Số thứ tự thực thi hiện tại: "+index);
+        }
+    }
+
+    [RelayCommand]
+    public void OnOpenFightFolder()
+    {
+        AutoFightViewModel.OnOpenFightFolder();
+    }
+    
+    [RelayCommand]
+    private void OnAutoFightEnabledChecked()
+    {
+        PathingConfig.Enabled = true;
+    }
+
+    [RelayCommand]
+    private async Task OnGoToAutoEatUrlAsync()
+    {
+        await Launcher.LaunchUriAsync(new Uri("https://bettergi.com/dev/js/dispatcher.html#autoeat-自动吃食物"));
+    }
+}

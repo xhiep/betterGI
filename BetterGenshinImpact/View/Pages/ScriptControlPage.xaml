@@ -1,0 +1,408 @@
+﻿<UserControl x:Class="BetterGenshinImpact.View.Pages.ScriptControlPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dd="urn:gong-wpf-dragdrop"
+             xmlns:local="clr-namespace:BetterGenshinImpact.View.Pages"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:BetterGenshinImpact.ViewModel.Pages"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             d:DataContext="{d:DesignInstance Type=pages:ScriptControlViewModel}"
+             d:DesignHeight="850"
+             d:DesignWidth="800"
+             ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+             ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+             FontFamily="{StaticResource TextThemeFontFamily}"
+             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Controls/Style/ListViewEx.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="8,0,8,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="16" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  左侧栏  -->
+        <Grid Grid.Column="0" Margin="0,8,8,8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        BorderBrush="{DynamicResource ControlStrongFillColorDisabledBrush}"
+                        BorderThickness="0,0,0,1">
+                    <ui:TextBlock Margin="4,4,8,4"
+                                  FontTypography="BodyStrong"
+                                  Text="Nhóm Cấu Hình"
+                                  TextAlignment="Center" />
+                </Border>
+                <ui:ListView Grid.Row="1"
+                             dd:DragDrop.IsDragSource="True"
+                             dd:DragDrop.IsDropTarget="True"
+                             dd:DragDrop.UseDefaultDragAdorner="True"
+                             ItemsSource="{Binding ScriptGroups, Mode=TwoWay}"
+                             SelectedItem="{Binding SelectedScriptGroup, Mode=TwoWay}"
+                             SelectionMode="Single">
+                    <ui:ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Margin="8,4" Text="{Binding Name, Mode=OneWay}" >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding NextFlag}" Value="True">
+                                                <Setter Property="Foreground" Value="Green" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                              </TextBlock>
+                        </DataTemplate>
+                    </ui:ListView.ItemTemplate>
+                    <ui:ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Command="{Binding AddScriptGroupCommand}" Header="Thêm Nhóm" />
+                            <MenuItem Command="{Binding DeleteScriptGroupCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Xóa Nhóm" />
+                            <MenuItem Command="{Binding RenameScriptGroupCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Đổi Tên" />
+                            <MenuItem Command="{Binding CopyScriptGroupCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Sao Chép Nhóm" />
+                            <MenuItem Command="{Binding AddScriptGroupNextFlagCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Tác Vụ Liên Tục Bắt Đầu Từ Đây" />
+                        </ContextMenu>
+                    </ui:ListView.ContextMenu>
+                </ui:ListView>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <ui:Button Grid.Row="0"
+                               Margin="2"
+                               HorizontalAlignment="Stretch"
+                               Command="{Binding StartMultiScriptGroupCommand}"
+                               Content="Thực Hiện Liên Tục" />
+
+                    <ui:Button Grid.Row="1"
+                               Margin="2"
+                               HorizontalAlignment="Stretch"
+                               Command="{Binding ContinueMultiScriptGroupCommand}"
+                               Content="Tiếp Tục Thực Hiện" />
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--  分割  -->
+        <ui:FontIcon Grid.Column="1"
+                     HorizontalAlignment="Center" Glyph="&#xf7a5;" Style="{StaticResource FaFontIconStyle}" />
+        <GridSplitter Grid.Column="1"
+                      Width="12"
+                      HorizontalAlignment="Stretch"
+                      Background="{DynamicResource ControlStrongFillColorDisabledBrush}"
+                      Focusable="False"
+                      Opacity="0.4" />
+
+        <!--  右侧栏:无选中组  -->
+        <Border Grid.Column="2"
+                Margin="6"
+                Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,1,1,1"
+                CornerRadius="8">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SelectedScriptGroup, Converter={StaticResource NotNullConverter}}"
+                            Value="True">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Grid Margin="8,8,0,0">
+
+                <StackPanel>
+                    <ui:TextBlock Margin="0,0,0,8"
+                                  FontTypography="BodyStrong"
+                                  Text="(Thử nghiệm) Vui lòng chọn hoặc thêm nhóm cấu hình trong cột bên trái" />
+                    <ui:TextBlock Margin="0,0,0,8"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  TextWrapping="Wrap">
+                        Nhấp chuột phải trong cột bên trái để thêm/sửa nhóm cấu hình, kéo thả để sắp xếp thứ tự. Trong nhóm cấu hình có thể thêm và cấu hình script JS, script bàn phím/chuột, v.v., và kiểm soát số lần thực hiện, thứ tự, v.v.,
+                        <Hyperlink Command="{Binding GoToScriptGroupUrlCommand}"
+                                   Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
+                            Nhấp để xem hướng dẫn sử dụng bộ lập lịch
+                        </Hyperlink>
+                    </ui:TextBlock>
+                    <ui:TextBlock Margin="0,0,0,8"
+                                  FontTypography="BodyStrong"
+                                  Text="Nhấp chuột phải trong cột bên trái để thêm nhóm cấu hình, hoặc nhấp nút bên dưới để thêm trực tiếp" />
+                    <ui:Button Margin="0,0,0,12"
+                               Command="{Binding AddScriptGroupCommand}"
+                               Content="Thêm Nhóm Cấu Hình" />
+                    <!--  示例配置组  -->
+                    <!--<ui:TextBlock Margin="0,0,0,8"
+                                  FontTypography="BodyStrong"
+                                  Text="Hoặc nhấp để nhập nhóm cấu hình mẫu bên dưới" />
+                    <ui:TextBlock Margin="0,0,0,8"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  TextWrapping="Wrap">
+                        <Hyperlink Command="{Binding ImportScriptGroupCommand}"
+                                   CommandParameter="AutoCrystalflyExampleGroup"
+                                   Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}">
+                            Nhập nhóm cấu hình mẫu Tự Động Bướm Tinh Thể
+                        </Hyperlink>
+                    </ui:TextBlock>-->
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!--  右侧栏:选中组  -->
+        <Border Grid.Column="2"
+                Margin="6"
+                Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,1,1,1"
+                CornerRadius="8">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedScriptGroup}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Grid Margin="8,8,0,0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <ui:TextBlock Margin="0,0,0,8"
+                                  FontTypography="BodyStrong"
+                                  Text="(Thử nghiệm) Nhóm cấu hình - " />
+                    <ui:TextBlock Margin="0,0,0,8"
+                                  FontTypography="BodyStrong"
+                                  Text="{Binding SelectedScriptGroup.Name}" />
+                </StackPanel>
+
+                <ui:TextBlock Grid.Row="1"
+                              Margin="0,0,0,8"
+                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                              TextWrapping="Wrap">
+                    Nhấp chuột phải trong danh sách bên dưới để thêm cấu hình, kéo thả để điều chỉnh thứ tự. Hỗ trợ script JS trong BetterGI, script ghi bàn phím/chuột, v.v.; có thể đặt số lần thực hiện và thứ tự qua bộ lập lịch.
+                </ui:TextBlock>
+
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <ui:Button Command="{Binding StartScriptGroupCommand}"
+                               Content="Chạy"
+                               Icon="{ui:SymbolIcon Play24}" />
+                    <Separator Width="10" Opacity="0" />
+
+
+                    <ui:DropDownButton Content="Thêm" Icon="{ui:SymbolIcon Add24}">
+                        <ui:DropDownButton.Flyout>
+                            <ContextMenu> 
+                                <MenuItem Header="Script JS" Command="{Binding AddJsScriptCommand}" />
+                                <MenuItem Header="Tác Vụ Theo Dõi Bản Đồ" Command="{Binding AddPathingCommand}" />
+                                <MenuItem Header="Script Bàn Phím/Chuột" Command="{Binding AddKmScriptCommand}" />
+                                <MenuItem Header="Shell" Command="{Binding AddShellCommand}" />
+                            </ContextMenu>
+                        </ui:DropDownButton.Flyout>
+                    </ui:DropDownButton>
+                    <Separator Width="10" Opacity="0" />
+                    <ui:DropDownButton Content="Thêm Tính Năng">
+                        <ui:DropDownButton.Flyout>
+                            <ContextMenu>
+                                <MenuItem Header="Xóa Tất Cả" Command="{Binding ClearTasksCommand}" />
+                                <MenuItem Header="Phân Tích Nhật Ký" Command="{Binding OpenLogParseCommand}" />
+                                <MenuItem Header="Mở Kho Script" Command="{Binding OpenLocalScriptRepoCommand}" />
+                                <MenuItem Header="Cập Nhật Theo Thư Mục" Command="{Binding UpdateTasksCommand}" />
+                                <MenuItem Header="Sắp Xếp Tác Vụ Ngược" Command="{Binding ReverseTaskOrderCommand}" />
+                                <MenuItem Header="Xuất Tác Vụ Được Sửa Theo File Kiểm Soát" Command="{Binding ExportMergerJsonsCommand}" />
+                            </ContextMenu>
+                        </ui:DropDownButton.Flyout>
+                    </ui:DropDownButton>
+                    <Separator Width="10" Opacity="0" />
+                    <ui:Button Command="{Binding OpenScriptGroupSettingsCommand}"
+                               Content="Cài Đặt"
+                               Icon="{ui:SymbolIcon Settings24}" />
+                    <!--<ui:TextBlock VerticalAlignment="Center"
+                                  FontSize="16"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  TextWrapping="Wrap">
+                        Để dừng, hãy cấu hình và dùng phím tắt!
+                    </ui:TextBlock>-->
+                </StackPanel>
+
+                <Separator Grid.Row="3"
+                           Height="8"
+                           Opacity="0" />
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="Col1" Grid.Column="0" />
+                    <Grid x:Name="Col2" Grid.Column="1" />
+                    <Grid x:Name="Col3" Grid.Column="2" />
+                    <Grid x:Name="Col4" Grid.Column="3" />
+                </Grid>
+                <ui:ListView Grid.Row="5"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             dd:DragDrop.IsDragSource="True"
+                             dd:DragDrop.IsDropTarget="True"
+                             dd:DragDrop.UseDefaultDragAdorner="True"
+                             ItemsSource="{Binding SelectedScriptGroup.Projects, Mode=TwoWay}"
+                             SelectionMode="Single">
+     
+                  
+                    <ListView.View>
+
+                        <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderDarkStyle}">
+                            <GridViewColumn Width="{Binding ElementName=Col1, Path=ActualWidth}"
+                                            DisplayMemberBinding="{Binding Index}"
+                                            Header="#" />
+                            <GridViewColumn Width="{Binding ElementName=Col2, Path=ActualWidth}"
+                                  
+                                            Header="Tên" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" FontSize="14" ToolTip="{Binding FolderName}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding NextFlag}" Value="True">
+                                                            <Setter Property="Foreground" Value="Green" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+
+                            </GridViewColumn>
+                            <GridViewColumn Width="{Binding ElementName=Col3, Path=ActualWidth}"
+                                            DisplayMemberBinding="{Binding TypeDesc}"
+                                            Header="Loại" />
+                            <GridViewColumn Width="{Binding ElementName=Col4, Path=ActualWidth}" Header="Trạng Thái Bật">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ui:ToggleSwitch
+                                            IsChecked="{Binding Status, Converter={StaticResource BooleanToEnableTextConverter}, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Command="{Binding AddJsScriptCommand}" Header="Thêm Script JS" />
+                            <MenuItem Command="{Binding AddPathingCommand}" Header="Thêm Tác Vụ Theo Dõi Bản Đồ" />
+                            <MenuItem Command="{Binding AddKmScriptCommand}" Header="Thêm Script Bàn Phím/Chuột" />
+                            <MenuItem Command="{Binding AddShellCommand}" Header="Thêm Shell" />
+                            <MenuItem Command="{Binding AddNextFlagCommand}" Header="Lần Chạy Tiếp Theo Bắt Đầu Từ Đây"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      />
+                            
+                            <MenuItem Command="{Binding EditScriptCommonCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Sửa Cấu Hình Chung" />
+                            <MenuItem Command="{Binding EditJsScriptSettingsCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Sửa Cấu Hình Tùy Chỉnh Script JS">
+                                <MenuItem.Style>
+                                    <Style TargetType="MenuItem">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem.Type}"
+                                                Value="Javascript">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </MenuItem.Style>
+                            </MenuItem>
+                            <MenuItem Command="{Binding OpenScriptFolderCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Mở Thư Mục Chứa">
+                                <MenuItem.Style>
+                                    <Style TargetType="MenuItem">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Style.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem.Type}"
+                                                Value="Shell">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </MenuItem.Style>
+                            </MenuItem>
+                            <MenuItem Command="{Binding DeleteScriptCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Xóa" />
+                            <MenuItem Command="{Binding DeleteScriptByFolderCommand}"
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"
+                                      Header="Xóa Theo Thư Mục">
+                                <MenuItem.Style>
+                                    <Style TargetType="MenuItem">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem.Type}"
+                                                Value="Pathing">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </MenuItem.Style>
+                            </MenuItem>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.Style>
+                        <Style TargetType="{x:Type ListView}">
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Background" Value="Transparent" />
+                        </Style>
+                    </ListView.Style>
+                </ui:ListView>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

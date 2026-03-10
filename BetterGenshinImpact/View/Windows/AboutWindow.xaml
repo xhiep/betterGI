@@ -1,0 +1,67 @@
+<ui:FluentWindow x:Class="BetterGenshinImpact.View.Windows.AboutWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:behavior="clr-namespace:BetterGenshinImpact.View.Behavior"
+                 Title="Về"
+                 Width="400"
+                 Height="300"
+                 Background="#202020"
+                 ExtendsContentIntoTitleBar="True"
+                 behavior:AutoTranslateInterceptor.EnableAutoTranslate="True"
+                 FontFamily="{DynamicResource TextThemeFontFamily}"
+                 WindowBackdropType="Auto"
+                 WindowStartupLocation="CenterOwner"
+                 mc:Ignorable="d">
+    <Grid>
+        <ui:Grid Margin="0,48,0,0" RowDefinitions="Auto,*,Auto">
+            <ui:TextBlock Grid.Row="0" Margin="16,0,16,0" FontSize="16" FontWeight="Bold" Text="BetterGI - Better Genshin Impact" />
+            <ui:TextBlock Grid.Row="1" Margin="16,0,16,0" TextWrapping="Wrap">
+                <Run Text="Mã nguồn mở: " />
+                <Hyperlink NavigateUri="https://github.com/babalae/better-genshin-impact"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    https://github.com/babalae/better-genshin-impact
+                </Hyperlink>
+                <LineBreak />
+                <Run Text="Giấy phép: GPLv3" />
+                <LineBreak />
+                <Run Text="Tác giả: " />
+                <Hyperlink NavigateUri="https://github.com/huiyadanli"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    HuiYaDan
+                </Hyperlink>
+                <LineBreak />
+                <Run Text="Tài liệu: " />
+                <Hyperlink NavigateUri="https://bettergi.com"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    https://bettergi.com
+                </Hyperlink>
+                <LineBreak />
+                <Run Text="Kênh Bilibili (Video hướng dẫn): " />
+                <Hyperlink NavigateUri="https://space.bilibili.com/3546777483479879"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    BetterGI
+                </Hyperlink>
+                <LineBreak />
+                
+                <ui:TextBlock Margin="0,8,0,0" TextWrapping="Wrap" Name="RzTextBlock" Visibility="Collapsed">
+                    <ui:TextBlock  FontSize="16" FontWeight="Bold" Name="Line1" />
+                    <LineBreak />
+                    <Run Name="Line2" />
+                    <LineBreak />
+                    <Run Name="Line3" />
+                    <LineBreak />
+                </ui:TextBlock>
+            </ui:TextBlock>
+            <ui:Button Grid.Row="2" Margin="16" HorizontalAlignment="Right" Width="80" Content="Đóng"
+                       Click="CloseButton_Click" />
+        </ui:Grid>
+        <ui:TitleBar Title="Về">
+            <ui:TitleBar.Icon>
+                <ui:ImageIcon Source="pack://application:,,,/Resources/Images/logo.png" />
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+    </Grid>
+</ui:FluentWindow>

@@ -1,0 +1,551 @@
+<Page x:Class="BetterGenshinImpact.View.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:controls="clr-namespace:BetterGenshinImpact.View.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:pages="clr-namespace:BetterGenshinImpact.ViewModel.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="HomePage"
+      d:DataContext="{d:DesignInstance Type=pages:HomePageViewModel}"
+      d:DesignHeight="850"
+      d:DesignWidth="800"
+      ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+      ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      FontFamily="{StaticResource TextThemeFontFamily}"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      mc:Ignorable="d">
+
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+
+    <StackPanel Margin="42,16,42,12">
+
+        <Border Height="200" CornerRadius="8">
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <ui:MenuItem Header="Đổi Ảnh Nền" Command="{Binding ChangeBannerImageCommand}" Icon="{ui:SymbolIcon Image24}" />
+                    <ui:MenuItem Header="Khôi Phục Ảnh Mặc Định" Command="{Binding ResetBannerImageCommand}" Icon="{ui:SymbolIcon ArrowCounterclockwise24}" />
+                </ContextMenu>
+            </Border.ContextMenu>
+            <Grid>
+                <Border ClipToBounds="True" CornerRadius="8">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding BannerImageSource}"
+                                    RenderOptions.BitmapScalingMode="HighQuality"
+                                    Stretch="UniformToFill" />
+                    </Border.Background>
+                    <Border.OpacityMask>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="Transparent" />
+                            <GradientStop Offset="0.7" Color="White" />
+                        </LinearGradientBrush>
+                    </Border.OpacityMask>
+                </Border>
+                <Grid>
+                    <StackPanel Margin="52,0,0,26"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Background="Transparent">
+                        <ui:TextBlock FontTypography="Title" Text="BetterGI" />
+                        <ui:TextBlock FontTypography="Subtitle"
+                                      Opacity="0.8"
+                                      Text="BetterGenshinImpact - Miễn Phí &amp; Mã Nguồn Mở" />
+                        <ui:TextBlock FontTypography="BodyStrong" Opacity="0.5">
+                            <Hyperlink Command="{Binding GoToWikiUrlCommand}"
+                                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                       TextDecorations="None">
+                                <Run>Nhấn Để Xem Tài Liệu Và Hướng Dẫn</Run>
+                                <Run FontFamily="{StaticResource FluentSystemIcons}" FontWeight="Light">&#xEE7A;</Run>
+                            </Hyperlink>
+
+                        </ui:TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!--  更好的原神，启动！  -->
+        <ui:CardExpander Margin="0,12,0,12"
+                         ContentPadding="0"
+                         Icon="{ui:SymbolIcon Play24}">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Bật Công Cụ Chụp Màn Hình BetterGI!"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  TextWrapping="Wrap">
+                        Phải bật công cụ chụp màn hình mới dùng được các tính năng,<Run FontWeight="Bold" TextDecorations="Underline">
+                            Nhấp để mở rộng cài đặt khởi động
+                        </Run>
+                        .</ui:TextBlock>
+                    <StackPanel Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Margin="0,0,24,0"
+                                Orientation="Horizontal">
+                        <controls:TwoStateButton DisableCommand="{Binding StopTriggerCommand}"
+                                                 DisableContent="Dừng"
+                                                 DisableIcon="{ui:SymbolIcon Dismiss24}"
+                                                 EnableCommand="{Binding StartTriggerCommand}"
+                                                 EnableContent="Bắt Đầu"
+                                                 EnableIcon="{ui:SymbolIcon Play24}"
+                                                 IsChecked="{Binding TaskDispatcherEnabled, Mode=OneWay}" />
+                        <!--  <ui:Button Command="{Binding StartTriggerCommand}"  -->
+                        <!--  Content="Bắt Đầu"  -->
+                        <!--  Icon="{ui:SymbolIcon Play24}"  -->
+                        <!--  Visibility="{Binding TaskDispatcherEnabled, Converter={StaticResource BooleanToVisibilityRevertConverter}, Mode=OneWay}" />  -->
+                        <!--  <ui:Button Command="{Binding StopTriggerCommand}"  -->
+                        <!--  Content="停止"  -->
+                        <!--  Icon="{ui:SymbolIcon Dismiss24}"  -->
+                        <!--  Visibility="{Binding TaskDispatcherEnabled, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />  -->
+                    </StackPanel>
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Chế Độ Chụp Màn Hình"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Khuyến nghị dùng BitBlt, ít lỗi hơn"
+                                  TextWrapping="Wrap" />
+                    <ComboBox Grid.Row="0"
+                              Grid.RowSpan="2"
+                              Grid.Column="1"
+                              Margin="0,0,36,0"
+                              DisplayMemberPath="DisplayName"
+                              ItemsSource="{Binding ModeNames, Mode=OneWay}"
+                              SelectedValue="{Binding Config.CaptureMode, Mode=TwoWay}"
+                              SelectedValuePath="EnumName">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="SelectionChanged">
+                                <b:InvokeCommandAction Command="{Binding CaptureModeDropDownChangedCommand}" CommandParameter="GeniusInvocation" />
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </ComboBox>
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Khoảng Thời Gian Trigger (ms)"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Mặc định 50ms, người dùng thường không nên chỉnh, xem tài liệu để biết thêm"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBox Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                MinWidth="90"
+                                Margin="0,0,36,0"
+                                Text="{Binding Config.TriggerInterval, Mode=TwoWay}" />
+                </Grid>
+                <!--<Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Bật Cache Bitmap Cho WindowsGraphicsCapture"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Nếu xuất hiện màn hình đen hoặc giảm FPS, hãy thử tắt tính năng này và khởi động lại"
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,36,0"
+                                     IsChecked="{Binding Config.WgcUseBitmapCache, Mode=TwoWay}" />
+                </Grid>-->
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Cài Đặt Thiết Bị Suy Luận AI"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Thay đổi cần khởi động lại chương trình"
+                                  TextWrapping="Wrap" />
+                    <ComboBox Grid.Row="0"
+                              Grid.RowSpan="2"
+                              Grid.Column="1"
+                              Margin="0,0,10,0"
+                              ItemsSource="{Binding InferenceDeviceTypes}"
+                              SelectedItem="{Binding Config.HardwareAccelerationConfig.InferenceDevice, Mode=TwoWay}">
+                        <!-- <b:Interaction.Triggers> -->
+                        <!--     <b:EventTrigger EventName="SelectionChanged"> -->
+                        <!--         <b:InvokeCommandAction Command="{Binding InferenceDeviceTypeDropDownChangedCommand}" CommandParameter="{Binding Config.InferenceDevice}" /> -->
+                        <!--     </b:EventTrigger> -->
+                        <!-- </b:Interaction.Triggers> -->
+                    </ComboBox>
+                    <ui:Button Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Grid.Column="2"
+                               Margin="0,0,36,0"
+                               Command="{Binding OpenHardwareAccelerationSettingsCommand}"
+                               Content="Thêm..." />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Kiểm Tra Chụp Màn Hình"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Thử nghiệm các chế độ chụp màn hình"
+                                  TextWrapping="Wrap" />
+                    <ui:Button Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Grid.Column="1"
+                               Margin="0,0,36,0"
+                               Command="{Binding StartCaptureTestCommand}"
+                               Content="Kiểm Tra Chụp Màn Hình" />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Chọn Cửa Sổ Thủ Công (Dùng Khi Không Tìm Thấy Cửa Sổ Game)"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                Text="Dùng khi Genshin đang chạy nhưng nhấn Bắt Đầu vẫn không tìm thấy cửa sổ"
+                                  TextWrapping="Wrap" />
+                    <ui:Button Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Grid.Column="1"
+                               Margin="0,0,36,0"
+                               Command="{Binding ManualPickWindowCommand}"
+                               Content="Chọn Cửa Sổ Chụp" />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Tự Động Tắt Tối Ưu Cửa Sổ Win11 Để Hỗ Trợ BitBlt"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Thay đổi cài đặt cần khởi động lại game"
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,10,0"
+                                     IsChecked="{Binding Config.AutoFixWin11BitBlt, Mode=TwoWay}" />
+                    <ui:Button Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Grid.Column="2"
+                               Margin="0,0,36,0"
+                               Command="{Binding OpenDisplayAdvancedGraphicsSettingsCommand}"
+                               Content="Cài Đặt Thủ Công" />
+                </Grid>
+            </StackPanel>
+        </ui:CardExpander>
+
+        <!--  原神，启动！  -->
+        <ui:CardExpander Margin="0,0,0,12"
+                         ContentPadding="0"
+                         Icon="{ui:SymbolIcon LinkSquare24}">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Khởi Động Genshin Cùng Lúc"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Khi bật công cụ, nếu Genshin chưa chạy sẽ tự động mở game."
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,24,0"
+                                     IsChecked="{Binding Config.GenshinStartConfig.LinkedStartEnabled, Mode=TwoWay}" />
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Vị Trí Cài Đặt Genshin (Không Hỗ Trợ Cloud Genshin)"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="{Binding Config.GenshinStartConfig.InstallPath, Mode=TwoWay}"
+                                  TextWrapping="Wrap" />
+                    <ui:Button Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Grid.Column="1"
+                               Margin="0,0,36,0"
+                               Command="{Binding SelectInstallPathCommand}"
+                               Content="Duyệt" />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" VerticalAlignment="Top">
+
+                        <ui:TextBlock FontTypography="Body" TextWrapping="Wrap">
+                            <ui:TextBlock.Inlines>
+                                <Run Text="Tham Số Khởi Động" />
+                                <ui:HyperlinkButton Margin="4,0,0,0"
+                                                    Padding="0"
+                                                    Command="{Binding OpenGameCommandLineDocumentCommand}"
+                                                    Cursor="Hand">
+                                    <ui:HyperlinkButton.Content>
+                                        <TextBlock FontSize="11" Text="Mở Tài Liệu" />
+                                    </ui:HyperlinkButton.Content>
+                                </ui:HyperlinkButton>
+                            </ui:TextBlock.Inlines>
+                        </ui:TextBlock>
+
+                        <ui:TextBlock Margin="0,4,0,0"
+                                    Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                    Text="Nếu không biết tham số khởi động là gì, hãy để trống."
+                                    TextWrapping="Wrap" />
+                    </StackPanel>
+                    <!--  常见启动参数：无边框 -popupwindow 指定分辨率 -screen-width 1920 -screen-height 1080  -->
+                    <ui:TextBox Grid.Column="1"
+                                Width="300"
+                                Margin="0,0,36,0"
+                                VerticalAlignment="Top"
+                                PlaceholderText="Ví dụ: -screen-width 1920"
+                                Text="{Binding Config.GenshinStartConfig.GenshinStartArgs, Mode=TwoWay}"
+                                TextWrapping="Wrap"
+                                AcceptsReturn="True" />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Tự Động Vào Game"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Tự động vào game sau khi khởi động (mở cửa tự động, nhận thẻ tháng)"
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,36,0"
+                                     IsChecked="{Binding Config.GenshinStartConfig.AutoEnterGameEnabled, Mode=TwoWay}" />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Dùng CMD Để Khởi Động Game"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                Text="Nếu Genshin hiển thị cảnh báo về công cụ bất hợp pháp, thử bật tùy chọn này"
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,36,0"
+                                     IsChecked="{Binding Config.GenshinStartConfig.StartGameWithCmd, Mode=TwoWay}" />
+                </Grid>
+                <Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Dùng Starward Ghi Thời Gian Chơi"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Sau khi khởi động game, Starward sẽ đồng bộ ghi thời gian"
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,36,0"
+                                     IsChecked="{Binding Config.GenshinStartConfig.RecordGameTimeEnabled, Mode=TwoWay}" />
+                </Grid>
+
+
+                <!--<Separator Margin="-18,0" BorderThickness="0,1,0,0" />
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Row="0"
+                                  Grid.Column="0"
+                                  FontTypography="Body"
+                                  Text="Tự Động Nhận Thẻ Tháng"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Grid.Row="1"
+                                  Grid.Column="0"
+                                  Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                  Text="Tự động nhấn nhận thẻ tháng sau khi vào game nếu có"
+                                  TextWrapping="Wrap" />
+                    <ui:ToggleSwitch Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="1"
+                                     Margin="0,0,36,0"
+                                     IsChecked="{Binding Config.GenshinStartConfig.AutoClickBlessingOfTheWelkinMoonEnabled, Mode=TwoWay}" />
+                </Grid>-->
+            </StackPanel>
+        </ui:CardExpander>
+
+        <!--<ui:Button x:Name="Test" Margin="0,20,0,0" Content="测试" Command="{Binding TestCommand}" />-->
+
+
+    </StackPanel>
+</Page>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="1星圣遗物" xml:space="preserve">
+    <value>Thánh Di Vật.*1.*Sao</value>
+  </data>
+  <data name="2星圣遗物" xml:space="preserve">
+    <value>Thánh Di Vật.*2.*Sao</value>
+  </data>
+  <data name="3星圣遗物" xml:space="preserve">
+    <value>Thánh Di Vật.*3.*Sao</value>
+  </data>
+  <data name="4星圣遗物" xml:space="preserve">
+    <value>Thánh Di Vật.*4.*Sao</value>
+  </data>
+  <data name="元素充能效率" xml:space="preserve">
+    <value>Hiệu Suất Nạp Năng Lượng</value>
+  </data>
+  <data name="元素精通" xml:space="preserve">
+    <value>Tinh Thông Nguyên Tố</value>
+  </data>
+  <data name="冰元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Băng</value>
+  </data>
+  <data name="岩元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Nham</value>
+  </data>
+  <data name="快速选择" xml:space="preserve">
+    <value>Chọn Nhanh</value>
+  </data>
+  <data name="攻击力" xml:space="preserve">
+    <value>Tấn Công</value>
+  </data>
+  <data name="暴击伤害" xml:space="preserve">
+    <value>Sát Thương Bạo Kích</value>
+  </data>
+  <data name="暴击率" xml:space="preserve">
+    <value>Tỷ Lệ Bạo Kích</value>
+  </data>
+  <data name="水元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Thủy</value>
+  </data>
+  <data name="治疗加成" xml:space="preserve">
+    <value>Thưởng Trị Liệu</value>
+  </data>
+  <data name="火元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Hỏa</value>
+  </data>
+  <data name="物理伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Vật Lý</value>
+  </data>
+  <data name="生命值" xml:space="preserve">
+    <value>HP</value>
+  </data>
+  <data name="草元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Thảo</value>
+  </data>
+  <data name="防御力" xml:space="preserve">
+    <value>Phòng Thủ</value>
+  </data>
+  <data name="雷元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Lôi</value>
+  </data>
+  <data name="风元素伤害加成" xml:space="preserve">
+    <value>Thưởng Sát Thương Phong</value>
+  </data>
+</root>
